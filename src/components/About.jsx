@@ -51,35 +51,37 @@ export default function About() {
 
   return (
     <section id="about" className="py-20 relative overflow-hidden" style={{backgroundColor: 'var(--about-bg)'}}>
-      {/* Software Code Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
+      {/* Enhanced Professional Grid Pattern */}
+      <div className="absolute inset-0 opacity-6">
         <div className="absolute inset-0" style={{
           backgroundImage: `
-            linear-gradient(90deg, transparent 79px, var(--about-pattern) 79px, var(--about-pattern) 81px, transparent 81px),
-            linear-gradient(transparent 79px, var(--about-pattern) 79px, var(--about-pattern) 81px, transparent 81px)
+            linear-gradient(90deg, transparent 79px, var(--about-pattern) 80px, var(--about-pattern) 82px, transparent 83px),
+            linear-gradient(transparent 79px, var(--about-pattern) 80px, var(--about-pattern) 82px, transparent 83px)
           `,
           backgroundSize: '80px 80px'
         }}></div>
       </div>
       
-      {/* Floating Code Elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-20 text-2xl font-mono" style={{color: 'var(--about-code-text)'}}>{'<>'}</div>
-        <div className="absolute top-40 right-32 text-lg font-mono" style={{color: 'var(--about-code-text)'}}>{'{ }'}</div>
-        <div className="absolute bottom-32 left-32 text-xl font-mono" style={{color: 'var(--about-code-text)'}}>{'</>'}</div>
-        <div className="absolute bottom-20 right-20 text-lg font-mono" style={{color: 'var(--about-code-text)'}}>{'[ ]'}</div>
-        <div className="absolute top-1/2 left-1/4 text-sm font-mono" style={{color: 'var(--about-code-text)'}}>{'function()'}</div>
-        <div className="absolute top-1/3 right-1/4 text-sm font-mono" style={{color: 'var(--about-code-text)'}}>{'const'}</div>
+      {/* Tech Identity Dots Pattern */}
+      <div className="absolute inset-0 opacity-4">
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'radial-gradient(circle at center, var(--about-pattern) 1.5px, transparent 1.5px)',
+          backgroundSize: '40px 40px'
+        }}></div>
       </div>
       
-      {/* Binary Pattern */}
+      {/* Minimal Code Elements */}
+      <div className="absolute inset-0 opacity-4">
+        <div className="absolute top-20 left-20 text-lg font-mono" style={{color: 'var(--about-code-text)'}}>{'<>'}</div>
+        <div className="absolute bottom-20 right-20 text-lg font-mono" style={{color: 'var(--about-code-text)'}}>{'</>'}</div>
+        <div className="absolute top-1/3 right-1/4 text-sm font-mono" style={{color: 'var(--about-code-text)'}}>{'dev'}</div>
+      </div>
+      
+      {/* Minimal Identity Icons */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-10 left-10 text-xs font-mono leading-4" style={{color: 'var(--about-binary)'}}>
-          01010011<br/>01101111<br/>01100110<br/>01110100
-        </div>
-        <div className="absolute bottom-10 right-10 text-xs font-mono leading-4" style={{color: 'var(--about-binary)'}}>
-          01000011<br/>01101111<br/>01100100<br/>01100101
-        </div>
+        <div className="absolute top-24 left-24 text-2xl" style={{color: 'var(--about-code-text)'}}>👨‍💻</div>
+        <div className="absolute bottom-24 right-24 text-2xl" style={{color: 'var(--about-code-text)'}}>🎓</div>
+        <div className="absolute top-1/2 right-1/3 text-xl" style={{color: 'var(--about-code-text)'}}>💡</div>
       </div>
       
        <div className="container relative z-10">

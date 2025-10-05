@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { 
   FaReact, FaNodeJs, FaJava, FaGitAlt, FaFigma, FaLinux,
@@ -13,104 +13,71 @@ const skillCategories = [
   {
     name: 'PROGRAMMING LANGUAGES',
     skills: [
-      { name: 'C', level: 85, icon: FaCode },
-      { name: 'Java', level: 80, icon: FaJava },
-      { name: 'JavaScript', level: 85, icon: FaJs },
-      { name: 'PHP', level: 70, icon: FaPhp },
-      { name: 'HTML/CSS', level: 90, icon: FaHtml5 }
+      { name: 'C', icon: FaCode },
+      { name: 'Java', icon: FaJava },
+      { name: 'JavaScript', icon: FaJs },
+      { name: 'HTML', icon: FaHtml5 },
+      { name: 'CSS', icon: FaCss3Alt },
+      { name: 'PHP', icon: FaPhp },
+      { name: 'SQL', icon: SiMysql }
     ]
   },
   {
-    name: 'FRAMEWORKS & TOOLS',
+    name: 'FRAMEWORKS',
     skills: [
-      { name: 'React', level: 80, icon: FaReact },
-      { name: 'Node.js', level: 78, icon: FaNodeJs },
-      { name: 'Vite', level: 85, icon: SiVite },
-      { name: 'Tailwind CSS', level: 90, icon: SiTailwindcss },
-      { name: 'MySQL', level: 80, icon: SiMysql },
-      { name: 'Git & GitHub', level: 85, icon: FaGitAlt },
-      { name: 'Linux', level: 70, icon: FaLinux }
+      { name: 'React', icon: FaReact },
+      { name: 'Node.js', icon: FaNodeJs }
     ]
   },
   {
-    name: 'OTHER TOOLS',
+    name: 'TOOLS',
     skills: [
-      { name: 'Figma', level: 80, icon: FaFigma },
-      { name: 'Canva', level: 85, icon: FaCode },
-      { name: 'VS Code', level: 90, icon: FaCode },
-      { name: 'Postman', level: 75, icon: FaCode }
-    ]
-  },
-  {
-    name: 'SOFT SKILLS',
-    skills: [
-      { name: 'Problem-Solving', level: 90, icon: FaCode },
-      { name: 'Teamwork', level: 85, icon: FaCode },
-      { name: 'Adaptability', level: 88, icon: FaCode },
-      { name: 'Leadership', level: 75, icon: FaCode },
-      { name: 'Communication', level: 85, icon: FaCode },
-      { name: 'Creativity', level: 82, icon: FaCode }
+      { name: 'MySQL', icon: SiMysql },
+      { name: 'Git', icon: FaGitAlt },
+      { name: 'GitHub', icon: FaGitAlt },
+      { name: 'Linux', icon: FaLinux },
+      { name: 'Figma', icon: FaFigma }
     ]
   }
 ]
 
-function ProgressBar({ skill, delay }) {
-  const [progress, setProgress] = useState(0)
-  const [isVisible, setIsVisible] = useState(false)
-  const progressRef = useRef(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
-          setIsVisible(true)
-          setTimeout(() => {
-            setProgress(skill.level)
-          }, delay)
-        }
-      },
-      { threshold: 0.1 }
-    )
-
-    if (progressRef.current) {
-      observer.observe(progressRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [skill.level, delay, isVisible])
-
+function SkillItem({ skill, delay }) {
   return (
     <motion.div
-      ref={progressRef}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay }}
+      transition={{ duration: 0.5, delay }}
       viewport={{ once: true }}
-      className="space-y-3"
+      className="group p-6 rounded-xl transition-all duration-300"
+      style={{
+        backgroundColor: 'var(--skills-item-bg)',
+        border: '1px solid var(--skills-item-border)'
+      }}
+      onMouseEnter={(e) => {
+        e.target.style.backgroundColor = 'rgba(42, 42, 42, 0.8)'
+        e.target.style.backgroundColor = 'var(--skills-item-hover-bg)'; e.target.style.borderColor = 'var(--skills-item-hover-border)'
+      }}
+      onMouseLeave={(e) => {
+        e.target.style.backgroundColor = 'rgba(26, 26, 26, 0.8)'
+        e.target.style.backgroundColor = 'var(--skills-item-bg)'; e.target.style.borderColor = 'var(--skills-item-border)'
+      }}
     >
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg" style={{backgroundColor: 'rgba(122, 122, 122, 0.2)'}}>
-            <skill.icon style={{color: '#7a7a7a'}} className="text-lg" />
-          </div>
-          <span className="font-medium" style={{color: '#e8e8e8'}}>{skill.name}</span>
+      <div className="flex flex-col items-center text-center space-y-4">
+        {/* Icon container */}
+        <div 
+          className="p-4 rounded-lg"
+          style={{
+            backgroundColor: 'rgba(42, 42, 42, 0.6)',
+            border: '1px solid #444444'
+          }}
+        >
+          <skill.icon className="text-2xl" style={{color: '#888888'}} />
         </div>
-        <span style={{color: '#b8b8b8'}} className="font-semibold">{skill.level}%</span>
-      </div>
-      
-      <div className="relative">
-        <div className="w-full h-2 rounded-full overflow-hidden" style={{backgroundColor: '#2a2a2a'}}>
-          <motion.div
-            className="h-full rounded-full relative"
-            style={{backgroundColor: '#7a7a7a'}}
-            initial={{ width: '0%' }}
-            animate={{ width: `${progress}%` }}
-            transition={{ duration: 1.5, delay: delay + 0.2, ease: "easeOut" }}
-          >
-            {/* Glow effect */}
-            <div className="absolute inset-0 opacity-50 blur-sm" style={{backgroundColor: '#7a7a7a'}}></div>
-          </motion.div>
-        </div>
+        
+        {/* Skill name */}
+        <h3 className="font-medium text-lg" style={{color: '#f5f5f5'}}>
+          {skill.name}
+        </h3>
       </div>
     </motion.div>
   )
@@ -119,40 +86,77 @@ function ProgressBar({ skill, delay }) {
 export default function Skills() {
   const [activeCategory, setActiveCategory] = useState('PROGRAMMING LANGUAGES')
 
+  useEffect(() => {
+    const applyTheme = () => {
+      const isDark = localStorage.getItem('theme') === 'dark' || 
+                     (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      
+      document.documentElement.style.setProperty('--skills-bg', isDark ? '#0f0f0f' : '#f8f9fa')
+      document.documentElement.style.setProperty('--skills-pattern', isDark ? 'rgba(42, 42, 42, 0.2)' : 'rgba(108, 117, 125, 0.2)')
+      document.documentElement.style.setProperty('--skills-dots', isDark ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.03)')
+      document.documentElement.style.setProperty('--skills-symbols', isDark ? '#2a2a2a' : '#6c757d')
+      document.documentElement.style.setProperty('--skills-heading', isDark ? '#f5f5f5' : '#212529')
+      document.documentElement.style.setProperty('--skills-text', isDark ? '#c0c0c0' : '#495057')
+      document.documentElement.style.setProperty('--skills-category-active-bg', isDark ? '#888888' : '#007bff')
+      document.documentElement.style.setProperty('--skills-category-active-text', isDark ? '#0f0f0f' : '#ffffff')
+      document.documentElement.style.setProperty('--skills-category-bg', isDark ? 'rgba(26, 26, 26, 0.8)' : 'rgba(255, 255, 255, 0.8)')
+      document.documentElement.style.setProperty('--skills-category-text', isDark ? '#c0c0c0' : '#495057')
+      document.documentElement.style.setProperty('--skills-category-border', isDark ? '#333333' : '#dee2e6')
+      document.documentElement.style.setProperty('--skills-category-hover-bg', isDark ? '#333333' : '#e9ecef')
+      document.documentElement.style.setProperty('--skills-category-hover-border', isDark ? '#444444' : '#6c757d')
+      document.documentElement.style.setProperty('--skills-category-hover-text', isDark ? '#fafafa' : '#212529')
+      document.documentElement.style.setProperty('--skills-item-bg', isDark ? 'rgba(26, 26, 26, 0.8)' : 'rgba(255, 255, 255, 0.9)')
+      document.documentElement.style.setProperty('--skills-item-text', isDark ? '#c0c0c0' : '#495057')
+      document.documentElement.style.setProperty('--skills-item-border', isDark ? '#333333' : '#dee2e6')
+      document.documentElement.style.setProperty('--skills-item-hover-bg', isDark ? '#333333' : '#e9ecef')
+      document.documentElement.style.setProperty('--skills-item-hover-border', isDark ? '#444444' : '#6c757d')
+      document.documentElement.style.setProperty('--skills-item-hover-text', isDark ? '#fafafa' : '#212529')
+    }
+    
+    // Apply theme on initial load
+    applyTheme()
+    
+    // Listen for theme changes from the same tab (custom event)
+    const handleThemeChange = () => applyTheme()
+    window.addEventListener('themeChange', handleThemeChange)
+    
+    // Listen for theme changes from other tabs (storage event)
+    const handleStorageChange = () => applyTheme()
+    window.addEventListener('storage', handleStorageChange)
+    
+    return () => {
+      window.removeEventListener('themeChange', handleThemeChange)
+      window.removeEventListener('storage', handleStorageChange)
+    }
+  }, [])
+
   return (
-    <section id="skills" className="py-20 relative overflow-hidden" style={{backgroundColor: '#151515'}}>
-      {/* Circuit Board Pattern Background */}
-      <div className="absolute inset-0 opacity-8">
-        <svg className="w-full h-full" viewBox="0 0 400 400" fill="none">
-          <defs>
-            <pattern id="circuit" patternUnits="userSpaceOnUse" width="40" height="40">
-              <path d="M20 0v40M0 20h40" stroke="#2a2a2a" strokeWidth="1"/>
-              <circle cx="20" cy="20" r="2" fill="#333333"/>
-              <circle cx="0" cy="0" r="1" fill="#2a2a2a"/>
-              <circle cx="40" cy="40" r="1" fill="#2a2a2a"/>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#circuit)"/>
-        </svg>
+    <section id="skills" className="py-20 relative overflow-hidden" style={{backgroundColor: 'var(--skills-bg)'}}>
+      {/* Minimal Tech Grid Pattern */}
+      <div className="absolute inset-0 opacity-6">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `
+            linear-gradient(90deg, transparent 99px, var(--skills-pattern) 100px, var(--skills-pattern) 101px, transparent 102px),
+            linear-gradient(transparent 99px, var(--skills-pattern) 100px, var(--skills-pattern) 101px, transparent 102px)
+          `,
+          backgroundSize: '100px 100px'
+        }}></div>
       </div>
       
-      {/* Tech Icons Background */}
+      {/* Subtle Tech Dots */}
+      <div className="absolute inset-0 opacity-4">
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'radial-gradient(circle at center, var(--skills-dots) 1px, transparent 1px)',
+          backgroundSize: '60px 60px'
+        }}></div>
+      </div>
+      
+      {/* Minimal Tech Symbols */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-20 text-6xl" style={{color: '#333333'}}>⚛</div>
-        <div className="absolute top-40 right-32 text-5xl" style={{color: '#333333'}}>⚙</div>
-        <div className="absolute bottom-32 left-32 text-7xl" style={{color: '#333333'}}>💻</div>
-        <div className="absolute bottom-20 right-20 text-5xl" style={{color: '#333333'}}>🔧</div>
-        <div className="absolute top-1/2 left-1/4 text-4xl" style={{color: '#333333'}}>📱</div>
-        <div className="absolute top-1/3 right-1/4 text-6xl" style={{color: '#333333'}}>🖥</div>
-      </div>
-      
-      {/* Connection Lines */}
-      <div className="absolute inset-0 opacity-10">
-        <svg className="w-full h-full">
-          <line x1="10%" y1="20%" x2="30%" y2="40%" stroke="#444444" strokeWidth="1"/>
-          <line x1="70%" y1="30%" x2="90%" y2="60%" stroke="#444444" strokeWidth="1"/>
-          <line x1="20%" y1="80%" x2="60%" y2="90%" stroke="#444444" strokeWidth="1"/>
-        </svg>
+        <div className="absolute top-20 left-20 text-2xl" style={{color: 'var(--skills-symbols)'}}>⚛</div>
+        <div className="absolute bottom-20 right-20 text-2xl" style={{color: 'var(--skills-symbols)'}}>🔧</div>
+        <div className="absolute top-1/2 right-1/4 text-2xl" style={{color: 'var(--skills-symbols)'}}>🖥</div>
+        <div className="absolute bottom-1/3 left-1/4 text-2xl" style={{color: 'var(--skills-symbols)'}}>⚡</div>
       </div>
       
       <div className="container relative z-10">
@@ -163,15 +167,15 @@ export default function Skills() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-6xl font-bold mb-4" style={{color: '#e8e8e8'}}>
+          <h2 className="text-4xl lg:text-6xl font-bold mb-4" style={{color: 'var(--skills-heading)'}}>
             My Skills
           </h2>
-          <p className="text-lg max-w-3xl mx-auto" style={{color: '#b8b8b8'}}>
+          <p className="text-lg max-w-3xl mx-auto" style={{color: 'var(--skills-text)'}}>
             Technologies and tools I work with to bring ideas to life
           </p>
         </motion.div>
 
-        {/* Category Tabs */}
+        {/* Simple Category Tabs */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -183,26 +187,24 @@ export default function Skills() {
             <button
               key={category.name}
               onClick={() => setActiveCategory(category.name)}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
-                activeCategory === category.name
-                  ? 'shadow-lg'
-                  : 'hover:bg-opacity-50'
-              }`}
+              className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300`}
               style={{
-                backgroundColor: activeCategory === category.name ? '#7a7a7a' : 'rgba(42, 42, 42, 0.6)',
-                color: activeCategory === category.name ? '#0a0a0a' : '#b8b8b8',
-                border: '1px solid #444444'
+                backgroundColor: activeCategory === category.name ? 'var(--skills-category-active-bg)' : 'var(--skills-category-bg)',
+                color: activeCategory === category.name ? 'var(--skills-category-active-text)' : 'var(--skills-category-text)',
+                border: '1px solid var(--skills-category-border)'
               }}
               onMouseEnter={(e) => {
                 if (activeCategory !== category.name) {
-                  e.target.style.backgroundColor = 'rgba(122, 122, 122, 0.2)'
-                  e.target.style.color = '#d8d8d8'
+                  e.target.style.backgroundColor = 'var(--skills-category-hover-bg)'
+                  e.target.style.color = 'var(--skills-category-hover-text)'
+                  e.target.style.borderColor = 'var(--skills-category-hover-border)'
                 }
               }}
               onMouseLeave={(e) => {
                 if (activeCategory !== category.name) {
-                  e.target.style.backgroundColor = 'rgba(42, 42, 42, 0.6)'
-                  e.target.style.color = '#b8b8b8'
+                  e.target.style.backgroundColor = 'var(--skills-category-bg)'
+                  e.target.style.color = 'var(--skills-category-text)'
+                  e.target.style.borderColor = 'var(--skills-category-border)'
                 }
               }}
             >
@@ -224,9 +226,9 @@ export default function Skills() {
               transition={{ duration: 0.3 }}
               className={`${activeCategory === category.name ? 'block' : 'hidden'}`}
             >
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {category.skills.map((skill, index) => (
-                  <ProgressBar 
+                  <SkillItem 
                     key={`${category.name}-${skill.name}`} 
                     skill={skill} 
                     delay={index * 0.1} 
@@ -237,45 +239,124 @@ export default function Skills() {
           ))}
         </div>
 
-        {/* Additional Skills */}
+        {/* Also Familiar With */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="text-center mt-16"
+          className="mt-16"
         >
-          <h3 className="text-2xl font-bold mb-8" style={{color: '#e8e8e8'}}>Also Familiar With</h3>
-          <div className="flex flex-wrap justify-center gap-3">
-            {[
-              'Three.js', 'Framer Motion', 'Bootstrap', 'SASS', 'REST APIs', 
-              'GraphQL', 'Docker', 'AWS', 'Vercel', 'Netlify', 'Webpack',
-              'Jest', 'Cypress', 'Postman', 'Photoshop', 'Blender'
-            ].map((tech, index) => (
-              <motion.span
-                key={tech}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                viewport={{ once: true }}
-                className="px-4 py-2 rounded-lg transition-all duration-300 cursor-default"
-                style={{
-                  backgroundColor: 'rgba(42, 42, 42, 0.6)',
-                  color: '#b8b8b8',
-                  border: '1px solid #555555'
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.borderColor = '#777777'
-                  e.target.style.color = '#d8d8d8'
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.borderColor = '#555555'
-                  e.target.style.color = '#b8b8b8'
-                }}
-              >
-                {tech}
-              </motion.span>
-            ))}
+          <h3 className="text-2xl font-bold mb-8 text-center" style={{color: '#f5f5f5'}}>
+            Also Familiar With
+          </h3>
+          
+          {/* Front-End / UI Tools */}
+          <div className="mb-8">
+            <h4 className="text-lg font-semibold mb-4 text-center" style={{color: 'var(--skills-text)'}}>
+              Front-End / UI Tools
+            </h4>
+            <div className="flex flex-wrap justify-center gap-3">
+              {[
+                'Bootstrap', 'Tailwind CSS'
+              ].map((tech, index) => (
+                <motion.span
+                  key={tech}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  viewport={{ once: true }}
+                  className="px-4 py-2 rounded-lg transition-all duration-300 cursor-default"
+                  style={{
+                    backgroundColor: 'var(--skills-item-bg)',
+                    color: 'var(--skills-item-text)',
+                    border: '1px solid var(--skills-item-border)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.backgroundColor = 'var(--skills-item-hover-bg)'; e.target.style.borderColor = 'var(--skills-item-hover-border)'
+                    e.target.style.color = 'var(--skills-item-hover-text)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.backgroundColor = 'var(--skills-item-bg)'; e.target.style.borderColor = 'var(--skills-item-border)'
+                    e.target.style.color = 'var(--skills-item-text)'
+                  }}
+                >
+                  {tech}
+                </motion.span>
+              ))}
+            </div>
+          </div>
+
+          {/* APIs / Data Handling */}
+          <div className="mb-8">
+            <h4 className="text-lg font-semibold mb-4 text-center" style={{color: 'var(--skills-item-text)'}}>
+              APIs / Data Handling
+            </h4>
+            <div className="flex flex-wrap justify-center gap-3">
+              {[
+                'REST APIs', 'Postman'
+              ].map((tech, index) => (
+                <motion.span
+                  key={tech}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  viewport={{ once: true }}
+                  className="px-4 py-2 rounded-lg transition-all duration-300 cursor-default"
+                  style={{
+                    backgroundColor: 'var(--skills-item-bg)',
+                    color: 'var(--skills-item-text)',
+                    border: '1px solid var(--skills-item-border)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.backgroundColor = 'var(--skills-item-hover-bg)'; e.target.style.borderColor = 'var(--skills-item-hover-border)'
+                    e.target.style.color = 'var(--skills-item-hover-text)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.backgroundColor = 'var(--skills-item-bg)'; e.target.style.borderColor = 'var(--skills-item-border)'
+                    e.target.style.color = '#c0c0c0'
+                  }}
+                >
+                  {tech}
+                </motion.span>
+              ))}
+            </div>
+          </div>
+
+          {/* DevOps / Deployment / Tools */}
+          <div className="mb-8">
+            <h4 className="text-lg font-semibold mb-4 text-center" style={{color: 'var(--skills-item-text)'}}>
+              DevOps / Deployment / Tools
+            </h4>
+            <div className="flex flex-wrap justify-center gap-3">
+              {[
+                'Docker', 'AWS', 'Vercel', 'Netlify'
+              ].map((tech, index) => (
+                <motion.span
+                  key={tech}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  viewport={{ once: true }}
+                  className="px-4 py-2 rounded-lg transition-all duration-300 cursor-default"
+                  style={{
+                    backgroundColor: 'var(--skills-item-bg)',
+                    color: 'var(--skills-item-text)',
+                    border: '1px solid var(--skills-item-border)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.backgroundColor = 'var(--skills-item-hover-bg)'; e.target.style.borderColor = 'var(--skills-item-hover-border)'
+                    e.target.style.color = 'var(--skills-item-hover-text)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.backgroundColor = 'var(--skills-item-bg)'; e.target.style.borderColor = 'var(--skills-item-border)'
+                    e.target.style.color = '#c0c0c0'
+                  }}
+                >
+                  {tech}
+                </motion.span>
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>

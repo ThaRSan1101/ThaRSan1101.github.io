@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaGithub, FaExternalLinkAlt, FaCode, FaDatabase, FaReact, FaNodeJs } from 'react-icons/fa'
 import { SiMysql, SiJavascript, SiHtml5, SiCss3, SiTailwindcss } from 'react-icons/si'
@@ -81,49 +81,72 @@ const projects = [
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null)
 
+  useEffect(() => {
+    const applyTheme = () => {
+      const isDark = localStorage.getItem('theme') === 'dark' || 
+                     (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      
+      document.documentElement.style.setProperty('--projects-bg', isDark ? '#0f0f0f' : '#f8f9fa')
+      document.documentElement.style.setProperty('--projects-pattern', isDark ? 'rgba(42, 42, 42, 0.4)' : 'rgba(108, 117, 125, 0.4)')
+      document.documentElement.style.setProperty('--projects-dots', isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)')
+      document.documentElement.style.setProperty('--projects-icons', isDark ? '#333333' : '#6c757d')
+      document.documentElement.style.setProperty('--projects-lines', isDark ? '#444444' : '#6c757d')
+      document.documentElement.style.setProperty('--projects-heading', isDark ? '#e0e0e0' : '#212529')
+      document.documentElement.style.setProperty('--projects-subheading', isDark ? '#999999' : '#6c757d')
+      document.documentElement.style.setProperty('--projects-text', isDark ? '#b0b0b0' : '#495057')
+      document.documentElement.style.setProperty('--projects-card-bg', isDark ? 'rgba(42, 42, 42, 0.6)' : 'rgba(255, 255, 255, 0.8)')
+      document.documentElement.style.setProperty('--projects-card-border', isDark ? '#555555' : '#dee2e6')
+      document.documentElement.style.setProperty('--projects-card-hover-bg', isDark ? 'rgba(60, 60, 60, 0.6)' : 'rgba(233, 236, 239, 0.8)')
+      document.documentElement.style.setProperty('--projects-card-hover-border', isDark ? '#777777' : '#6c757d')
+      document.documentElement.style.setProperty('--projects-status-completed-bg', isDark ? 'rgba(34, 197, 94, 0.2)' : 'rgba(34, 197, 94, 0.1)')
+      document.documentElement.style.setProperty('--projects-status-completed-color', isDark ? '#22c55e' : '#198754')
+      document.documentElement.style.setProperty('--projects-status-completed-border', isDark ? 'rgba(34, 197, 94, 0.3)' : 'rgba(34, 197, 94, 0.2)')
+      document.documentElement.style.setProperty('--projects-status-progress-bg', isDark ? 'rgba(251, 191, 36, 0.2)' : 'rgba(251, 191, 36, 0.1)')
+      document.documentElement.style.setProperty('--projects-status-progress-color', isDark ? '#fbbf24' : '#f59e0b')
+      document.documentElement.style.setProperty('--projects-status-progress-border', isDark ? 'rgba(251, 191, 36, 0.3)' : 'rgba(251, 191, 36, 0.2)')
+      document.documentElement.style.setProperty('--projects-btn-bg', isDark ? 'transparent' : '#ffffff')
+      document.documentElement.style.setProperty('--projects-btn-text', isDark ? '#999999' : '#495057')
+      document.documentElement.style.setProperty('--projects-btn-border', isDark ? '#999999' : '#6c757d')
+      document.documentElement.style.setProperty('--projects-btn-hover-bg', isDark ? '#999999' : '#6c757d')
+      document.documentElement.style.setProperty('--projects-btn-hover-text', isDark ? '#0a0a0a' : '#ffffff')
+    }
+    
+    // Apply theme on initial load
+    applyTheme()
+    
+    // Listen for theme changes from the same tab (custom event)
+    const handleThemeChange = () => applyTheme()
+    window.addEventListener('themeChange', handleThemeChange)
+    
+    // Listen for theme changes from other tabs (storage event)
+    const handleStorageChange = () => applyTheme()
+    window.addEventListener('storage', handleStorageChange)
+    
+    return () => {
+      window.removeEventListener('themeChange', handleThemeChange)
+      window.removeEventListener('storage', handleStorageChange)
+    }
+  }, [])
+
   return (
-    <section id="projects" className="py-20 relative overflow-hidden" style={{backgroundColor: '#1a1a1a'}}>
-      {/* Database/Storage Pattern Background */}
-      <div className="absolute inset-0 opacity-8">
+    <section id="projects" className="py-20 relative overflow-hidden" style={{backgroundColor: 'var(--projects-bg)'}}>
+      {/* Enhanced Development Grid Pattern */}
+      <div className="absolute inset-0 opacity-16">
         <div className="absolute inset-0" style={{
           backgroundImage: `
-            repeating-linear-gradient(
-              0deg,
-              transparent,
-              transparent 35px,
-              #2a2a2a 35px,
-              #2a2a2a 37px
-            ),
-            repeating-linear-gradient(
-              90deg,
-              transparent,
-              transparent 35px,
-              #2a2a2a 35px,
-              #2a2a2a 37px
-            )
-          `
+            linear-gradient(90deg, transparent 79px, var(--projects-pattern) 80px, var(--projects-pattern) 82px, transparent 83px),
+            linear-gradient(transparent 79px, var(--projects-pattern) 80px, var(--projects-pattern) 82px, transparent 83px)
+          `,
+          backgroundSize: '80px 80px'
         }}></div>
       </div>
       
-      {/* Project/Repository Icons */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-20 text-5xl" style={{color: '#333333'}}>📁</div>
-        <div className="absolute top-40 right-32 text-4xl" style={{color: '#333333'}}>💾</div>
-        <div className="absolute bottom-32 left-32 text-6xl" style={{color: '#333333'}}>🗂</div>
-        <div className="absolute bottom-20 right-20 text-4xl" style={{color: '#333333'}}>💻</div>
-        <div className="absolute top-1/2 left-1/4 text-3xl" style={{color: '#333333'}}>⚡</div>
-        <div className="absolute top-1/3 right-1/4 text-5xl" style={{color: '#333333'}}>🚀</div>
-      </div>
-      
-      {/* Git Branch Lines */}
-      <div className="absolute inset-0 opacity-10">
-        <svg className="w-full h-full">
-          <path d="M10 20 Q 50 40 90 60 T 170 100" stroke="#444444" strokeWidth="2" fill="none"/>
-          <path d="M200 30 Q 240 50 280 70 T 360 110" stroke="#444444" strokeWidth="2" fill="none"/>
-          <circle cx="50" cy="40" r="3" fill="#444444"/>
-          <circle cx="150" cy="80" r="3" fill="#444444"/>
-          <circle cx="250" cy="60" r="3" fill="#444444"/>
-        </svg>
+      {/* Code Repository Pattern */}
+      <div className="absolute inset-0 opacity-14">
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'radial-gradient(circle at center, var(--projects-dots) 1.5px, transparent 1.5px)',
+          backgroundSize: '40px 40px'
+        }}></div>
       </div>
       
       <div className="container relative z-10">
@@ -134,11 +157,11 @@ export default function Projects() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4" style={{color: '#e0e0e0'}}>
+          <h2 className="text-4xl lg:text-5xl font-bold mb-4" style={{color: 'var(--projects-heading)'}}>
             A Showcase of My
-            <span className="block" style={{color: '#999999'}}>Best Work</span>
+            <span className="block" style={{color: 'var(--projects-subheading)'}}>Best Work</span>
           </h2>
-          <p className="text-lg max-w-3xl mx-auto" style={{color: '#b0b0b0'}}>
+          <p className="text-lg max-w-3xl mx-auto" style={{color: 'var(--projects-text)'}}>
             Explore projects that highlight my skills in software development using modern technologies.
           </p>
         </motion.div>
@@ -155,7 +178,7 @@ export default function Projects() {
               className="group cursor-pointer"
               onClick={() => setSelectedProject(project)}
             >
-              <div className="p-6 rounded-2xl transition-all duration-300 h-full" style={{backgroundColor: 'rgba(42, 42, 42, 0.6)', border: '1px solid #555555'}}
+              <div className="p-6 rounded-2xl transition-all duration-300 h-full" style={{backgroundColor: 'var(--projects-card-bg)', border: '1px solid var(--projects-card-border)'}}
                    onMouseEnter={(e) => {
                      e.currentTarget.style.backgroundColor = 'rgba(60, 60, 60, 0.6)'
                      e.currentTarget.style.borderColor = '#777777'
@@ -189,17 +212,17 @@ export default function Projects() {
                 {/* Project Info */}
                 <div className="space-y-4">
                   <div className="flex items-start justify-between">
-                    <h3 className="text-xl font-bold transition-colors" style={{color: '#e0e0e0'}}>
+                    <h3 className="text-xl font-bold transition-colors" style={{color: 'var(--projects-heading)'}}>
                       {project.title}
                     </h3>
                     <div className="flex gap-2">
                       {project.techIcons.slice(0, 2).map((Icon, i) => (
-                        <Icon key={i} style={{color: '#999999'}} className="text-lg" />
+                        <Icon key={i} style={{color: 'var(--projects-subheading)'}} className="text-lg" />
                       ))}
                     </div>
                   </div>
 
-                  <p className="leading-relaxed" style={{color: '#b0b0b0'}}>
+                  <p className="leading-relaxed" style={{color: 'var(--projects-text)'}}>
                     {project.shortDesc}
                   </p>
 
@@ -211,7 +234,7 @@ export default function Projects() {
                         className="px-3 py-1 text-xs rounded-full border"
                         style={{
                           backgroundColor: 'rgba(153, 153, 153, 0.1)',
-                          color: '#999999',
+                          color: 'var(--projects-subheading)',
                           borderColor: 'rgba(153, 153, 153, 0.3)'
                         }}
                       >
@@ -232,7 +255,7 @@ export default function Projects() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 transition-colors"
-                      style={{color: '#b0b0b0'}}
+                      style={{color: 'var(--projects-text)'}}
                       onMouseEnter={(e) => e.target.style.color = '#d0d0d0'}
                       onMouseLeave={(e) => e.target.style.color = '#b0b0b0'}
                       onClick={(e) => e.stopPropagation()}
@@ -245,7 +268,7 @@ export default function Projects() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 transition-colors"
-                      style={{color: '#b0b0b0'}}
+                      style={{color: 'var(--projects-text)'}}
                       onMouseEnter={(e) => e.target.style.color = '#d0d0d0'}
                       onMouseLeave={(e) => e.target.style.color = '#b0b0b0'}
                       onClick={(e) => e.stopPropagation()}
@@ -257,7 +280,7 @@ export default function Projects() {
 
                   {/* Details Button */}
                   <div className="pt-2">
-                    <button className="transition-colors text-sm font-medium" style={{color: '#999999'}}
+                    <button className="transition-colors text-sm font-medium" style={{color: 'var(--projects-subheading)'}}
                             onMouseEnter={(e) => e.target.style.color = '#bbb'}
                             onMouseLeave={(e) => e.target.style.color = '#999999'}>
                       View Details →
@@ -278,7 +301,7 @@ export default function Projects() {
           className="text-center mt-12"
         >
           <button className="px-8 py-3 border-2 rounded-lg transition-all duration-300"
-                  style={{borderColor: '#999999', color: '#999999', backgroundColor: 'transparent'}}
+                  style={{bordercolor: 'var(--projects-subheading)', color: 'var(--projects-subheading)', backgroundColor: 'transparent'}}
                   onMouseEnter={(e) => {
                     e.target.style.backgroundColor = '#999999'
                     e.target.style.color = '#0a0a0a'

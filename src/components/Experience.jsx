@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { FaBuilding, FaUsers, FaCode } from 'react-icons/fa'
 
@@ -33,35 +33,85 @@ const experiences = [
 ]
 
 export default function Experience() {
+  useEffect(() => {
+    const applyTheme = () => {
+      const isDark = localStorage.getItem('theme') === 'dark' || 
+                     (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      
+      document.documentElement.style.setProperty('--experience-bg', isDark ? '#0f0f0f' : '#f8f9fa')
+      document.documentElement.style.setProperty('--experience-pattern', isDark ? 'rgba(42, 42, 42, 0.4)' : 'rgba(108, 117, 125, 0.4)')
+      document.documentElement.style.setProperty('--experience-dots', isDark ? 'var(--experience-dots)' : 'rgba(0,0,0,0.07)')
+      document.documentElement.style.setProperty('--experience-icons', isDark ? 'var(--experience-icons)' : '#6c757d')
+      document.documentElement.style.setProperty('--experience-heading', isDark ? 'var(--experience-heading)' : '#212529')
+      document.documentElement.style.setProperty('--experience-text', isDark ? 'var(--experience-text)' : '#495057')
+      document.documentElement.style.setProperty('--experience-card-bg', isDark ? 'var(--experience-card-bg)' : 'rgba(255, 255, 255, 0.8)')
+      document.documentElement.style.setProperty('--experience-card-border', isDark ? 'var(--experience-timeline-border)' : '#dee2e6')
+      document.documentElement.style.setProperty('--experience-card-hover-bg', isDark ? 'var(--experience-card-hover-bg)' : 'rgba(233, 236, 239, 0.8)')
+      document.documentElement.style.setProperty('--experience-card-hover-border', isDark ? 'var(--experience-card-hover-border)' : '#6c757d')
+      document.documentElement.style.setProperty('--experience-timeline-bg', isDark ? 'var(--experience-timeline-bg)' : '#6c757d')
+      document.documentElement.style.setProperty('--experience-timeline-border', isDark ? 'var(--experience-timeline-border)' : '#adb5bd')
+      document.documentElement.style.setProperty('--experience-type-bg', isDark ? 'rgba(170, 170, 170, 0.2)' : 'rgba(108, 117, 125, 0.2)')
+      document.documentElement.style.setProperty('--experience-type-text', isDark ? '#aaa' : '#6c757d')
+    }
+    
+    // Apply theme on initial load
+    applyTheme()
+    
+    // Listen for theme changes
+    const handleThemeChange = () => applyTheme()
+    const handleStorageChange = () => applyTheme()
+    
+    window.addEventListener('themeChange', handleThemeChange)
+    window.addEventListener('storage', handleStorageChange)
+    
+    return () => {
+      window.removeEventListener('themeChange', handleThemeChange)
+      window.removeEventListener('storage', handleStorageChange)
+    }
+  }, [])
+
   return (
-    <section id="experience" className="py-20 relative overflow-hidden" style={{backgroundColor: '#252525'}}>
-      {/* Workplace/Office Pattern Background */}
-      <div className="absolute inset-0 opacity-8">
+    <section id="experience" className="py-20 relative overflow-hidden" style={{backgroundColor: 'var(--experience-bg)'}}>
+      {/* Enhanced Career Timeline Grid Pattern */}
+      <div className="absolute inset-0 opacity-16">
         <div className="absolute inset-0" style={{
           backgroundImage: `
-            linear-gradient(45deg, transparent 40%, #353535 40%, #353535 60%, transparent 60%),
-            linear-gradient(-45deg, transparent 40%, #353535 40%, #353535 60%, transparent 60%)
+            linear-gradient(90deg, transparent 89px, rgba(42, 42, 42, 0.4) 90px, rgba(42, 42, 42, 0.4) 92px, transparent 93px),
+            linear-gradient(transparent 89px, rgba(42, 42, 42, 0.4) 90px, rgba(42, 42, 42, 0.4) 92px, transparent 93px)
           `,
-          backgroundSize: '40px 40px'
+          backgroundSize: '90px 90px'
+        }}></div>
+      </div>
+      
+      {/* Professional Growth Pattern */}
+      <div className="absolute inset-0 opacity-13">
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'radial-gradient(circle at center, var(--experience-dots) 1.5px, transparent 1.5px)',
+          backgroundSize: '50px 50px'
         }}></div>
       </div>
       
       {/* Career/Professional Icons */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-20 text-5xl" style={{color: '#333333'}}>🏢</div>
-        <div className="absolute top-40 right-32 text-4xl" style={{color: '#333333'}}>💼</div>
-        <div className="absolute bottom-32 left-32 text-6xl" style={{color: '#333333'}}>📈</div>
-        <div className="absolute bottom-20 right-20 text-4xl" style={{color: '#333333'}}>🎯</div>
-        <div className="absolute top-1/2 left-1/4 text-3xl" style={{color: '#333333'}}>👔</div>
-        <div className="absolute top-1/3 right-1/4 text-5xl" style={{color: '#333333'}}>🤝</div>
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-20 left-20 text-4xl" style={{color: 'var(--experience-icons)'}}>🏢</div>
+        <div className="absolute top-40 right-32 text-3xl" style={{color: 'var(--experience-icons)'}}>💼</div>
+        <div className="absolute bottom-32 left-32 text-5xl" style={{color: 'var(--experience-icons)'}}>📈</div>
+        <div className="absolute bottom-20 right-20 text-3xl" style={{color: 'var(--experience-icons)'}}>🎯</div>
+        <div className="absolute top-1/2 left-1/4 text-2xl" style={{color: 'var(--experience-icons)'}}>👔</div>
+        <div className="absolute top-1/3 right-1/4 text-4xl" style={{color: 'var(--experience-icons)'}}>🤝</div>
+        <div className="absolute top-68 right-68 text-2xl" style={{color: 'var(--experience-icons)'}}>⭐</div>
+        <div className="absolute bottom-68 left-68 text-3xl" style={{color: 'var(--experience-icons)'}}>🚀</div>
       </div>
       
-      {/* Timeline Lines */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute left-1/2 top-0 bottom-0 w-0.5" style={{backgroundColor: '#444444'}}></div>
-        <div className="absolute left-1/2 top-20 w-3 h-3 rounded-full" style={{backgroundColor: '#444444', transform: 'translateX(-50%)'}}></div>
-        <div className="absolute left-1/2 top-1/2 w-3 h-3 rounded-full" style={{backgroundColor: '#444444', transform: 'translateX(-50%)'}}></div>
-        <div className="absolute left-1/2 bottom-20 w-3 h-3 rounded-full" style={{backgroundColor: '#444444', transform: 'translateX(-50%)'}}></div>
+      {/* Enhanced Timeline Lines */}
+      <div className="absolute inset-0 opacity-15">
+        <div className="absolute left-1/2 top-0 bottom-0 w-1" style={{backgroundColor: 'var(--experience-timeline-bg)', transform: 'translateX(-50%)'}}></div>
+        <div className="absolute left-1/2 top-20 w-4 h-4 rounded-full border-2" style={{backgroundColor: 'var(--experience-timeline-bg)', borderColor: 'var(--experience-timeline-border)', transform: 'translateX(-50%)'}}></div>
+        <div className="absolute left-1/2 top-1/2 w-4 h-4 rounded-full border-2" style={{backgroundColor: 'var(--experience-timeline-bg)', borderColor: 'var(--experience-timeline-border)', transform: 'translateX(-50%)'}}></div>
+        <div className="absolute left-1/2 bottom-20 w-4 h-4 rounded-full border-2" style={{backgroundColor: 'var(--experience-timeline-bg)', borderColor: 'var(--experience-timeline-border)', transform: 'translateX(-50%)'}}></div>
+        {/* Additional timeline branches */}
+        <div className="absolute left-1/2 top-32 w-16 h-0.5" style={{backgroundColor: 'var(--experience-timeline-bg)', transform: 'translateX(-50%)'}}></div>
+        <div className="absolute left-1/2 bottom-32 w-16 h-0.5" style={{backgroundColor: 'var(--experience-timeline-bg)', transform: 'translateX(-50%)'}}></div>
       </div>
       
       <div className="container relative z-10">
