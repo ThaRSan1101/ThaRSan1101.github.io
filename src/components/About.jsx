@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Link as ScrollLink } from 'react-scroll'
 import { FaDownload, FaCode, FaUsers, FaLightbulb } from 'react-icons/fa'
+import BackgroundElements from './BackgroundElements'
 
 export default function About() {
   const highlights = []
@@ -50,38 +51,38 @@ export default function About() {
   }, [])
 
   return (
-    <section id="about" className="py-20 relative overflow-hidden" style={{backgroundColor: 'var(--about-bg)'}}>
-      {/* Enhanced Professional Grid Pattern */}
+    <section id="about" className="py-20 relative overflow-hidden space-section-bg">
+      {/* Enhanced Background Elements */}
+      <BackgroundElements variant="about" density="medium" />
+      
+      {/* Space dust particles */}
+      <div className="space-dust"></div>
+      
+      {/* Minimal Tech Grid Pattern */}
       <div className="absolute inset-0 opacity-6">
         <div className="absolute inset-0" style={{
           backgroundImage: `
-            linear-gradient(90deg, transparent 79px, var(--about-pattern) 80px, var(--about-pattern) 82px, transparent 83px),
-            linear-gradient(transparent 79px, var(--about-pattern) 80px, var(--about-pattern) 82px, transparent 83px)
+            linear-gradient(90deg, transparent 99px, var(--about-pattern) 100px, var(--about-pattern) 101px, transparent 102px),
+            linear-gradient(transparent 99px, var(--about-pattern) 100px, var(--about-pattern) 101px, transparent 102px)
           `,
-          backgroundSize: '80px 80px'
+          backgroundSize: '100px 100px'
         }}></div>
       </div>
       
-      {/* Tech Identity Dots Pattern */}
-      <div className="absolute inset-0 opacity-4">
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle at center, var(--about-pattern) 1.5px, transparent 1.5px)',
-          backgroundSize: '40px 40px'
-        }}></div>
-      </div>
-      
-      {/* Minimal Code Elements */}
-      <div className="absolute inset-0 opacity-4">
-        <div className="absolute top-20 left-20 text-lg font-mono" style={{color: 'var(--about-code-text)'}}>{'<>'}</div>
-        <div className="absolute bottom-20 right-20 text-lg font-mono" style={{color: 'var(--about-code-text)'}}>{'</>'}</div>
-        <div className="absolute top-1/3 right-1/4 text-sm font-mono" style={{color: 'var(--about-code-text)'}}>{'dev'}</div>
-      </div>
-      
-      {/* Minimal Identity Icons */}
+      {/* Subtle Tech Dots */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-24 left-24 text-2xl" style={{color: 'var(--about-code-text)'}}>👨‍💻</div>
-        <div className="absolute bottom-24 right-24 text-2xl" style={{color: 'var(--about-code-text)'}}>🎓</div>
-        <div className="absolute top-1/2 right-1/3 text-xl" style={{color: 'var(--about-code-text)'}}>💡</div>
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'radial-gradient(circle at center, var(--about-pattern) 1px, transparent 1px)',
+          backgroundSize: '60px 60px'
+        }}></div>
+      </div>
+      
+      {/* Minimal Tech Symbols */}
+      <div className="absolute inset-0 opacity-8">
+        <div className="absolute top-20 left-20 text-2xl" style={{color: 'var(--about-code-text)'}}>👨‍💻</div>
+        <div className="absolute bottom-20 right-20 text-2xl" style={{color: 'var(--about-code-text)'}}>🎓</div>
+        <div className="absolute top-1/2 right-1/4 text-xl" style={{color: 'var(--about-code-text)'}}>�</div>
+        <div className="absolute bottom-1/3 left-1/4 text-2xl" style={{color: 'var(--about-code-text)'}}>�</div>
       </div>
       
        <div className="container relative z-10">

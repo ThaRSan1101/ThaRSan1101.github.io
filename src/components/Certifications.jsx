@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { FaCertificate, FaAward, FaGraduationCap } from 'react-icons/fa'
+import BackgroundElements from './BackgroundElements'
 
 const certifications = [
   {
@@ -71,24 +72,38 @@ export default function Certifications() {
   }, [])
 
   return (
-    <section id="certifications" className="py-20 relative overflow-hidden" style={{ backgroundColor: 'var(--certifications-bg)' }}>
-      {/* Enhanced Achievement Grid Pattern */}
-      <div className="absolute inset-0 opacity-18">
+    <section id="certifications" className="py-20 relative overflow-hidden space-section-bg">
+      {/* Enhanced Background Elements */}
+      <BackgroundElements variant="certifications" density="medium" />
+      
+      {/* Space dust particles */}
+      <div className="space-dust"></div>
+      
+      {/* Minimal Tech Grid Pattern */}
+      <div className="absolute inset-0 opacity-6">
         <div className="absolute inset-0" style={{
           backgroundImage: `
-            linear-gradient(90deg, transparent 94px, var(--certifications-pattern) 95px, var(--certifications-pattern) 97px, transparent 98px),
-            linear-gradient(transparent 94px, var(--certifications-pattern) 95px, var(--certifications-pattern) 97px, transparent 98px)
+            linear-gradient(90deg, transparent 99px, var(--about-pattern) 100px, var(--about-pattern) 101px, transparent 102px),
+            linear-gradient(transparent 99px, var(--about-pattern) 100px, var(--about-pattern) 101px, transparent 102px)
           `,
-          backgroundSize: '95px 95px'
+          backgroundSize: '100px 100px'
         }}></div>
       </div>
       
-      {/* Certification Badge Pattern */}
-      <div className="absolute inset-0 opacity-14">
+      {/* Subtle Tech Dots */}
+      <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle at center, rgba(255,255,255,0.08) 1.5px, transparent 1.5px)',
-          backgroundSize: '55px 55px'
+          backgroundImage: 'radial-gradient(circle at center, var(--about-pattern) 1px, transparent 1px)',
+          backgroundSize: '60px 60px'
         }}></div>
+      </div>
+      
+      {/* Minimal Tech Symbols */}
+      <div className="absolute inset-0 opacity-8">
+        <div className="absolute top-20 left-20 text-2xl" style={{color: 'var(--about-code-text)'}}>🏆</div>
+        <div className="absolute bottom-20 right-20 text-2xl" style={{color: 'var(--about-code-text)'}}>📜</div>
+        <div className="absolute top-1/2 right-1/4 text-2xl" style={{color: 'var(--about-code-text)'}}>🎓</div>
+        <div className="absolute bottom-1/3 left-1/4 text-2xl" style={{color: 'var(--about-code-text)'}}>⭐</div>
       </div>
       
       {/* Achievement Medal Icons */}

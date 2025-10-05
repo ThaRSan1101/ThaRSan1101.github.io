@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { FaBuilding, FaUsers, FaCode } from 'react-icons/fa'
+import BackgroundElements from './BackgroundElements'
 
 const experiences = [
   {
@@ -71,24 +72,38 @@ export default function Experience() {
   }, [])
 
   return (
-    <section id="experience" className="py-20 relative overflow-hidden" style={{backgroundColor: 'var(--experience-bg)'}}>
-      {/* Enhanced Career Timeline Grid Pattern */}
-      <div className="absolute inset-0 opacity-16">
+    <section id="experience" className="py-20 relative overflow-hidden space-section-bg">
+      {/* Enhanced Background Elements */}
+      <BackgroundElements variant="experience" density="medium" />
+      
+      {/* Space dust particles */}
+      <div className="space-dust"></div>
+      
+      {/* Minimal Tech Grid Pattern */}
+      <div className="absolute inset-0 opacity-6">
         <div className="absolute inset-0" style={{
           backgroundImage: `
-            linear-gradient(90deg, transparent 89px, rgba(42, 42, 42, 0.4) 90px, rgba(42, 42, 42, 0.4) 92px, transparent 93px),
-            linear-gradient(transparent 89px, rgba(42, 42, 42, 0.4) 90px, rgba(42, 42, 42, 0.4) 92px, transparent 93px)
+            linear-gradient(90deg, transparent 99px, var(--experience-pattern) 100px, var(--experience-pattern) 101px, transparent 102px),
+            linear-gradient(transparent 99px, var(--experience-pattern) 100px, var(--experience-pattern) 101px, transparent 102px)
           `,
-          backgroundSize: '90px 90px'
+          backgroundSize: '100px 100px'
         }}></div>
       </div>
       
-      {/* Professional Growth Pattern */}
-      <div className="absolute inset-0 opacity-13">
+      {/* Subtle Tech Dots */}
+      <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle at center, var(--experience-dots) 1.5px, transparent 1.5px)',
-          backgroundSize: '50px 50px'
+          backgroundImage: 'radial-gradient(circle at center, var(--experience-dots) 1px, transparent 1px)',
+          backgroundSize: '60px 60px'
         }}></div>
+      </div>
+      
+      {/* Minimal Tech Symbols */}
+      <div className="absolute inset-0 opacity-8">
+        <div className="absolute top-20 left-20 text-2xl" style={{color: 'var(--experience-symbols)'}}>🏢</div>
+        <div className="absolute bottom-20 right-20 text-2xl" style={{color: 'var(--experience-symbols)'}}>📈</div>
+        <div className="absolute top-1/2 right-1/4 text-2xl" style={{color: 'var(--experience-symbols)'}}>⚡</div>
+        <div className="absolute bottom-1/3 left-1/4 text-2xl" style={{color: 'var(--experience-symbols)'}}>💼</div>
       </div>
       
       {/* Career/Professional Icons */}

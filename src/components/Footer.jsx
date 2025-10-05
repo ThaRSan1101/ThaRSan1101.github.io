@@ -4,9 +4,12 @@ import { FaLinkedin, FaGithub, FaWhatsapp, FaEnvelope } from 'react-icons/fa'
 
 export default function Footer(){
   return (
-    <footer className="py-12 bg-gradient-to-t from-space-black via-deep-space to-transparent relative overflow-hidden">
+    <footer className="py-12 relative overflow-hidden space-section-bg">
+      {/* Space dust particles */}
+      <div className="space-dust"></div>
+      
       {/* Background effects */}
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-1/4 w-32 h-32 bg-stellar-cyan/10 rounded-full blur-3xl"></div>
         <div className="absolute top-0 right-1/4 w-40 h-40 bg-galaxy-pink/10 rounded-full blur-3xl"></div>
       </div>

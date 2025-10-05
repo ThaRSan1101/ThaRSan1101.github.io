@@ -1,0 +1,128 @@
+/* Background Elements CSS */
+.background-elements-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Twinkling Stars */
+.background-stars {
+  position: absolute;
+  inset: 0;
+}
+
+.background-star {
+  position: absolute;
+  border-radius: 50%;
+  background-color: white;
+  opacity: 0.3;
+  animation: enhancedTwinkle ease-in-out infinite;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+  will-change: opacity, transform;
+}
+
+/* Floating Light Particles */
+.background-particles {
+  position: absolute;
+  inset: 0;
+}
+
+.background-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, rgba(100, 200, 255, 0.6), rgba(200, 100, 255, 0.6));
+  opacity: 0.2;
+  animation: gentleFloat ease-in-out infinite;
+  box-shadow: 0 0 8px rgba(100, 200, 255, 0.4);
+  will-change: transform, opacity;
+}
+
+/* Subtle Light Rays */
+.background-rays {
+  position: absolute;
+  inset: 0;
+}
+
+.background-ray {
+  position: absolute;
+  width: 1px;
+  height: 96px;
+  background: linear-gradient(to top, transparent, rgba(255, 255, 255, 0.3), transparent);
+  opacity: 0.1;
+  animation: lightBeam ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+/* Ambient Light Glows */
+.background-glows {
+  position: absolute;
+  inset: 0;
+}
+
+.background-glow {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.05;
+  animation: ambientGlow ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+.background-glow-1 {
+  width: 384px;
+  height: 384px;
+  left: 10%;
+  top: 20%;
+  background: radial-gradient(circle, rgba(100, 200, 255, 0.3) 0%, transparent 70%);
+  animation-duration: 8s;
+}
+
+.background-glow-2 {
+  width: 320px;
+  height: 320px;
+  right: 15%;
+  bottom: 25%;
+  background: radial-gradient(circle, rgba(200, 100, 255, 0.3) 0%, transparent 70%);
+  animation-duration: 10s;
+  animation-delay: 2s;
+}
+
+/* Shooting Star */
+.background-shooting-star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background-color: white;
+  border-radius: 50%;
+  opacity: 0;
+  left: -10%;
+  top: 30%;
+  animation: enhancedShootingStar 12s ease-out infinite;
+  animation-delay: 8s;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  will-change: opacity, transform;
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .background-star,
+  .background-particle,
+  .background-ray,
+  .background-glow,
+  .background-shooting-star {
+    animation: none;
+  }
+  
+  .background-elements-container {
+    opacity: 0.5;
+  }
+}
+
+/* Performance optimizations */
+.background-elements-container * {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
