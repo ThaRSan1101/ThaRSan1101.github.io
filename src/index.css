@@ -1,0 +1,810 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Minimalist Color Scheme */
+  --primary-dark: #0a0a0a;
+  --primary-light: #fafafa;
+  --secondary-dark: #1a1a1a;
+  --secondary-light: #f0f0f0;
+  --accent-gray: #666666;
+  --border-light: #e0e0e0;
+  --border-dark: #2a2a2a;
+  --text-primary: #fafafa;
+  --text-secondary: #cccccc;
+  --text-muted: #999999;
+  
+  /* Legacy compatibility */
+  --space-black: var(--primary-dark);
+  --deep-space: var(--secondary-dark);
+  --star-white: var(--primary-light);
+  --cosmic-gray: var(--accent-gray);
+  --cosmic-light: var(--text-secondary);
+}
+
+/* Light Theme Override */
+.light {
+  --primary-dark: #fafafa;
+  --primary-light: #0a0a0a;
+  --secondary-dark: #f0f0f0;
+  --secondary-light: #1a1a1a;
+  --text-primary: #0a0a0a;
+  --text-secondary: #333333;
+  --text-muted: #666666;
+}
+
+/* Emoji Theme Styling */
+.emoji-element {
+  filter: grayscale(1) contrast(2);
+  transition: filter 0.3s ease;
+}
+
+.light .emoji-element {
+  filter: grayscale(1) contrast(5) brightness(0);
+}
+
+/* Navigation Button Styling */
+.sidebar-button {
+  transition: all 0.3s ease;
+}
+
+.topbar-link {
+  transition: all 0.3s ease;
+}
+
+/* Hero CTA Button Styling */
+.hero-cta-button {
+  border-color: var(--text-primary) !important;
+  color: var(--text-primary) !important;
+  background-color: transparent !important;
+  transition: all 0.3s ease !important;
+}
+
+.hero-cta-button:hover {
+  background-color: var(--text-primary) !important;
+  color: var(--primary-dark) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
+}
+
+.light .hero-cta-button {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+.light .hero-cta-button:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  line-height: 1.6;
+  background: var(--primary-dark);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Minimalist background */
+body:not(.light)::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background: var(--primary-dark);
+}
+
+/* Light theme background */
+.light body::before {
+  background: var(--primary-light);
+}
+
+/* Remove animated stars for clean design */
+body:not(.light)::after {
+  display: none;
+}
+
+/* Light theme - clean */
+.light body::after {
+  display: none;
+}
+
+@keyframes sparkle {
+  from { transform: translateX(0); }
+  to { transform: translateX(200px); }
+}
+
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* Clean glass effect */
+.glass {
+  background: rgba(26, 26, 26, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border-dark);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.light .glass {
+  background: rgba(240, 240, 240, 0.8);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Professional gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent-red) 0%, var(--accent-blue) 50%, var(--accent-purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(2deg); }
+  66% { transform: translateY(5px) rotate(-2deg); }
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Simple hover glow effect */
+.glow {
+  box-shadow: 
+    0 0 20px rgba(6, 182, 212, 0.4),
+    0 0 40px rgba(6, 182, 212, 0.2);
+}
+
+/* Clean scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-dark);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-gray);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Night Sky Animations */
+@keyframes moveStars {
+  from { transform: translateX(0); }
+  to { transform: translateX(-400px); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes shootingStar {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px) translateY(-100px) rotate(45deg);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100vw) translateY(100px) rotate(45deg);
+  }
+}
+
+.animate-shootingStar {
+  animation: shootingStar 6s ease-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  25% { transform: translateY(-10px) translateX(5px); }
+  50% { transform: translateY(5px) translateX(-5px); }
+  75% { transform: translateY(-5px) translateX(10px); }
+}
+
+@keyframes nebulaDrift {
+  0%, 100% { 
+    opacity: 0.1; 
+    transform: scale(1) rotate(0deg); 
+  }
+  33% { 
+    opacity: 0.15; 
+    transform: scale(1.1) rotate(120deg); 
+  }
+  66% { 
+    opacity: 0.08; 
+    transform: scale(0.9) rotate(240deg); 
+  }
+}
+
+/* Enhanced Space Animations */
+@keyframes planetOrbit {
+  0% { 
+    transform: rotate(0deg) translateX(50px) rotate(0deg);
+  }
+  100% { 
+    transform: rotate(360deg) translateX(50px) rotate(-360deg);
+  }
+}
+
+@keyframes asteroidDrift {
+  0% { 
+    transform: translateX(-100vw) translateY(0px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.4;
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% { 
+    transform: translateX(100vw) translateY(-50px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes shootingStar {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px) translateY(-100px) rotate(45deg) scale(0);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(-50px) translateY(-50px) rotate(45deg) scale(1);
+    box-shadow: 0 0 15px #fafafa, 0 0 25px #fafafa;
+  }
+  90% {
+    opacity: 1;
+    box-shadow: 0 0 15px #fafafa, 0 0 25px #fafafa;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100vw) translateY(100px) rotate(45deg) scale(0.5);
+    box-shadow: 0 0 5px #fafafa;
+  }
+}
+
+@keyframes galaxyRotate {
+  0% { 
+    transform: rotate(-15deg) scale(1);
+    opacity: 0.1;
+  }
+  50% { 
+    transform: rotate(-10deg) scale(1.1);
+    opacity: 0.15;
+  }
+  100% { 
+    transform: rotate(-5deg) scale(1);
+    opacity: 0.1;
+  }
+}
+
+@keyframes spaceDust {
+  0% { 
+    transform: translateX(0) translateY(0);
+  }
+  100% { 
+    transform: translateX(-200px) translateY(-100px);
+  }
+}
+
+/* Lunar Night Scene Animations */
+@keyframes lunarFloat {
+  0%, 100% { 
+    transform: translateY(0px) translateX(0px);
+  }
+  20% { 
+    transform: translateY(-6px) translateX(2px);
+  }
+  40% { 
+    transform: translateY(-3px) translateX(-1px);
+  }
+  60% { 
+    transform: translateY(-8px) translateX(3px);
+  }
+  80% { 
+    transform: translateY(-4px) translateX(-2px);
+  }
+}
+
+@keyframes moonGlow {
+  0%, 100% { 
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  33% { 
+    opacity: 0.5;
+    transform: scale(1.1);
+  }
+  66% { 
+    opacity: 0.4;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes craterFloat {
+  0%, 100% { 
+    transform: translateY(0px) scale(1);
+    opacity: 0.25;
+  }
+  50% { 
+    transform: translateY(-5px) scale(1.05);
+    opacity: 0.35;
+  }
+}
+
+@keyframes lunarDust {
+  0% { 
+    transform: translateX(0) translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.3;
+  }
+  80% {
+    opacity: 0.3;
+  }
+  100% { 
+    transform: translateX(-150px) translateY(-30px) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+@keyframes lunarTexture {
+  0% { 
+    transform: translateX(0) translateY(0);
+  }
+  100% { 
+    transform: translateX(-50px) translateY(-25px);
+  }
+}
+
+@keyframes moonlightScan {
+  0%, 100% { 
+    transform: rotate(-45deg) translateX(-150%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.3;
+  }
+  50% { 
+    transform: rotate(-45deg) translateX(0%);
+    opacity: 0.6;
+  }
+  80% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes lunarOrbit {
+  0% { 
+    transform: rotate(0deg);
+  }
+  100% { 
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes lunarDebris {
+  0%, 100% { 
+    transform: translateX(0px) translateY(0px) rotate(0deg);
+    opacity: 0.4;
+  }
+  25% { 
+    transform: translateX(20px) translateY(-10px) rotate(90deg);
+    opacity: 0.6;
+  }
+  50% { 
+    transform: translateX(0px) translateY(-20px) rotate(180deg);
+    opacity: 0.3;
+  }
+  75% { 
+    transform: translateX(-20px) translateY(-10px) rotate(270deg);
+    opacity: 0.5;
+  }
+}
+
+/* Rotating Titles Animation */
+.rotating-title {
+  position: relative;
+  display: inline-block;
+  min-width: 320px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.rotating-title::before {
+  content: "Software Developer";
+  animation: rotatingTitles 20s infinite;
+  font-weight: bold;
+  display: block;
+  text-align: center;
+}
+
+@keyframes rotatingTitles {
+  0%, 19% { 
+    content: "Software Developer";
+    color: #00ff88;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
+  }
+  20%, 39% { 
+    content: "UI/UX Designer";
+    color: #ff6b6b;
+    text-shadow: 0 0 10px rgba(255, 107, 107, 0.4);
+  }
+  40%, 59% { 
+    content: "Full-Stack Developer";
+    color: #4ecdc4;
+    text-shadow: 0 0 10px rgba(78, 205, 196, 0.4);
+  }
+  60%, 79% { 
+    content: "Problem Solver";
+    color: #ffe66d;
+    text-shadow: 0 0 10px rgba(255, 230, 109, 0.4);
+  }
+  80%, 99% { 
+    content: "Software Developer";
+    color: #00ff88;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
+  }
+}
+
+@keyframes titleGlow {
+  0% { 
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+  }
+  100% { 
+    text-shadow: 0 0 20px rgba(0, 255, 136, 0.6), 0 0 30px rgba(0, 255, 136, 0.3);
+  }
+}
+
+/* Rocket Animations */
+@keyframes rocketFloat {
+  0%, 100% { 
+    transform: translateY(0px) translateX(-5px) rotate(-2deg); 
+  }
+  25% { 
+    transform: translateY(-15px) translateX(5px) rotate(1deg); 
+  }
+  50% { 
+    transform: translateY(-5px) translateX(10px) rotate(-1deg); 
+  }
+  75% { 
+    transform: translateY(-10px) translateX(-10px) rotate(2deg); 
+  }
+}
+
+@keyframes flameFlicker {
+  0% { 
+    transform: scaleY(1) scaleX(1); 
+    opacity: 0.8; 
+  }
+  100% { 
+    transform: scaleY(1.3) scaleX(0.8); 
+    opacity: 0.6; 
+  }
+}
+
+@keyframes exhaustParticle {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(10px) scale(0.8);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(20px) scale(0.3);
+    opacity: 0;
+  }
+}
+
+/* Typing Animation with cosmic colors */
+.typing-text span::before {
+  content: "DSA";
+  color: var(--stellar-cyan);
+  animation: words 15s infinite;
+  text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+}
+
+@keyframes words {
+  0% { 
+    content: "DSA";
+    color: var(--stellar-cyan);
+    text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+  }
+  20% { 
+    content: "React.js";
+    color: var(--cosmic-blue);
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+  }
+  40% { 
+    content: "Three.js";
+    color: var(--galaxy-pink);
+    text-shadow: 0 0 10px rgba(236, 72, 153, 0.5);
+  }
+  60% { 
+    content: "Full-Stack";
+    color: var(--nebula-purple);
+    text-shadow: 0 0 10px rgba(45, 27, 105, 0.5);
+  }
+  80% { 
+    content: "Web Development";
+    color: var(--stellar-cyan);
+    text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+  }
+  100% { 
+    content: "DSA";
+    color: var(--stellar-cyan);
+    text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+  }
+}
+
+/* Cosmic particle effects */
+.cosmic-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.cosmic-particles::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.3) 2px, transparent 2px),
+    radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.3) 1px, transparent 1px),
+    radial-gradient(circle at 40% 80%, rgba(59, 130, 246, 0.3) 1px, transparent 1px);
+  background-size: 100px 100px, 150px 150px, 200px 200px;
+  animation: float-particles 15s linear infinite;
+}
+
+@keyframes float-particles {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-100px) rotate(360deg); }
+}
+
+/* Nebula background effect */
+.nebula-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(ellipse at center, rgba(45, 27, 105, 0.4) 0%, transparent 70%),
+    radial-gradient(ellipse at 80% 20%, rgba(236, 72, 153, 0.2) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 80%, rgba(59, 130, 246, 0.2) 0%, transparent 50%);
+  z-index: -3;
+  animation: nebula-drift 30s ease-in-out infinite;
+}
+
+@keyframes nebula-drift {
+  0%, 100% { opacity: 0.6; transform: scale(1) rotate(0deg); }
+  50% { opacity: 0.8; transform: scale(1.1) rotate(180deg); }
+}
+
+/* Space-themed button styles */
+.space-btn {
+  background: linear-gradient(135deg, var(--nebula-purple), var(--cosmic-blue));
+  border: 1px solid var(--stellar-cyan);
+  color: var(--star-white);
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.space-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.space-btn:hover::before {
+  left: 100%;
+}
+
+.space-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 5px 15px rgba(6, 182, 212, 0.3),
+    0 0 20px rgba(6, 182, 212, 0.2);
+}
+
+/* Code Flow Animation */
+@keyframes codeFlow {
+  0%, 100% { 
+    opacity: 0.4;
+    transform: translateX(0);
+  }
+  50% { 
+    opacity: 0.8;
+    transform: translateX(5px);
+  }
+}
+
+/* 3D Model Animations */
+@keyframes model3DFloat {
+  0%, 100% { 
+    transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) translateY(0px) translateX(0px);
+  }
+  20% { 
+    transform: perspective(1000px) rotateX(4deg) rotateY(-4deg) translateY(-4px) translateX(2px);
+  }
+  40% { 
+    transform: perspective(1000px) rotateX(6deg) rotateY(-6deg) translateY(-2px) translateX(-1px);
+  }
+  60% { 
+    transform: perspective(1000px) rotateX(3deg) rotateY(-3deg) translateY(-6px) translateX(3px);
+  }
+  80% { 
+    transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) translateY(-3px) translateX(-2px);
+  }
+}
+
+@keyframes rotate3D {
+  0% { 
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+  33% { 
+    transform: perspective(1000px) rotateX(120deg) rotateY(120deg) rotateZ(0deg);
+  }
+  66% { 
+    transform: perspective(1000px) rotateX(240deg) rotateY(240deg) rotateZ(180deg);
+  }
+  100% { 
+    transform: perspective(1000px) rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+  }
+}
+
+@keyframes holographicScan {
+  0%, 100% { 
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  10% { 
+    opacity: 0.3;
+  }
+  50% { 
+    transform: translateX(0%);
+    opacity: 0.6;
+  }
+  90% { 
+    opacity: 0.3;
+  }
+  100% { 
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes orbit3D {
+  0% { 
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(50px);
+  }
+  25% { 
+    transform: perspective(1000px) rotateX(90deg) rotateY(90deg) translateZ(30px);
+  }
+  50% { 
+    transform: perspective(1000px) rotateX(180deg) rotateY(180deg) translateZ(60px);
+  }
+  75% { 
+    transform: perspective(1000px) rotateX(270deg) rotateY(270deg) translateZ(40px);
+  }
+  100% { 
+    transform: perspective(1000px) rotateX(360deg) rotateY(360deg) translateZ(50px);
+  }
+}
+
+@keyframes scanLines {
+  0%, 100% { 
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% { 
+    transform: translateY(100%);
+    opacity: 1;
+  }
+}
+
+@keyframes dataPoint {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg);
+    opacity: 0.6;
+    border-color: rgba(250, 250, 250, 0.4);
+  }
+  50% { 
+    transform: scale(1.3) rotate(180deg);
+    opacity: 1;
+    border-color: rgba(250, 250, 250, 0.8);
+  }
+}
+
+/* 3D Perspective Utility */
+.perspective-1000 {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+/* Lunar 3D Model Container */
+.lunar-model-container {
+  transform: translateY(0px);
+  border: 4px solid rgba(250, 250, 250, 0.4);
+  box-shadow: 
+    0 0 60px rgba(250, 250, 250, 0.2),
+    inset 0 0 40px rgba(200, 200, 200, 0.1),
+    0 20px 40px rgba(0, 0, 0, 0.4);
+  animation: lunarFloat 10s ease-in-out infinite;
+  will-change: transform, box-shadow;
+}
+
+.lunar-model-container:hover {
+  transform: scale(1.05);
+  box-shadow: 
+    0 0 80px rgba(250, 250, 250, 0.3),
+    inset 0 0 50px rgba(220, 220, 220, 0.15),
+    0 25px 50px rgba(0, 0, 0, 0.5);
+  animation-play-state: paused;
+}
+
+.lunar-model-container img {
+  filter: contrast(1.2) brightness(0.9) saturate(0.8) sepia(0.1);
+  transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: filter;
+}
+
+.lunar-model-container:hover img {
+  filter: contrast(1.3) brightness(1.0) saturate(0.9) sepia(0.15);
+}
