@@ -381,11 +381,12 @@ export default function Hero() {
                 
                 {/* Fallback Lunar Avatar */}
                 <div 
-                  className="w-full h-full flex items-center justify-center text-6xl font-bold hidden relative z-10"
+                  className="w-full h-full flex items-center justify-center text-6xl font-bold relative z-10"
                   style={{
                     background: 'radial-gradient(circle, #2a2a2a, #1a1a1a)',
                     color: '#fafafa',
-                    textShadow: '0 0 30px rgba(250, 250, 250, 0.8)'
+                    textShadow: '0 0 30px rgba(250, 250, 250, 0.8)',
+                    display: 'none'
                   }}
                 >
                   T
