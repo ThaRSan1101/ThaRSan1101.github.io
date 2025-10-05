@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaEnvelope, FaGithub, FaLinkedin, FaDownload, FaMapMarkerAlt, FaPhone, FaWhatsapp } from 'react-icons/fa'
 import emailjs from 'emailjs-com'
+import BackgroundElements from './BackgroundElements'
 
 export default function Contact(){
   const [status, setStatus] = useState('')
@@ -67,32 +68,38 @@ export default function Contact(){
   ]
 
   return (
-    <section id="contact" className="py-20 relative overflow-hidden" style={{ backgroundColor: '#2f2f2f' }}>
-      {/* Communication Pattern Background */}
-      <div className="absolute inset-0 opacity-15">
-        <div 
-          style={{
-            backgroundImage: `linear-gradient(45deg, #3f3f3f 25%, transparent 25%),
-                              linear-gradient(-45deg, #3f3f3f 25%, transparent 25%),
-                              linear-gradient(45deg, transparent 75%, #3f3f3f 75%),
-                              linear-gradient(-45deg, transparent 75%, #3f3f3f 75%)`,
-            backgroundSize: '40px 40px',
-            backgroundPosition: '0 0, 0 20px, 20px -20px, -20px 0px'
-          }}
-          className="w-full h-full"
-        ></div>
+    <section id="contact" className="py-20 relative overflow-hidden space-section-bg">
+      {/* Enhanced Background Elements */}
+      <BackgroundElements variant="contact" density="light" />
+      
+      {/* Space dust particles */}
+      <div className="space-dust"></div>
+      
+      {/* Minimal Tech Grid Pattern */}
+      <div className="absolute inset-0 opacity-6">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `
+            linear-gradient(90deg, transparent 99px, var(--about-pattern) 100px, var(--about-pattern) 101px, transparent 102px),
+            linear-gradient(transparent 99px, var(--about-pattern) 100px, var(--about-pattern) 101px, transparent 102px)
+          `,
+          backgroundSize: '100px 100px'
+        }}></div>
       </div>
       
-      {/* Communication Icons */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-16 left-12 text-5xl">💬</div>
-        <div className="absolute top-28 right-16 text-4xl">📧</div>
-        <div className="absolute bottom-32 left-16 text-5xl">📞</div>
-        <div className="absolute bottom-16 right-12 text-4xl">🌐</div>
-        <div className="absolute top-52 left-1/4 text-3xl">💼</div>
-        <div className="absolute bottom-52 right-1/4 text-3xl">🤝</div>
-        <div className="absolute top-72 right-1/3 text-3xl">✉️</div>
-        <div className="absolute bottom-72 left-1/3 text-3xl">📱</div>
+      {/* Subtle Tech Dots */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'radial-gradient(circle at center, var(--about-pattern) 1px, transparent 1px)',
+          backgroundSize: '60px 60px'
+        }}></div>
+      </div>
+      
+      {/* Minimal Tech Symbols */}
+      <div className="absolute inset-0 opacity-8">
+        <div className="absolute top-20 left-20 text-2xl" style={{color: 'var(--about-code-text)'}}>💬</div>
+        <div className="absolute bottom-20 right-20 text-2xl" style={{color: 'var(--about-code-text)'}}>📧</div>
+        <div className="absolute top-1/2 right-1/4 text-2xl" style={{color: 'var(--about-code-text)'}}>📞</div>
+        <div className="absolute bottom-1/3 left-1/4 text-2xl" style={{color: 'var(--about-code-text)'}}>🌐</div>
       </div>
       
       <div className="container relative z-10">

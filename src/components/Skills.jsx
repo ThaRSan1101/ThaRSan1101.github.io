@@ -8,6 +8,7 @@ import {
   SiTailwindcss, SiVite, SiMysql, SiCanva, SiTypescript,
   SiNextdotjs, SiMongodb, SiExpress, SiPostgresql
 } from 'react-icons/si'
+import BackgroundElements from './BackgroundElements'
 
 const skillCategories = [
   {
@@ -48,18 +49,10 @@ function SkillItem({ skill, delay }) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay }}
       viewport={{ once: true }}
-      className="group p-6 rounded-xl transition-all duration-300"
+      className="p-6 rounded-xl"
       style={{
         backgroundColor: 'var(--skills-item-bg)',
         border: '1px solid var(--skills-item-border)'
-      }}
-      onMouseEnter={(e) => {
-        e.target.style.backgroundColor = 'rgba(42, 42, 42, 0.8)'
-        e.target.style.backgroundColor = 'var(--skills-item-hover-bg)'; e.target.style.borderColor = 'var(--skills-item-hover-border)'
-      }}
-      onMouseLeave={(e) => {
-        e.target.style.backgroundColor = 'rgba(26, 26, 26, 0.8)'
-        e.target.style.backgroundColor = 'var(--skills-item-bg)'; e.target.style.borderColor = 'var(--skills-item-border)'
       }}
     >
       <div className="flex flex-col items-center text-center space-y-4">
@@ -67,15 +60,15 @@ function SkillItem({ skill, delay }) {
         <div 
           className="p-4 rounded-lg"
           style={{
-            backgroundColor: 'rgba(42, 42, 42, 0.6)',
-            border: '1px solid #444444'
+            backgroundColor: 'var(--skills-icon-bg)',
+            border: '1px solid var(--skills-icon-border)'
           }}
         >
-          <skill.icon className="text-2xl" style={{color: '#888888'}} />
+          <skill.icon className="text-2xl" style={{color: 'var(--skills-icon-color)'}} />
         </div>
         
         {/* Skill name */}
-        <h3 className="font-medium text-lg" style={{color: '#f5f5f5'}}>
+        <h3 className="font-medium text-lg" style={{color: 'var(--skills-name-color)'}}>
           {skill.name}
         </h3>
       </div>
@@ -93,24 +86,23 @@ export default function Skills() {
       
       document.documentElement.style.setProperty('--skills-bg', isDark ? '#0f0f0f' : '#f8f9fa')
       document.documentElement.style.setProperty('--skills-pattern', isDark ? 'rgba(42, 42, 42, 0.2)' : 'rgba(108, 117, 125, 0.2)')
-      document.documentElement.style.setProperty('--skills-dots', isDark ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.03)')
-      document.documentElement.style.setProperty('--skills-symbols', isDark ? '#2a2a2a' : '#6c757d')
+      document.documentElement.style.setProperty('--skills-dots', isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)')
+      document.documentElement.style.setProperty('--skills-symbols', isDark ? '#333333' : '#6c757d')
       document.documentElement.style.setProperty('--skills-heading', isDark ? '#f5f5f5' : '#212529')
       document.documentElement.style.setProperty('--skills-text', isDark ? '#c0c0c0' : '#495057')
-      document.documentElement.style.setProperty('--skills-category-active-bg', isDark ? '#888888' : '#007bff')
+      document.documentElement.style.setProperty('--skills-familiar-heading', isDark ? '#f5f5f5' : '#212529')
+      document.documentElement.style.setProperty('--skills-category-active-bg', isDark ? '#ffffff' : '#212529')
       document.documentElement.style.setProperty('--skills-category-active-text', isDark ? '#0f0f0f' : '#ffffff')
       document.documentElement.style.setProperty('--skills-category-bg', isDark ? 'rgba(26, 26, 26, 0.8)' : 'rgba(255, 255, 255, 0.8)')
       document.documentElement.style.setProperty('--skills-category-text', isDark ? '#c0c0c0' : '#495057')
       document.documentElement.style.setProperty('--skills-category-border', isDark ? '#333333' : '#dee2e6')
-      document.documentElement.style.setProperty('--skills-category-hover-bg', isDark ? '#333333' : '#e9ecef')
-      document.documentElement.style.setProperty('--skills-category-hover-border', isDark ? '#444444' : '#6c757d')
-      document.documentElement.style.setProperty('--skills-category-hover-text', isDark ? '#fafafa' : '#212529')
       document.documentElement.style.setProperty('--skills-item-bg', isDark ? 'rgba(26, 26, 26, 0.8)' : 'rgba(255, 255, 255, 0.9)')
       document.documentElement.style.setProperty('--skills-item-text', isDark ? '#c0c0c0' : '#495057')
       document.documentElement.style.setProperty('--skills-item-border', isDark ? '#333333' : '#dee2e6')
-      document.documentElement.style.setProperty('--skills-item-hover-bg', isDark ? '#333333' : '#e9ecef')
-      document.documentElement.style.setProperty('--skills-item-hover-border', isDark ? '#444444' : '#6c757d')
-      document.documentElement.style.setProperty('--skills-item-hover-text', isDark ? '#fafafa' : '#212529')
+      document.documentElement.style.setProperty('--skills-icon-color', isDark ? '#888888' : '#212529')
+      document.documentElement.style.setProperty('--skills-icon-bg', isDark ? 'rgba(42, 42, 42, 0.6)' : 'rgba(240, 240, 240, 0.8)')
+      document.documentElement.style.setProperty('--skills-icon-border', isDark ? '#444444' : '#dee2e6')
+      document.documentElement.style.setProperty('--skills-name-color', isDark ? '#f5f5f5' : '#212529')
     }
     
     // Apply theme on initial load
@@ -131,7 +123,13 @@ export default function Skills() {
   }, [])
 
   return (
-    <section id="skills" className="py-20 relative overflow-hidden" style={{backgroundColor: 'var(--skills-bg)'}}>
+    <section id="skills" className="py-20 relative overflow-hidden space-section-bg">
+      {/* Enhanced Background Elements */}
+      <BackgroundElements variant="skills" density="medium" />
+      
+      {/* Space dust particles */}
+      <div className="space-dust"></div>
+      
       {/* Minimal Tech Grid Pattern */}
       <div className="absolute inset-0 opacity-6">
         <div className="absolute inset-0" style={{
@@ -144,7 +142,7 @@ export default function Skills() {
       </div>
       
       {/* Subtle Tech Dots */}
-      <div className="absolute inset-0 opacity-4">
+      <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
           backgroundImage: 'radial-gradient(circle at center, var(--skills-dots) 1px, transparent 1px)',
           backgroundSize: '60px 60px'
@@ -152,7 +150,7 @@ export default function Skills() {
       </div>
       
       {/* Minimal Tech Symbols */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-8">
         <div className="absolute top-20 left-20 text-2xl" style={{color: 'var(--skills-symbols)'}}>⚛</div>
         <div className="absolute bottom-20 right-20 text-2xl" style={{color: 'var(--skills-symbols)'}}>🔧</div>
         <div className="absolute top-1/2 right-1/4 text-2xl" style={{color: 'var(--skills-symbols)'}}>🖥</div>
@@ -187,25 +185,11 @@ export default function Skills() {
             <button
               key={category.name}
               onClick={() => setActiveCategory(category.name)}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300`}
+              className={`px-6 py-3 rounded-lg font-semibold`}
               style={{
                 backgroundColor: activeCategory === category.name ? 'var(--skills-category-active-bg)' : 'var(--skills-category-bg)',
                 color: activeCategory === category.name ? 'var(--skills-category-active-text)' : 'var(--skills-category-text)',
                 border: '1px solid var(--skills-category-border)'
-              }}
-              onMouseEnter={(e) => {
-                if (activeCategory !== category.name) {
-                  e.target.style.backgroundColor = 'var(--skills-category-hover-bg)'
-                  e.target.style.color = 'var(--skills-category-hover-text)'
-                  e.target.style.borderColor = 'var(--skills-category-hover-border)'
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (activeCategory !== category.name) {
-                  e.target.style.backgroundColor = 'var(--skills-category-bg)'
-                  e.target.style.color = 'var(--skills-category-text)'
-                  e.target.style.borderColor = 'var(--skills-category-border)'
-                }
               }}
             >
               {category.name}
@@ -247,13 +231,13 @@ export default function Skills() {
           viewport={{ once: true }}
           className="mt-16"
         >
-          <h3 className="text-2xl font-bold mb-8 text-center" style={{color: '#f5f5f5'}}>
+          <h3 className="text-2xl font-bold mb-8 text-center" style={{color: 'var(--skills-familiar-heading)'}}>
             Also Familiar With
           </h3>
           
           {/* Front-End / UI Tools */}
           <div className="mb-8">
-            <h4 className="text-lg font-semibold mb-4 text-center" style={{color: 'var(--skills-text)'}}>
+            <h4 className="text-lg font-semibold mb-4 text-center" style={{color: 'var(--skills-familiar-heading)'}}>
               Front-End / UI Tools
             </h4>
             <div className="flex flex-wrap justify-center gap-3">
@@ -266,19 +250,11 @@ export default function Skills() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
                   viewport={{ once: true }}
-                  className="px-4 py-2 rounded-lg transition-all duration-300 cursor-default"
+                  className="px-4 py-2 rounded-lg cursor-default"
                   style={{
                     backgroundColor: 'var(--skills-item-bg)',
                     color: 'var(--skills-item-text)',
                     border: '1px solid var(--skills-item-border)'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.backgroundColor = 'var(--skills-item-hover-bg)'; e.target.style.borderColor = 'var(--skills-item-hover-border)'
-                    e.target.style.color = 'var(--skills-item-hover-text)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.backgroundColor = 'var(--skills-item-bg)'; e.target.style.borderColor = 'var(--skills-item-border)'
-                    e.target.style.color = 'var(--skills-item-text)'
                   }}
                 >
                   {tech}
@@ -289,7 +265,7 @@ export default function Skills() {
 
           {/* APIs / Data Handling */}
           <div className="mb-8">
-            <h4 className="text-lg font-semibold mb-4 text-center" style={{color: 'var(--skills-item-text)'}}>
+            <h4 className="text-lg font-semibold mb-4 text-center" style={{color: 'var(--skills-familiar-heading)'}}>
               APIs / Data Handling
             </h4>
             <div className="flex flex-wrap justify-center gap-3">
@@ -302,19 +278,11 @@ export default function Skills() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
                   viewport={{ once: true }}
-                  className="px-4 py-2 rounded-lg transition-all duration-300 cursor-default"
+                  className="px-4 py-2 rounded-lg cursor-default"
                   style={{
                     backgroundColor: 'var(--skills-item-bg)',
                     color: 'var(--skills-item-text)',
                     border: '1px solid var(--skills-item-border)'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.backgroundColor = 'var(--skills-item-hover-bg)'; e.target.style.borderColor = 'var(--skills-item-hover-border)'
-                    e.target.style.color = 'var(--skills-item-hover-text)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.backgroundColor = 'var(--skills-item-bg)'; e.target.style.borderColor = 'var(--skills-item-border)'
-                    e.target.style.color = '#c0c0c0'
                   }}
                 >
                   {tech}
@@ -325,7 +293,7 @@ export default function Skills() {
 
           {/* DevOps / Deployment / Tools */}
           <div className="mb-8">
-            <h4 className="text-lg font-semibold mb-4 text-center" style={{color: 'var(--skills-item-text)'}}>
+            <h4 className="text-lg font-semibold mb-4 text-center" style={{color: 'var(--skills-familiar-heading)'}}>
               DevOps / Deployment / Tools
             </h4>
             <div className="flex flex-wrap justify-center gap-3">
@@ -338,19 +306,11 @@ export default function Skills() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
                   viewport={{ once: true }}
-                  className="px-4 py-2 rounded-lg transition-all duration-300 cursor-default"
+                  className="px-4 py-2 rounded-lg cursor-default"
                   style={{
                     backgroundColor: 'var(--skills-item-bg)',
                     color: 'var(--skills-item-text)',
                     border: '1px solid var(--skills-item-border)'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.backgroundColor = 'var(--skills-item-hover-bg)'; e.target.style.borderColor = 'var(--skills-item-hover-border)'
-                    e.target.style.color = 'var(--skills-item-hover-text)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.backgroundColor = 'var(--skills-item-bg)'; e.target.style.borderColor = 'var(--skills-item-border)'
-                    e.target.style.color = '#c0c0c0'
                   }}
                 >
                   {tech}

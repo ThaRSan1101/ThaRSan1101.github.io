@@ -9,6 +9,7 @@ import {
   FaUsers,
   FaLightbulb
 } from 'react-icons/fa'
+import BackgroundElements from './BackgroundElements'
 
 const services = [
   {
@@ -92,24 +93,38 @@ export default function Services(){
   }, [])
 
   return (
-    <section id="services" className="py-20 relative overflow-hidden" style={{backgroundColor: 'var(--services-bg)'}}>
-      {/* Clean Services Grid Pattern */}
-      <div className="absolute inset-0 opacity-5">
+    <section id="services" className="py-20 relative overflow-hidden space-section-bg">
+      {/* Enhanced Background Elements */}
+      <BackgroundElements variant="services" density="medium" />
+      
+      {/* Space dust particles */}
+      <div className="space-dust"></div>
+      
+      {/* Minimal Tech Grid Pattern */}
+      <div className="absolute inset-0 opacity-6">
         <div className="absolute inset-0" style={{
           backgroundImage: `
-            linear-gradient(90deg, transparent 99px, rgba(42, 42, 42, 0.3) 100px, rgba(42, 42, 42, 0.3) 101px, transparent 102px),
-            linear-gradient(transparent 99px, rgba(42, 42, 42, 0.3) 100px, rgba(42, 42, 42, 0.3) 101px, transparent 102px)
+            linear-gradient(90deg, transparent 99px, var(--services-pattern) 100px, var(--services-pattern) 101px, transparent 102px),
+            linear-gradient(transparent 99px, var(--services-pattern) 100px, var(--services-pattern) 101px, transparent 102px)
           `,
           backgroundSize: '100px 100px'
         }}></div>
       </div>
       
-      {/* Service Cloud Dots Pattern */}
-      <div className="absolute inset-0 opacity-3">
+      {/* Subtle Tech Dots */}
+      <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle at center, rgba(255,255,255,0.05) 1px, transparent 1px)',
-          backgroundSize: '70px 70px'
+          backgroundImage: 'radial-gradient(circle at center, var(--services-dots) 1px, transparent 1px)',
+          backgroundSize: '60px 60px'
         }}></div>
+      </div>
+      
+      {/* Minimal Tech Symbols */}
+      <div className="absolute inset-0 opacity-8">
+        <div className="absolute top-20 left-20 text-2xl" style={{color: 'var(--services-symbols)'}}>🎨</div>
+        <div className="absolute bottom-20 right-20 text-2xl" style={{color: 'var(--services-symbols)'}}>⚙️</div>
+        <div className="absolute top-1/2 right-1/4 text-2xl" style={{color: 'var(--services-symbols)'}}>🌐</div>
+        <div className="absolute bottom-1/3 left-1/4 text-2xl" style={{color: 'var(--services-symbols)'}}>📱</div>
       </div>
       
       <div className="container relative z-10">

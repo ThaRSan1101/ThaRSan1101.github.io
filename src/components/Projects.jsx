@@ -2,46 +2,33 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaGithub, FaExternalLinkAlt, FaCode, FaDatabase, FaReact, FaNodeJs } from 'react-icons/fa'
 import { SiMysql, SiJavascript, SiHtml5, SiCss3, SiTailwindcss } from 'react-icons/si'
+import BackgroundElements from './BackgroundElements'
 
 const projects = [
   {
     id: 1,
-    title: 'Student Tracker System',
-    shortDesc: 'Comprehensive student management system built with Java and MySQL.',
-    fullDesc: 'Designed and developed a comprehensive student tracking system for academic institutions. Features include student registration, attendance monitoring, grade management, and detailed reporting capabilities.',
-    tags: ['Java', 'MySQL', 'Academic Project', 'Desktop App'],
-    techIcons: [FaCode, SiMysql],
+    title: 'Home Management System',
+    shortDesc: 'Full-stack web application for booking and managing home services with secure payment integration and real-time notifications.',
+    fullDesc: 'A comprehensive web-based platform that streamlines home service management by connecting customers with verified service providers. The system features three distinct user roles (Customer, Provider, Admin) with dedicated dashboards, real-time booking management, secure JWT authentication, payment processing, rating/review system, and comprehensive admin oversight. Built with modern web technologies and follows waterfall methodology with extensive testing validation.',
+    tags: ['React', 'PHP', 'MySQL', 'JWT', 'OOP', 'Full-Stack'],
+    techIcons: [FaReact, FaCode, FaDatabase],
     features: [
-      'Implemented student registration and profile management system',
-      'Developed attendance tracking with automated reports',
-      'Created grade management with GPA calculation features',
-      'Built comprehensive dashboard for administrators'
+      'Multi-role authentication system (Customer, Provider, Admin) with JWT tokens',
+      'Real-time service booking with date/time validation and conflict prevention',
+      'Secure payment processing with card validation using Luhn algorithm',
+      'Comprehensive notification system with email alerts and dashboard notifications',
+      'Rating and review system for quality control and provider accountability',
+      'Admin panel for user management, provider verification, and system oversight'
     ],
-    repo: 'https://github.com/tharsan/student-tracker',
+    repo: 'https://github.com/ThaRSan1101/home-management-system-Backend',
+    frontendRepo: 'https://github.com/ThaRSan1101/home-management-system-Frontend',
     demo: '#',
     image: '/api/placeholder/600/400',
-    status: 'Completed'
+    status: 'Completed',
+    category: 'Web App'
   },
   {
     id: 2,
-    title: 'Waste Pickup Request System',
-    shortDesc: 'Full-stack web application for waste management services with real-time tracking.',
-    fullDesc: 'Developed a comprehensive waste pickup management system enabling users to request waste collection services. Features real-time tracking, admin dashboard, and automated notifications.',
-    tags: ['React', 'Node.js', 'MongoDB', 'Full Stack'],
-    techIcons: [FaReact, FaNodeJs, FaDatabase],
-    features: [
-      'Built responsive React frontend with modern UI components',
-      'Developed RESTful API with Node.js and Express',
-      'Implemented real-time request tracking and notifications',
-      'Created admin dashboard for service management'
-    ],
-    repo: 'https://github.com/tharsan/waste-pickup-system',
-    demo: '#',
-    image: '/api/placeholder/600/400',
-    status: 'Completed'
-  },
-  {
-    id: 3,
     title: 'Animated Portfolio Website',
     shortDesc: 'Interactive birthday celebration website with CSS animations and JavaScript.',
     fullDesc: 'Created an engaging animated website featuring smooth CSS transitions, JavaScript interactions, and responsive design. Showcases advanced frontend development skills.',
@@ -56,25 +43,8 @@ const projects = [
     repo: 'https://github.com/tharsan/animated-website',
     demo: '#',
     image: '/api/placeholder/600/400',
-    status: 'Completed'
-  },
-  {
-    id: 4,
-    title: 'Interactive UX Survey Form',
-    shortDesc: 'Modern React-based survey form with advanced UX features and data validation.',
-    fullDesc: 'Built an intuitive survey form application using React with focus on user experience. Features multi-step forms, real-time validation, and data visualization.',
-    tags: ['React', 'UX Design', 'Form Validation', 'Data Visualization'],
-    techIcons: [FaReact, SiTailwindcss],
-    features: [
-      'Designed multi-step form with smooth transitions',
-      'Implemented real-time validation and error handling',
-      'Created data visualization for survey results',
-      'Built responsive design with modern UI patterns'
-    ],
-    repo: 'https://github.com/tharsan/ux-survey-form',
-    demo: '#',
-    image: '/api/placeholder/600/400',
-    status: 'In Progress'
+    status: 'Completed',
+    category: 'Interactive'
   }
 ]
 
@@ -129,24 +99,68 @@ export default function Projects() {
   }, [])
 
   return (
-    <section id="projects" className="py-20 relative overflow-hidden" style={{backgroundColor: 'var(--projects-bg)'}}>
-      {/* Enhanced Development Grid Pattern */}
-      <div className="absolute inset-0 opacity-16">
+    <section id="projects" className="py-20 relative overflow-hidden space-section-bg">
+      {/* Enhanced Background Elements */}
+      <BackgroundElements variant="projects" density="light" />
+      
+      {/* Space dust particles */}
+      <div className="space-dust"></div>
+      
+      {/* Minimal Tech Grid Pattern */}
+      <div className="absolute inset-0 opacity-6">
         <div className="absolute inset-0" style={{
           backgroundImage: `
-            linear-gradient(90deg, transparent 79px, var(--projects-pattern) 80px, var(--projects-pattern) 82px, transparent 83px),
-            linear-gradient(transparent 79px, var(--projects-pattern) 80px, var(--projects-pattern) 82px, transparent 83px)
+            linear-gradient(90deg, transparent 99px, var(--projects-pattern) 100px, var(--projects-pattern) 101px, transparent 102px),
+            linear-gradient(transparent 99px, var(--projects-pattern) 100px, var(--projects-pattern) 101px, transparent 102px)
           `,
-          backgroundSize: '80px 80px'
+          backgroundSize: '100px 100px'
         }}></div>
       </div>
       
-      {/* Code Repository Pattern */}
-      <div className="absolute inset-0 opacity-14">
+      {/* Subtle Tech Dots */}
+      <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle at center, var(--projects-dots) 1.5px, transparent 1.5px)',
-          backgroundSize: '40px 40px'
+          backgroundImage: 'radial-gradient(circle at center, var(--projects-dots) 1px, transparent 1px)',
+          backgroundSize: '60px 60px'
         }}></div>
+      </div>
+      
+      {/* Minimal Tech Symbols */}
+      <div className="absolute inset-0 opacity-8">
+        <div className="absolute top-20 left-20 text-2xl" style={{color: 'var(--projects-symbols)'}}>💻</div>
+        <div className="absolute bottom-20 right-20 text-2xl" style={{color: 'var(--projects-symbols)'}}>🚀</div>
+        <div className="absolute top-1/2 right-1/4 text-2xl" style={{color: 'var(--projects-symbols)'}}>⚡</div>
+        <div className="absolute bottom-1/3 left-1/4 text-2xl" style={{color: 'var(--projects-symbols)'}}>🔧</div>
+      </div>
+      
+      {/* Subtle Grid Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `
+            linear-gradient(90deg, transparent 49px, var(--projects-pattern) 50px, transparent 51px),
+            linear-gradient(transparent 49px, var(--projects-pattern) 50px, transparent 51px)
+          `,
+          backgroundSize: '50px 50px'
+        }}></div>
+      </div>
+      
+      {/* Floating Code Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-10 opacity-10 animate-pulse" style={{color: 'var(--projects-icons)'}}>
+          <span className="text-2xl">{'<>'}</span>
+        </div>
+        <div className="absolute top-40 right-20 opacity-10 animate-pulse delay-1000" style={{color: 'var(--projects-icons)'}}>
+          <span className="text-lg">{'{ }'}</span>
+        </div>
+        <div className="absolute bottom-40 left-1/4 opacity-10 animate-pulse delay-2000" style={{color: 'var(--projects-icons)'}}>
+          <span className="text-xl">•</span>
+        </div>
+        <div className="absolute top-60 right-1/3 opacity-10 animate-pulse delay-500" style={{color: 'var(--projects-icons)'}}>
+          <span className="text-lg">*</span>
+        </div>
+        <div className="absolute bottom-60 right-10 opacity-10 animate-pulse delay-1500" style={{color: 'var(--projects-icons)'}}>
+          <span className="text-xl">▢</span>
+        </div>
       </div>
       
       <div className="container relative z-10">
@@ -191,6 +205,17 @@ export default function Projects() {
                 <div className="relative mb-6 rounded-xl overflow-hidden h-48 flex items-center justify-center" style={{backgroundColor: 'rgba(20, 20, 20, 0.8)'}}>
                   <div className="text-6xl" style={{color: 'rgba(153, 153, 153, 0.5)'}}>
                     <FaCode />
+                  </div>
+                  {/* Category Badge */}
+                  <div className="absolute top-3 left-3">
+                    <span className="px-3 py-1 rounded-full text-xs font-medium border"
+                    style={{
+                      backgroundColor: 'rgba(100, 200, 255, 0.15)',
+                      color: '#64c8ff',
+                      borderColor: 'rgba(100, 200, 255, 0.3)'
+                    }}>
+                      {project.category}
+                    </span>
                   </div>
                   {/* Status Badge */}
                   <div className="absolute top-3 right-3">
@@ -261,8 +286,25 @@ export default function Projects() {
                       onClick={(e) => e.stopPropagation()}
                     >
                       <FaGithub className="text-sm" />
-                      <span className="text-sm">GitHub</span>
+                      <span className="text-sm">
+                        {project.frontendRepo ? 'Backend' : 'GitHub'}
+                      </span>
                     </a>
+                    {project.frontendRepo && (
+                      <a
+                        href={project.frontendRepo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 transition-colors"
+                        style={{color: 'var(--projects-text)'}}
+                        onMouseEnter={(e) => e.target.style.color = '#d0d0d0'}
+                        onMouseLeave={(e) => e.target.style.color = '#b0b0b0'}
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <FaGithub className="text-sm" />
+                        <span className="text-sm">Frontend</span>
+                      </a>
+                    )}
                     <a
                       href={project.demo}
                       target="_blank"
@@ -301,7 +343,7 @@ export default function Projects() {
           className="text-center mt-12"
         >
           <button className="px-8 py-3 border-2 rounded-lg transition-all duration-300"
-                  style={{bordercolor: 'var(--projects-subheading)', color: 'var(--projects-subheading)', backgroundColor: 'transparent'}}
+                  style={{borderColor: 'var(--projects-subheading)', color: 'var(--projects-subheading)', backgroundColor: 'transparent'}}
                   onMouseEnter={(e) => {
                     e.target.style.backgroundColor = '#999999'
                     e.target.style.color = '#0a0a0a'
@@ -310,7 +352,7 @@ export default function Projects() {
                     e.target.style.backgroundColor = 'transparent'
                     e.target.style.color = '#999999'
                   }}>
-            Show more projects
+            Explore More Projects
           </button>
         </motion.div>
       </div>
@@ -379,8 +421,20 @@ export default function Projects() {
                                hover:bg-cosmic-blue transition-colors font-medium"
                   >
                     <FaGithub />
-                    View Code
+                    {selectedProject.frontendRepo ? 'Backend Code' : 'View Code'}
                   </a>
+                  {selectedProject.frontendRepo && (
+                    <a
+                      href={selectedProject.frontendRepo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-6 py-3 bg-stellar-cyan text-space-black rounded-lg 
+                                 hover:bg-cosmic-blue transition-colors font-medium"
+                    >
+                      <FaGithub />
+                      Frontend Code
+                    </a>
+                  )}
                   <a
                     href={selectedProject.demo}
                     target="_blank"
