@@ -78,7 +78,7 @@ export default function Projects() {
       document.documentElement.style.setProperty('--projects-btn-text', isDark ? '#999999' : '#495057')
       document.documentElement.style.setProperty('--projects-btn-border', isDark ? '#999999' : '#6c757d')
       document.documentElement.style.setProperty('--projects-btn-hover-bg', isDark ? '#999999' : '#6c757d')
-      document.documentElement.style.setProperty('--projects-btn-hover-text', isDark ? '#0a0a0a' : '#')
+      document.documentElement.style.setProperty('--projects-btn-hover-text', isDark ? '#0a0a0a' : '#ffffff')
     }
     
     // Apply theme on initial load
