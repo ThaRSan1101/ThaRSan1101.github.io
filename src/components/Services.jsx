@@ -1,52 +1,30 @@
 import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { 
-  FaKeyboard, 
-  FaFileAlt, 
   FaCode, 
-  FaVideo, 
-  FaWrench,
-  FaUsers,
+  FaDatabase,
+  FaReact,
+  FaServer,
+  FaPalette,
   FaLightbulb
 } from 'react-icons/fa'
+import { SiHtml5, SiCss3, SiJavascript, SiPhp, SiMysql, SiTailwindcss } from 'react-icons/si'
 import BackgroundElements from './BackgroundElements'
 
 const services = [
   {
-    title: 'Typing & Data Entry',
-    icon: FaKeyboard,
-    description: 'Fast and accurate typing services for documents, forms, and data processing tasks.',
-    category: 'Administrative'
-  },
-  {
-    title: 'Presentation & Document Creation',
-    icon: FaFileAlt,
-    description: 'Professional presentations, reports, and document formatting for business needs.',
-    category: 'Design'
-  },
-  {
-    title: 'Beginner Web Project Help',
+    title: 'Web Design & Frontend Development',
     icon: FaCode,
-    description: 'I help students build and debug beginner coding projects in Java, HTML, React.',
-    category: 'Development'
+    description: 'Building responsive, modern websites and interfaces using HTML, CSS, JavaScript, React, and Tailwind. Creating smooth, interactive, and user-friendly experiences.',
+    category: 'Development',
+    techIcons: [SiHtml5, SiCss3, SiJavascript, FaReact, SiTailwindcss]
   },
   {
-    title: 'Video Editing & Content Creation',
-    icon: FaVideo,
-    description: 'Creative video editing, content creation, and multimedia production services.',
-    category: 'Creative'
-  },
-  {
-    title: 'Web & Tech Support',
-    icon: FaWrench,
-    description: 'Technical support for web development issues and troubleshooting.',
-    category: 'Support'
-  },
-  {
-    title: 'Team Collaboration',
-    icon: FaUsers,
-    description: 'Experience working in teams and supporting collaborative development projects.',
-    category: 'Leadership'
+    title: 'Backend & Full-Stack Development',
+    icon: FaDatabase,
+    description: 'Developing dynamic websites and applications using PHP with MySQL databases. Connecting frontend and backend to deliver full-stack solutions.',
+    category: 'Server & Database',
+    techIcons: [SiPhp, SiMysql, FaServer, FaDatabase]
   }
 ]
 
@@ -120,11 +98,10 @@ export default function Services(){
       </div>
       
       {/* Minimal Tech Symbols */}
-      <div className="absolute inset-0 opacity-8">
-        <div className="absolute top-20 left-20 text-2xl" style={{color: 'var(--services-symbols)'}}>🎨</div>
-        <div className="absolute bottom-20 right-20 text-2xl" style={{color: 'var(--services-symbols)'}}>⚙️</div>
-        <div className="absolute top-1/2 right-1/4 text-2xl" style={{color: 'var(--services-symbols)'}}>🌐</div>
-        <div className="absolute bottom-1/3 left-1/4 text-2xl" style={{color: 'var(--services-symbols)'}}>📱</div>
+      <div className="absolute inset-0 opacity-4">
+        <div className="absolute bottom-20 right-20 text-sm" style={{color: 'var(--services-symbols)'}}>⚙️</div>
+        <div className="absolute top-1/2 right-1/4 text-sm" style={{color: 'var(--services-symbols)'}}>🌐</div>
+        <div className="absolute bottom-1/3 left-1/4 text-sm" style={{color: 'var(--services-symbols)'}}>📱</div>
       </div>
       
       <div className="container relative z-10">
@@ -137,11 +114,11 @@ export default function Services(){
         >
           <h2 className="text-4xl lg:text-5xl font-black mb-4" style={{color: 'var(--services-heading)'}}>Services / What I Offer</h2>
           <p className="text-lg max-w-2xl mx-auto" style={{color: 'var(--services-text)'}}>
-            Professional services I provide for clients and collaborators
+            Delivering creative and reliable tech solutions for any project.
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -149,33 +126,47 @@ export default function Services(){
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="p-6 rounded-xl transition-all duration-300 group"
+              className="p-8 rounded-xl transition-all duration-300 group"
               style={{backgroundColor: 'var(--services-card-bg)', border: '1px solid #666666'}}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = 'var(--services-card-hover-bg)'
                 e.currentTarget.style.borderColor = 'var(--services-card-hover-border)'
+                e.currentTarget.style.transform = 'translateY(-4px)'
+                e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.15)'
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = 'var(--services-card-bg)'
                 e.currentTarget.style.borderColor = 'var(--services-card-border)'
+                e.currentTarget.style.transform = 'translateY(0)'
+                e.currentTarget.style.boxShadow = 'none'
               }}>
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-lg transition-colors" style={{backgroundColor: 'var(--services-icon-bg)'}}>
-                    <service.icon style={{color: 'var(--services-icon-color)'}} className="text-xl" />
+                  <div className="p-4 rounded-lg transition-colors" style={{backgroundColor: 'var(--services-icon-bg)'}}>
+                    <service.icon style={{color: 'var(--services-icon-color)'}} className="text-2xl" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-semibold transition-colors" style={{color: 'var(--services-heading)'}}>
+                    <h3 className="text-xl font-bold transition-colors mb-2" style={{color: 'var(--services-heading)'}}>
                       {service.title}
                     </h3>
-                    <span className="text-xs px-2 py-1 rounded-full" style={{color: '#888', backgroundColor: 'rgba(136, 136, 136, 0.2)'}}>
+                    <span className="text-sm px-3 py-1 rounded-full font-medium" style={{color: '#888', backgroundColor: 'rgba(136, 136, 136, 0.2)'}}>
                       {service.category}
                     </span>
                   </div>
                 </div>
-                <p className="text-sm leading-relaxed" style={{color: 'var(--services-text)'}}>
+                
+                <p className="text-base leading-relaxed" style={{color: 'var(--services-text)'}}>
                   {service.description}
                 </p>
+                
+                {/* Technology Icons */}
+                <div className="flex gap-3 pt-2">
+                  {service.techIcons.map((TechIcon, i) => (
+                    <div key={i} className="p-2 rounded-lg transition-colors" style={{backgroundColor: 'rgba(136, 136, 136, 0.1)'}}>
+                      <TechIcon style={{color: 'var(--services-icon-color)'}} className="text-lg" />
+                    </div>
+                  ))}
+                </div>
               </div>
             </motion.div>
           ))}
@@ -193,20 +184,26 @@ export default function Services(){
             <FaLightbulb style={{color: 'var(--services-icon-color)'}} className="text-4xl mx-auto mb-4" />
             <h3 className="text-xl font-bold mb-3" style={{color: 'var(--services-heading)'}}>Have a Project in Mind?</h3>
             <p className="leading-relaxed mb-6" style={{color: 'var(--services-text)'}}>
-              Whether you need help with a coding project, document creation, or any other service, 
+              Whether you need help with a coding project or any other service, 
               I'm here to help bring your ideas to life.
             </p>
             <a 
               href="#contact"
               className="inline-flex items-center gap-2 px-6 py-3 font-semibold rounded-lg transition-all duration-300"
-              style={{backgroundColor: 'var(--services-icon-color)', color: '#202020'}}
+              style={{
+                backgroundColor: 'var(--text-primary)',
+                color: 'var(--primary-dark)',
+                border: '2px solid var(--text-primary)'
+              }}
               onMouseEnter={(e) => {
-                e.target.style.backgroundColor = '#ccc'
-                e.target.style.color = '#000'
+                e.target.style.backgroundColor = 'transparent'
+                e.target.style.color = 'var(--text-primary)'
+                e.target.style.borderColor = 'var(--text-primary)'
               }}
               onMouseLeave={(e) => {
-                e.target.style.backgroundColor = 'var(--services-icon-color)'
-                e.target.style.color = '#202020'
+                e.target.style.backgroundColor = 'var(--text-primary)'
+                e.target.style.color = 'var(--primary-dark)'
+                e.target.style.borderColor = 'var(--text-primary)'
               }}
             >
               Get In Touch

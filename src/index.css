@@ -459,27 +459,22 @@ body:not(.light)::after {
 }
 
 @keyframes rotatingTitles {
-  0%, 19% { 
+  0%, 24% { 
     content: "Software Developer";
     color: #00ff88;
     text-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
   }
-  20%, 39% { 
+  25%, 49% { 
     content: "UI/UX Designer";
     color: #ff6b6b;
     text-shadow: 0 0 10px rgba(255, 107, 107, 0.4);
   }
-  40%, 59% { 
+  50%, 74% { 
     content: "Full-Stack Developer";
     color: #4ecdc4;
     text-shadow: 0 0 10px rgba(78, 205, 196, 0.4);
   }
-  60%, 79% { 
-    content: "Problem Solver";
-    color: #ffe66d;
-    text-shadow: 0 0 10px rgba(255, 230, 109, 0.4);
-  }
-  80%, 99% { 
+  75%, 99% { 
     content: "Software Developer";
     color: #00ff88;
     text-shadow: 0 0 10px rgba(0, 255, 136, 0.4);

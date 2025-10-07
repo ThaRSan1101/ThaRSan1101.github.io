@@ -4,33 +4,7 @@ import { FaBuilding, FaUsers, FaCode } from 'react-icons/fa'
 import BackgroundElements from './BackgroundElements'
 
 const experiences = [
-  {
-    company: 'Bank of Ceylon (BOC)',
-    position: 'School Leaver',
-    location: 'Adampan Branch',
-    period: '2023',
-    description: 'Assisted staff in data entry, documentation, and customer communication. Gained valuable experience in professional work environment and customer service.',
-    icon: FaBuilding,
-    type: 'Internship'
-  },
-  {
-    company: 'HNB Assurance',
-    position: 'Agent',
-    location: 'Remote',
-    period: '2022 - 2023',
-    description: 'Gained real-world experience in communication, sales, and customer service. Developed strong interpersonal skills and business acumen.',
-    icon: FaUsers,
-    type: 'Part-time'
-  },
-  {
-    company: 'Freelance Projects',
-    position: 'Full-Stack Developer',
-    location: 'Remote',
-    period: '2021 - Present',
-    description: 'Worked on various web development projects including Student Tracker System and Waste Pickup Request System. Developed skills in team collaboration and project management.',
-    icon: FaCode,
-    type: 'Freelance'
-  }
+  // Currently building experience through projects and learning
 ]
 
 export default function Experience() {
@@ -41,16 +15,16 @@ export default function Experience() {
       
       document.documentElement.style.setProperty('--experience-bg', isDark ? '#0f0f0f' : '#f8f9fa')
       document.documentElement.style.setProperty('--experience-pattern', isDark ? 'rgba(42, 42, 42, 0.4)' : 'rgba(108, 117, 125, 0.4)')
-      document.documentElement.style.setProperty('--experience-dots', isDark ? 'var(--experience-dots)' : 'rgba(0,0,0,0.07)')
-      document.documentElement.style.setProperty('--experience-icons', isDark ? 'var(--experience-icons)' : '#6c757d')
-      document.documentElement.style.setProperty('--experience-heading', isDark ? 'var(--experience-heading)' : '#212529')
-      document.documentElement.style.setProperty('--experience-text', isDark ? 'var(--experience-text)' : '#495057')
-      document.documentElement.style.setProperty('--experience-card-bg', isDark ? 'var(--experience-card-bg)' : 'rgba(255, 255, 255, 0.8)')
-      document.documentElement.style.setProperty('--experience-card-border', isDark ? 'var(--experience-timeline-border)' : '#dee2e6')
-      document.documentElement.style.setProperty('--experience-card-hover-bg', isDark ? 'var(--experience-card-hover-bg)' : 'rgba(233, 236, 239, 0.8)')
-      document.documentElement.style.setProperty('--experience-card-hover-border', isDark ? 'var(--experience-card-hover-border)' : '#6c757d')
-      document.documentElement.style.setProperty('--experience-timeline-bg', isDark ? 'var(--experience-timeline-bg)' : '#6c757d')
-      document.documentElement.style.setProperty('--experience-timeline-border', isDark ? 'var(--experience-timeline-border)' : '#adb5bd')
+      document.documentElement.style.setProperty('--experience-dots', isDark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.07)')
+      document.documentElement.style.setProperty('--experience-icons', isDark ? '#333333' : '#6c757d')
+      document.documentElement.style.setProperty('--experience-heading', isDark ? '#e0e0e0' : '#212529')
+      document.documentElement.style.setProperty('--experience-text', isDark ? '#b0b0b0' : '#495057')
+      document.documentElement.style.setProperty('--experience-card-bg', isDark ? 'rgba(42, 42, 42, 0.6)' : 'rgba(255, 255, 255, 0.8)')
+      document.documentElement.style.setProperty('--experience-card-border', isDark ? '#555555' : '#dee2e6')
+      document.documentElement.style.setProperty('--experience-card-hover-bg', isDark ? 'rgba(60, 60, 60, 0.6)' : 'rgba(233, 236, 239, 0.8)')
+      document.documentElement.style.setProperty('--experience-card-hover-border', isDark ? '#777777' : '#6c757d')
+      document.documentElement.style.setProperty('--experience-timeline-bg', isDark ? '#555555' : '#6c757d')
+      document.documentElement.style.setProperty('--experience-timeline-border', isDark ? '#777777' : '#adb5bd')
       document.documentElement.style.setProperty('--experience-type-bg', isDark ? 'rgba(170, 170, 170, 0.2)' : 'rgba(108, 117, 125, 0.2)')
       document.documentElement.style.setProperty('--experience-type-text', isDark ? '#aaa' : '#6c757d')
     }
@@ -99,23 +73,16 @@ export default function Experience() {
       </div>
       
       {/* Minimal Tech Symbols */}
-      <div className="absolute inset-0 opacity-8">
-        <div className="absolute top-20 left-20 text-2xl" style={{color: 'var(--experience-symbols)'}}>🏢</div>
-        <div className="absolute bottom-20 right-20 text-2xl" style={{color: 'var(--experience-symbols)'}}>📈</div>
-        <div className="absolute top-1/2 right-1/4 text-2xl" style={{color: 'var(--experience-symbols)'}}>⚡</div>
-        <div className="absolute bottom-1/3 left-1/4 text-2xl" style={{color: 'var(--experience-symbols)'}}>💼</div>
+      <div className="absolute inset-0 opacity-4">
+        <div className="absolute bottom-20 right-20 text-sm" style={{color: 'var(--experience-symbols)'}}>📈</div>
+        <div className="absolute bottom-1/3 left-1/4 text-sm" style={{color: 'var(--experience-symbols)'}}>💼</div>
       </div>
       
       {/* Career/Professional Icons */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-20 text-4xl" style={{color: 'var(--experience-icons)'}}>🏢</div>
-        <div className="absolute top-40 right-32 text-3xl" style={{color: 'var(--experience-icons)'}}>💼</div>
-        <div className="absolute bottom-32 left-32 text-5xl" style={{color: 'var(--experience-icons)'}}>📈</div>
-        <div className="absolute bottom-20 right-20 text-3xl" style={{color: 'var(--experience-icons)'}}>🎯</div>
-        <div className="absolute top-1/2 left-1/4 text-2xl" style={{color: 'var(--experience-icons)'}}>👔</div>
-        <div className="absolute top-1/3 right-1/4 text-4xl" style={{color: 'var(--experience-icons)'}}>🤝</div>
-        <div className="absolute top-68 right-68 text-2xl" style={{color: 'var(--experience-icons)'}}>⭐</div>
-        <div className="absolute bottom-68 left-68 text-3xl" style={{color: 'var(--experience-icons)'}}>🚀</div>
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-20 left-20 text-lg" style={{color: 'var(--experience-icons)'}}>🏢</div>
+        <div className="absolute bottom-32 left-32 text-xl" style={{color: 'var(--experience-icons)'}}>📈</div>
+        <div className="absolute bottom-20 right-20 text-lg" style={{color: 'var(--experience-icons)'}}>🎯</div>
       </div>
       
       {/* Enhanced Timeline Lines */}
@@ -137,81 +104,46 @@ export default function Experience() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-black mb-4" style={{color: '#d0d0d0'}}>Experience</h2>
-          <p className="text-lg max-w-2xl mx-auto" style={{color: '#a0a0a0'}}>
-            My professional journey and the experiences that shaped my skills
+          <h2 className="text-4xl lg:text-5xl font-black mb-4" style={{color: 'var(--experience-heading)'}}>Experience</h2>
+          <p className="text-lg max-w-2xl mx-auto" style={{color: 'var(--experience-text)'}}>
+            My professional journey in software development and web technologies.
           </p>
         </motion.div>
 
         <div className="max-w-4xl mx-auto">
-          <div className="space-y-8">
-            {experiences.map((exp, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="p-8 rounded-2xl transition-all duration-300"
-                style={{backgroundColor: 'rgba(60, 60, 60, 0.6)', border: '1px solid #777777'}}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = 'rgba(85, 85, 85, 0.6)'
-                  e.currentTarget.style.borderColor = '#999999'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'rgba(60, 60, 60, 0.6)'
-                  e.currentTarget.style.borderColor = '#777777'
-                }}>
-                <div className="flex items-start gap-6">
-                  <div className="p-4 rounded-xl flex-shrink-0" style={{backgroundColor: 'rgba(187, 187, 187, 0.2)'}}>
-                    <exp.icon style={{color: '#bbb'}} className="text-2xl" />
-                  </div>
-                  
-                  <div className="flex-1">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
-                      <div>
-                        <h3 className="text-xl font-bold" style={{color: '#d0d0d0'}}>{exp.position}</h3>
-                        <p className="font-semibold" style={{color: '#bbb'}}>{exp.company}</p>
-                        <p className="text-sm" style={{color: '#a0a0a0'}}>{exp.location}</p>
-                      </div>
-                      <div className="flex flex-col md:items-end mt-2 md:mt-0">
-                        <span className="text-sm" style={{color: '#888'}}>{exp.period}</span>
-                        <span className="px-3 py-1 text-xs rounded-full border mt-1"
-                              style={{
-                                backgroundColor: 'rgba(187, 187, 187, 0.1)',
-                                color: '#bbb',
-                                borderColor: 'rgba(187, 187, 187, 0.3)'
-                              }}>
-                          {exp.type}
-                        </span>
-                      </div>
-                    </div>
-                    
-                    <p className="leading-relaxed" style={{color: '#a0a0a0'}}>
-                      {exp.description}
-                    </p>
-                  </div>
+          {/* Currently seeking opportunities message */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <div className="p-8 rounded-2xl max-w-3xl mx-auto" 
+                 style={{
+                   backgroundColor: 'var(--experience-card-bg)', 
+                   border: '1px solid var(--experience-card-border)',
+                   boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)'
+                 }}>
+              <div className="flex items-center justify-center mb-6">
+                <div className="p-4 rounded-full" style={{backgroundColor: 'var(--experience-type-bg)'}}>
+                  <FaCode style={{color: 'var(--experience-icons)'}} className="text-3xl" />
                 </div>
-              </motion.div>
-            ))}
-          </div>
+              </div>
+              
+              <p className="text-lg leading-relaxed" style={{color: 'var(--experience-text)'}}>
+                <span className="font-bold text-xl" style={{color: 'var(--experience-heading)'}}>Currently seeking opportunities</span> 
+                <span className="block mt-3">
+                  to apply my expertise as a Software Developer, contribute effectively to projects, 
+                  and enhance my full-stack development skills.
+                </span>
+              </p>
+            </div>
+          </motion.div>
         </div>
 
-        {/* Additional Info */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="text-center mt-12"
-        >
-          <div className="p-6 rounded-xl max-w-2xl mx-auto" style={{backgroundColor: 'rgba(60, 60, 60, 0.6)', border: '1px solid #777777'}}>
-            <p className="leading-relaxed" style={{color: '#a0a0a0'}}>
-              <span className="font-semibold" style={{color: '#bbb'}}>Currently seeking opportunities</span> to apply my expertise as a Software Developer, 
-              contribute effectively, and further enhance my skills in a challenging environment.
-            </p>
-          </div>
-        </motion.div>
+        {/* Additional spacing */}
+        <div className="mt-12"></div>
       </div>
     </section>
   )

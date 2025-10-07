@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaGithub, FaExternalLinkAlt, FaCode, FaDatabase, FaReact, FaNodeJs } from 'react-icons/fa'
-import { SiMysql, SiJavascript, SiHtml5, SiCss3, SiTailwindcss } from 'react-icons/si'
+import { SiMysql, SiJavascript, SiHtml5, SiCss3, SiTailwindcss, SiPhp, SiBootstrap } from 'react-icons/si'
 import BackgroundElements from './BackgroundElements'
 
 const projects = [
@@ -23,33 +23,60 @@ const projects = [
     repo: 'https://github.com/ThaRSan1101/home-management-system-Backend',
     frontendRepo: 'https://github.com/ThaRSan1101/home-management-system-Frontend',
     demo: '#',
-    image: '/api/placeholder/600/400',
+    image: '/assets/images/projects/home-management-system.png',
     status: 'Completed',
-    category: 'Web App'
+    category: 'Full Stack Web App'
   },
   {
     id: 2,
-    title: 'Animated Portfolio Website',
-    shortDesc: 'Interactive birthday celebration website with CSS animations and JavaScript.',
-    fullDesc: 'Created an engaging animated website featuring smooth CSS transitions, JavaScript interactions, and responsive design. Showcases advanced frontend development skills.',
-    tags: ['HTML5', 'CSS3', 'JavaScript', 'Animation'],
-    techIcons: [SiHtml5, SiCss3, SiJavascript],
+    title: 'Campus Connect - SEU Issue Tracker',
+    shortDesc: 'Full-stack issue reporting and event management system for university campus',
+    fullDesc: 'Campus Connect is a comprehensive web application developed for university campus management. It enables students to report campus issues with photo uploads and location details, while providing administrators with tools to manage reports, events, and users. The system features role-based access control, real-time status tracking, and an intuitive dashboard for both students and administrators.',
+    tags: ['PHP', 'MySQL', 'Bootstrap', 'JavaScript', 'HTML5', 'CSS3'],
+    techIcons: [SiPhp, SiMysql, SiBootstrap],
     features: [
-      'Implemented complex CSS animations and transitions',
-      'Created interactive JavaScript components',
-      'Designed responsive layout for all devices',
-      'Optimized performance for smooth animations'
+      'Report Management: Submit campus issues with photo uploads and location tracking',
+      'Event Management: Browse and manage university events with admin controls',
+      'User Authentication: Secure login system with role-based access (Student/Admin)',
+      'Admin Dashboard: Comprehensive administrative interface for managing reports, events, and users',
+      'Real-time Updates: Status tracking for reports with badge indicators',
+      'Responsive Design: Mobile-friendly interface with Bootstrap 5'
     ],
-    repo: 'https://github.com/tharsan/animated-website',
+    repo: 'https://github.com/ThaRSan1101/campus-connect.git',
     demo: '#',
-    image: '/api/placeholder/600/400',
+    image: '/assets/images/projects/campus-connect.png',
     status: 'Completed',
-    category: 'Interactive'
+    category: 'Full Stack Web App'
+  },
+  {
+    id: 3,
+    title: 'Personal Portfolio Website',
+    shortDesc: 'Modern, responsive portfolio website built with React, featuring dark/light themes, smooth animations, and interactive components.',
+    fullDesc: 'A comprehensive personal portfolio website showcasing my skills, projects, and experience as a software developer. Built with modern web technologies including React, Framer Motion for animations, and Tailwind CSS for styling. Features include dynamic theme switching, smooth scrolling navigation, animated sections, contact forms, and responsive design that works seamlessly across all devices.',
+    tags: ['React', 'JavaScript', 'Tailwind CSS', 'Framer Motion', 'Vite', 'Responsive Design'],
+    techIcons: [FaReact, SiJavascript, SiTailwindcss],
+    features: [
+      'Dynamic dark/light theme switching with smooth transitions',
+      'Smooth scroll navigation with animated section reveals using Framer Motion',
+      'Responsive design optimized for mobile, tablet, and desktop devices',
+      'Interactive project showcase with detailed modal popups',
+      'Contact form with email integration and form validation',
+      'Animated background elements and interactive UI components',
+      'Optimized performance with Vite build tool and lazy loading',
+      'SEO-friendly structure with semantic HTML and meta tags'
+    ],
+    repo: 'https://github.com/ThaRSan1101/ThaRSan1101.github.io',
+    demo: 'https://tharsan1101.github.io',
+    image: '/assets/images/projects/portfolio-website.png',
+    status: 'Completed',
+    category: 'Portfolio Website'
   }
 ]
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null)
+  const [showAllProjects, setShowAllProjects] = useState(false)
+  const [initialProjectsCount] = useState(2) // Number of projects to show initially
 
   useEffect(() => {
     const applyTheme = () => {
@@ -126,11 +153,11 @@ export default function Projects() {
       </div>
       
       {/* Minimal Tech Symbols */}
-      <div className="absolute inset-0 opacity-8">
-        <div className="absolute top-20 left-20 text-2xl" style={{color: 'var(--projects-symbols)'}}>💻</div>
-        <div className="absolute bottom-20 right-20 text-2xl" style={{color: 'var(--projects-symbols)'}}>🚀</div>
-        <div className="absolute top-1/2 right-1/4 text-2xl" style={{color: 'var(--projects-symbols)'}}>⚡</div>
-        <div className="absolute bottom-1/3 left-1/4 text-2xl" style={{color: 'var(--projects-symbols)'}}>🔧</div>
+      <div className="absolute inset-0 opacity-4">
+        <div className="absolute top-20 left-20 text-sm" style={{color: 'var(--projects-symbols)'}}>💻</div>
+        <div className="absolute bottom-20 right-20 text-sm" style={{color: 'var(--projects-symbols)'}}>🚀</div>
+        <div className="absolute top-1/2 right-1/4 text-sm" style={{color: 'var(--projects-symbols)'}}>⚡</div>
+        <div className="absolute bottom-1/3 left-1/4 text-sm" style={{color: 'var(--projects-symbols)'}}>🔧</div>
       </div>
       
       {/* Subtle Grid Pattern */}
@@ -146,20 +173,20 @@ export default function Projects() {
       
       {/* Floating Code Elements */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 opacity-10 animate-pulse" style={{color: 'var(--projects-icons)'}}>
-          <span className="text-2xl">{'<>'}</span>
+        <div className="absolute top-20 left-10 opacity-5 animate-pulse" style={{color: 'var(--projects-icons)'}}>
+          <span className="text-sm">{'<>'}</span>
         </div>
-        <div className="absolute top-40 right-20 opacity-10 animate-pulse delay-1000" style={{color: 'var(--projects-icons)'}}>
-          <span className="text-lg">{'{ }'}</span>
+        <div className="absolute top-40 right-20 opacity-5 animate-pulse delay-1000" style={{color: 'var(--projects-icons)'}}>
+          <span className="text-xs">{'{ }'}</span>
         </div>
-        <div className="absolute bottom-40 left-1/4 opacity-10 animate-pulse delay-2000" style={{color: 'var(--projects-icons)'}}>
-          <span className="text-xl">•</span>
+        <div className="absolute bottom-40 left-1/4 opacity-5 animate-pulse delay-2000" style={{color: 'var(--projects-icons)'}}>
+          <span className="text-sm">•</span>
         </div>
-        <div className="absolute top-60 right-1/3 opacity-10 animate-pulse delay-500" style={{color: 'var(--projects-icons)'}}>
-          <span className="text-lg">*</span>
+        <div className="absolute top-60 right-1/3 opacity-5 animate-pulse delay-500" style={{color: 'var(--projects-icons)'}}>
+          <span className="text-xs">*</span>
         </div>
-        <div className="absolute bottom-60 right-10 opacity-10 animate-pulse delay-1500" style={{color: 'var(--projects-icons)'}}>
-          <span className="text-xl">▢</span>
+        <div className="absolute bottom-60 right-10 opacity-5 animate-pulse delay-1500" style={{color: 'var(--projects-icons)'}}>
+          <span className="text-sm">▢</span>
         </div>
       </div>
       
@@ -176,13 +203,13 @@ export default function Projects() {
             <span className="block" style={{color: 'var(--projects-subheading)'}}>Best Work</span>
           </h2>
           <p className="text-lg max-w-3xl mx-auto" style={{color: 'var(--projects-text)'}}>
-            Explore projects that highlight my skills in software development using modern technologies.
+            Explore my collection of projects that reflect my skills, ideas, and creativity.
           </p>
         </motion.div>
 
         {/* Projects Grid */}
         <div className="grid lg:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
+          {(showAllProjects ? projects : projects.slice(0, initialProjectsCount)).map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 30 }}
@@ -194,21 +221,37 @@ export default function Projects() {
             >
               <div className="p-6 rounded-2xl transition-all duration-300 h-full" style={{backgroundColor: 'var(--projects-card-bg)', border: '1px solid var(--projects-card-border)'}}
                    onMouseEnter={(e) => {
-                     e.currentTarget.style.backgroundColor = 'rgba(60, 60, 60, 0.6)'
-                     e.currentTarget.style.borderColor = '#777777'
+                     e.currentTarget.style.backgroundColor = 'var(--projects-card-hover-bg)'
+                     e.currentTarget.style.borderColor = 'var(--projects-card-hover-border)'
+                     e.currentTarget.style.transform = 'translateY(-4px)'
+                     e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.15)'
                    }}
                    onMouseLeave={(e) => {
-                     e.currentTarget.style.backgroundColor = 'rgba(42, 42, 42, 0.6)'
-                     e.currentTarget.style.borderColor = '#555555'
+                     e.currentTarget.style.backgroundColor = 'var(--projects-card-bg)'
+                     e.currentTarget.style.borderColor = 'var(--projects-card-border)'
+                     e.currentTarget.style.transform = 'translateY(0)'
+                     e.currentTarget.style.boxShadow = 'none'
                    }}>
                 {/* Project Image/Preview */}
-                <div className="relative mb-6 rounded-xl overflow-hidden h-48 flex items-center justify-center" style={{backgroundColor: 'rgba(20, 20, 20, 0.8)'}}>
-                  <div className="text-6xl" style={{color: 'rgba(153, 153, 153, 0.5)'}}>
+                <div className="relative mb-6 rounded-xl overflow-hidden h-48" 
+                     style={{backgroundColor: 'var(--projects-card-bg)', border: '1px solid var(--projects-card-border)'}}>
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.nextSibling.style.display = 'flex';
+                    }}
+                  />
+                  {/* Fallback icon (hidden by default) */}
+                  <div className="absolute inset-0 flex items-center justify-center text-6xl" 
+                       style={{color: 'var(--projects-subheading)', display: 'none'}}>
                     <FaCode />
                   </div>
                   {/* Category Badge */}
                   <div className="absolute top-3 left-3">
-                    <span className="px-3 py-1 rounded-full text-xs font-medium border"
+                    <span className="px-3 py-1 rounded-full text-xs font-medium border backdrop-blur-sm"
                     style={{
                       backgroundColor: 'rgba(100, 200, 255, 0.15)',
                       color: '#64c8ff',
@@ -219,7 +262,7 @@ export default function Projects() {
                   </div>
                   {/* Status Badge */}
                   <div className="absolute top-3 right-3">
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                    <span className={`px-3 py-1 rounded-full text-xs font-medium border backdrop-blur-sm ${
                       project.status === 'Completed' 
                         ? 'border'
                         : 'border'
@@ -281,8 +324,8 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 transition-colors"
                       style={{color: 'var(--projects-text)'}}
-                      onMouseEnter={(e) => e.target.style.color = '#d0d0d0'}
-                      onMouseLeave={(e) => e.target.style.color = '#b0b0b0'}
+                      onMouseEnter={(e) => e.target.style.color = 'var(--projects-heading)'}
+                      onMouseLeave={(e) => e.target.style.color = 'var(--projects-text)'}
                       onClick={(e) => e.stopPropagation()}
                     >
                       <FaGithub className="text-sm" />
@@ -297,8 +340,8 @@ export default function Projects() {
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 transition-colors"
                         style={{color: 'var(--projects-text)'}}
-                        onMouseEnter={(e) => e.target.style.color = '#d0d0d0'}
-                        onMouseLeave={(e) => e.target.style.color = '#b0b0b0'}
+                        onMouseEnter={(e) => e.target.style.color = 'var(--projects-heading)'}
+                        onMouseLeave={(e) => e.target.style.color = 'var(--projects-text)'}
                         onClick={(e) => e.stopPropagation()}
                       >
                         <FaGithub className="text-sm" />
@@ -311,8 +354,8 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 transition-colors"
                       style={{color: 'var(--projects-text)'}}
-                      onMouseEnter={(e) => e.target.style.color = '#d0d0d0'}
-                      onMouseLeave={(e) => e.target.style.color = '#b0b0b0'}
+                      onMouseEnter={(e) => e.target.style.color = 'var(--projects-heading)'}
+                      onMouseLeave={(e) => e.target.style.color = 'var(--projects-text)'}
                       onClick={(e) => e.stopPropagation()}
                     >
                       <FaExternalLinkAlt className="text-sm" />
@@ -323,8 +366,8 @@ export default function Projects() {
                   {/* Details Button */}
                   <div className="pt-2">
                     <button className="transition-colors text-sm font-medium" style={{color: 'var(--projects-subheading)'}}
-                            onMouseEnter={(e) => e.target.style.color = '#bbb'}
-                            onMouseLeave={(e) => e.target.style.color = '#999999'}>
+                            onMouseEnter={(e) => e.target.style.color = 'var(--projects-heading)'}
+                            onMouseLeave={(e) => e.target.style.color = 'var(--projects-subheading)'}>
                       View Details →
                     </button>
                   </div>
@@ -334,7 +377,7 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Show More Button */}
+        {/* Show More Button / Message */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -342,18 +385,61 @@ export default function Projects() {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <button className="px-8 py-3 border-2 rounded-lg transition-all duration-300"
-                  style={{borderColor: 'var(--projects-subheading)', color: 'var(--projects-subheading)', backgroundColor: 'transparent'}}
+          {projects.length > initialProjectsCount ? (
+            !showAllProjects ? (
+              <button 
+                className="px-8 py-3 border-2 rounded-lg transition-all duration-300"
+                style={{borderColor: 'var(--projects-btn-border)', color: 'var(--projects-btn-text)', backgroundColor: 'var(--projects-btn-bg)'}}
+                onMouseEnter={(e) => {
+                  e.target.style.backgroundColor = 'var(--projects-btn-hover-bg)'
+                  e.target.style.color = 'var(--projects-btn-hover-text)'
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.backgroundColor = 'var(--projects-btn-bg)'
+                  e.target.style.color = 'var(--projects-btn-text)'
+                }}
+                onClick={() => setShowAllProjects(true)}
+              >
+                Explore More Projects ({projects.length - initialProjectsCount} more)
+              </button>
+            ) : (
+              <div className="space-y-4">
+                <p className="text-lg" style={{color: 'var(--projects-text)'}}>
+                  You've seen all my projects! More coming soon...
+                </p>
+                <button 
+                  className="px-8 py-3 border-2 rounded-lg transition-all duration-300"
+                  style={{borderColor: 'var(--projects-btn-border)', color: 'var(--projects-btn-text)', backgroundColor: 'var(--projects-btn-bg)'}}
                   onMouseEnter={(e) => {
-                    e.target.style.backgroundColor = '#999999'
-                    e.target.style.color = '#0a0a0a'
+                    e.target.style.backgroundColor = 'var(--projects-btn-hover-bg)'
+                    e.target.style.color = 'var(--projects-btn-hover-text)'
                   }}
                   onMouseLeave={(e) => {
-                    e.target.style.backgroundColor = 'transparent'
-                    e.target.style.color = '#999999'
-                  }}>
-            Explore More Projects
-          </button>
+                    e.target.style.backgroundColor = 'var(--projects-btn-bg)'
+                    e.target.style.color = 'var(--projects-btn-text)'
+                  }}
+                  onClick={() => {
+                    setShowAllProjects(false)
+                    document.getElementById('projects').scrollIntoView({ 
+                      behavior: 'smooth',
+                      block: 'start'
+                    })
+                  }}
+                >
+                  Show Less Projects
+                </button>
+              </div>
+            )
+          ) : (
+            <div className="space-y-2">
+              <p className="text-lg" style={{color: 'var(--projects-text)'}}>
+                 These are all my current projects!
+              </p>
+              <p className="text-sm" style={{color: 'var(--projects-subheading)'}}>
+                New projects are in development. Stay tuned for updates!
+              </p>
+            </div>
+          )}
         </motion.div>
       </div>
 
@@ -364,37 +450,46 @@ export default function Projects() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-space-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            style={{backgroundColor: 'rgba(0, 0, 0, 0.8)'}}
             onClick={() => setSelectedProject(null)}
           >
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="glass max-w-2xl w-full max-h-[80vh] overflow-y-auto rounded-2xl p-8"
+              className="max-w-2xl w-full max-h-[80vh] overflow-y-auto rounded-2xl p-8 glass"
+              style={{
+                backgroundColor: 'var(--primary-dark)',
+                border: '1px solid var(--border-dark)',
+                backdropFilter: 'blur(10px)'
+              }}
               onClick={(e) => e.stopPropagation()}
             >
               <div className="space-y-6">
                 <div className="flex justify-between items-start">
-                  <h3 className="text-2xl font-bold text-star-white">{selectedProject.title}</h3>
+                  <h3 className="text-2xl font-bold" style={{color: 'var(--text-primary)'}}>{selectedProject.title}</h3>
                   <button 
                     onClick={() => setSelectedProject(null)}
-                    className="text-cosmic-gray hover:text-star-white text-xl"
+                    className="text-2xl font-bold leading-none transition-colors"
+                    style={{color: 'var(--text-muted)'}}
+                    onMouseEnter={(e) => e.target.style.color = 'var(--text-primary)'}
+                    onMouseLeave={(e) => e.target.style.color = 'var(--text-muted)'}
                   >
                     ×
                   </button>
                 </div>
 
-                <p className="text-cosmic-light leading-relaxed">
+                <p className="leading-relaxed text-base" style={{color: 'var(--text-secondary)'}}>
                   {selectedProject.fullDesc}
                 </p>
 
                 <div>
-                  <h4 className="text-lg font-semibold text-stellar-cyan mb-3">Key Features:</h4>
+                  <h4 className="text-lg font-semibold mb-3" style={{color: 'var(--text-primary)'}}>Key Features:</h4>
                   <ul className="space-y-2">
                     {selectedProject.features.map((feature, index) => (
-                      <li key={index} className="text-cosmic-light flex items-start gap-2">
-                        <span className="text-stellar-cyan mt-1">•</span>
+                      <li key={index} className="flex items-start gap-2" style={{color: 'var(--text-secondary)'}}>
+                        <span className="mt-1 font-bold" style={{color: 'var(--text-primary)'}}>•</span>
                         {feature}
                       </li>
                     ))}
@@ -405,20 +500,34 @@ export default function Projects() {
                   {selectedProject.tags.map((tag) => (
                     <span 
                       key={tag}
-                      className="px-3 py-1 bg-stellar-cyan/10 text-stellar-cyan text-sm rounded-full border border-stellar-cyan/30"
+                      className="px-3 py-1 text-sm rounded-full border"
+                      style={{
+                        backgroundColor: 'var(--secondary-dark)',
+                        color: 'var(--text-secondary)',
+                        borderColor: 'var(--border-dark)'
+                      }}
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <div className="flex gap-4">
+                <div className="flex flex-wrap gap-3">
                   <a
                     href={selectedProject.repo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-6 py-3 bg-stellar-cyan text-space-black rounded-lg 
-                               hover:bg-cosmic-blue transition-colors font-medium"
+                    className="flex items-center gap-2 px-6 py-3 rounded-lg transition-colors font-medium"
+                    style={{
+                      backgroundColor: 'var(--text-primary)',
+                      color: 'var(--primary-dark)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.backgroundColor = 'var(--text-secondary)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.backgroundColor = 'var(--text-primary)'
+                    }}
                   >
                     <FaGithub />
                     {selectedProject.frontendRepo ? 'Backend Code' : 'View Code'}
@@ -428,8 +537,17 @@ export default function Projects() {
                       href={selectedProject.frontendRepo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-6 py-3 bg-stellar-cyan text-space-black rounded-lg 
-                                 hover:bg-cosmic-blue transition-colors font-medium"
+                      className="flex items-center gap-2 px-6 py-3 rounded-lg transition-colors font-medium"
+                      style={{
+                        backgroundColor: 'var(--text-primary)',
+                        color: 'var(--primary-dark)'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.target.style.backgroundColor = 'var(--text-secondary)'
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.style.backgroundColor = 'var(--text-primary)'
+                      }}
                     >
                       <FaGithub />
                       Frontend Code
@@ -439,8 +557,20 @@ export default function Projects() {
                     href={selectedProject.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-6 py-3 border-2 border-stellar-cyan text-stellar-cyan 
-                               rounded-lg hover:bg-stellar-cyan hover:text-space-black transition-all duration-300"
+                    className="flex items-center gap-2 px-6 py-3 border-2 rounded-lg transition-all duration-300"
+                    style={{
+                      borderColor: 'var(--text-primary)',
+                      color: 'var(--text-primary)',
+                      backgroundColor: 'transparent'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.backgroundColor = 'var(--text-primary)'
+                      e.target.style.color = 'var(--primary-dark)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.backgroundColor = 'transparent'
+                      e.target.style.color = 'var(--text-primary)'
+                    }}
                   >
                     <FaExternalLinkAlt />
                     Live Demo

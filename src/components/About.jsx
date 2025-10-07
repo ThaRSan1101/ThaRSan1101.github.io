@@ -105,9 +105,9 @@ export default function About() {
                   muted
                   loop
                   playsInline
-                  poster="/assets/images/profile.jpg"
+                  poster="/assets/images/profile/about.png"
                 >
-                  <source src="/assets/images/my-video.mp4" type="video/mp4" />
+                  <source src="/assets/video/my-video.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
@@ -172,7 +172,7 @@ export default function About() {
             {/* Action Buttons */}
             <div className="flex flex-wrap gap-4 pt-6">
               <a
-                href="/assets/TharsanCV.pdf"
+                href="/assets/pdf/resume/TharsanCV.pdf"
                 className="inline-flex items-center gap-3 px-6 py-3 font-semibold rounded-lg transition-colors duration-200"
                 style={{backgroundColor: 'var(--about-btn-bg)', color: 'var(--about-btn-text)', border: '1px solid var(--about-btn-border)'}}
                 onMouseEnter={(e) => {
