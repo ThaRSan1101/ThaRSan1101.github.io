@@ -85,19 +85,19 @@ export default function About() {
         <div className="absolute bottom-1/3 left-1/4 text-2xl" style={{color: 'var(--about-code-text)'}}>�</div>
       </div>
       
-       <div className="container relative z-10">
-         <div className="text-center mb-16">
-           <h2 className="text-4xl lg:text-5xl font-black mb-4" style={{color: 'var(--about-heading)'}}>About Me</h2>
-           <p className="text-lg max-w-2xl mx-auto" style={{color: 'var(--about-text)'}}>
+       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+         <div className="text-center mb-12 lg:mb-16">
+           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4" style={{color: 'var(--about-heading)'}}>About Me</h2>
+           <p className="text-base sm:text-lg max-w-2xl mx-auto" style={{color: 'var(--about-text)'}}>
              Get to know me better and my journey in software development
            </p>
          </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Profile Image/Avatar */}
-          <div className="relative">
-            <div className="p-8 rounded-3xl" style={{backgroundColor: 'var(--about-card-bg)', border: '1px solid var(--about-card-border)'}}>
-              <div className="h-56 rounded-2xl flex items-center justify-center relative overflow-hidden" style={{backgroundColor: 'var(--about-video-bg)'}}>
+          <div className="relative order-1 lg:order-1">
+            <div className="p-6 sm:p-8 rounded-3xl" style={{backgroundColor: 'var(--about-card-bg)', border: '1px solid var(--about-card-border)'}}>
+              <div className="h-48 sm:h-56 lg:h-64 rounded-2xl flex items-center justify-center relative overflow-hidden" style={{backgroundColor: 'var(--about-video-bg)'}}>
                 {/* Video Player */}
                 <video 
                   className="w-full h-full object-cover rounded-2xl"

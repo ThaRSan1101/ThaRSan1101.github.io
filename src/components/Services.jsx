@@ -71,7 +71,7 @@ export default function Services(){
   }, [])
 
   return (
-    <section id="services" className="py-20 relative overflow-hidden space-section-bg">
+    <section id="services" className="py-12 sm:py-16 lg:py-20 relative overflow-hidden space-section-bg">
       {/* Enhanced Background Elements */}
       <BackgroundElements variant="services" density="medium" />
       
@@ -98,27 +98,27 @@ export default function Services(){
       </div>
       
       {/* Minimal Tech Symbols */}
-      <div className="absolute inset-0 opacity-4">
+      <div className="absolute inset-0 opacity-4 hidden sm:block">
         <div className="absolute bottom-20 right-20 text-sm" style={{color: 'var(--services-symbols)'}}>⚙️</div>
         <div className="absolute top-1/2 right-1/4 text-sm" style={{color: 'var(--services-symbols)'}}>🌐</div>
         <div className="absolute bottom-1/3 left-1/4 text-sm" style={{color: 'var(--services-symbols)'}}>📱</div>
       </div>
       
-      <div className="container relative z-10">
+      <div className="container relative z-10 px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-black mb-4" style={{color: 'var(--services-heading)'}}>Services / What I Offer</h2>
-          <p className="text-lg max-w-2xl mx-auto" style={{color: 'var(--services-text)'}}>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4" style={{color: 'var(--services-heading)'}}>Services / What I Offer</h2>
+          <p className="text-base sm:text-lg max-w-2xl mx-auto px-4" style={{color: 'var(--services-text)'}}>
             Delivering creative and reliable tech solutions for any project.
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -126,7 +126,7 @@ export default function Services(){
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="p-8 rounded-xl transition-all duration-300 group"
+              className="p-6 sm:p-8 rounded-xl transition-all duration-300 group"
               style={{backgroundColor: 'var(--services-card-bg)', border: '1px solid #666666'}}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = 'var(--services-card-hover-bg)'
@@ -140,30 +140,30 @@ export default function Services(){
                 e.currentTarget.style.transform = 'translateY(0)'
                 e.currentTarget.style.boxShadow = 'none'
               }}>
-              <div className="space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className="p-4 rounded-lg transition-colors" style={{backgroundColor: 'var(--services-icon-bg)'}}>
-                    <service.icon style={{color: 'var(--services-icon-color)'}} className="text-2xl" />
+              <div className="space-y-4 sm:space-y-6">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                  <div className="p-3 sm:p-4 rounded-lg transition-colors flex-shrink-0" style={{backgroundColor: 'var(--services-icon-bg)'}}>
+                    <service.icon style={{color: 'var(--services-icon-color)'}} className="text-xl sm:text-2xl" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold transition-colors mb-2" style={{color: 'var(--services-heading)'}}>
+                    <h3 className="text-lg sm:text-xl font-bold transition-colors mb-2" style={{color: 'var(--services-heading)'}}>
                       {service.title}
                     </h3>
-                    <span className="text-sm px-3 py-1 rounded-full font-medium" style={{color: '#888', backgroundColor: 'rgba(136, 136, 136, 0.2)'}}>
+                    <span className="text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-full font-medium" style={{color: '#888', backgroundColor: 'rgba(136, 136, 136, 0.2)'}}>
                       {service.category}
                     </span>
                   </div>
                 </div>
                 
-                <p className="text-base leading-relaxed" style={{color: 'var(--services-text)'}}>
+                <p className="text-sm sm:text-base leading-relaxed" style={{color: 'var(--services-text)'}}>
                   {service.description}
                 </p>
                 
                 {/* Technology Icons */}
-                <div className="flex gap-3 pt-2">
+                <div className="flex flex-wrap gap-2 sm:gap-3 pt-2">
                   {service.techIcons.map((TechIcon, i) => (
                     <div key={i} className="p-2 rounded-lg transition-colors" style={{backgroundColor: 'rgba(136, 136, 136, 0.1)'}}>
-                      <TechIcon style={{color: 'var(--services-icon-color)'}} className="text-lg" />
+                      <TechIcon style={{color: 'var(--services-icon-color)'}} className="text-base sm:text-lg" />
                     </div>
                   ))}
                 </div>
@@ -178,18 +178,18 @@ export default function Services(){
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="text-center mt-12"
+          className="text-center mt-8 sm:mt-12"
         >
-          <div className="p-8 rounded-2xl max-w-2xl mx-auto" style={{backgroundColor: 'var(--services-card-bg)', border: '1px solid #666666'}}>
-            <FaLightbulb style={{color: 'var(--services-icon-color)'}} className="text-4xl mx-auto mb-4" />
-            <h3 className="text-xl font-bold mb-3" style={{color: 'var(--services-heading)'}}>Have a Project in Mind?</h3>
-            <p className="leading-relaxed mb-6" style={{color: 'var(--services-text)'}}>
+          <div className="p-6 sm:p-8 rounded-2xl max-w-2xl mx-auto" style={{backgroundColor: 'var(--services-card-bg)', border: '1px solid #666666'}}>
+            <FaLightbulb style={{color: 'var(--services-icon-color)'}} className="text-3xl sm:text-4xl mx-auto mb-4" />
+            <h3 className="text-lg sm:text-xl font-bold mb-3" style={{color: 'var(--services-heading)'}}>Have a Project in Mind?</h3>
+            <p className="text-sm sm:text-base leading-relaxed mb-6" style={{color: 'var(--services-text)'}}>
               Whether you need help with a coding project or any other service, 
               I'm here to help bring your ideas to life.
             </p>
             <a 
               href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-3 font-semibold rounded-lg transition-all duration-300"
+              className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base font-semibold rounded-lg transition-all duration-300"
               style={{
                 backgroundColor: 'var(--text-primary)',
                 color: 'var(--primary-dark)',
