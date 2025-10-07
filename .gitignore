@@ -12,8 +12,11 @@ dist/
 .env.production.local
 
 # IDE
-.vscode/
 .idea/
+.vscode/extensions.json
+.vscode/launch.json
+.vscode/tasks.json
+.vscode/.ropeproject
 
 # OS
 .DS_Store

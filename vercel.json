@@ -3,9 +3,5 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "installCommand": "npm install",
-  "framework": "vite",
-  "functions": {},
-  "env": {
-    "NPM_CONFIG_YES": "true"
-  }
+  "framework": "vite"
 }
