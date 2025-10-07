@@ -366,7 +366,7 @@ export default function Hero() {
                 
                 {/* Profile Image */}
                 <img 
-                  src="/assets/images/profile.jpg" 
+                  src="/assets/images/profile/profile.jpg" 
                   alt="Tharsan - Software Engineer"
                   className="w-full h-full object-cover relative z-10"
                   style={{
