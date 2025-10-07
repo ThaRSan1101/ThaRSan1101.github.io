@@ -8,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist -r https://github.com/ThaRSan1101/ThaRSan1101.github.io.git"
   },
   "dependencies": {
     "@react-three/drei": "^9.56.7",
