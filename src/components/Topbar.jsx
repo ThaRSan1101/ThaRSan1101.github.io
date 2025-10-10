@@ -88,11 +88,11 @@ export default function Topbar() {
     applyTheme(isDarkMode)
   }, [])
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-3 sm:py-4">
+  <div className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-3 sm:py-4 xl:pl-56">
       <div className="flex items-center justify-between max-w-7xl mx-auto">
         
         {/* Logo/Name - Left side on mobile, responsive positioning */}
-        <div className="flex-shrink-0">
+  <div className="flex-shrink-0 xl:-ml-20">
           <button 
             onClick={() => smoothScrollTo('home')}
             className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold flex items-center gap-1 sm:gap-2 cursor-pointer transition-all duration-300 hover:opacity-80"
