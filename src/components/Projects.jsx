@@ -126,7 +126,7 @@ export default function Projects() {
   }, [])
 
   return (
-    <section id="projects" className="py-20 relative overflow-hidden space-section-bg">
+    <section id="projects" className="py-12 sm:py-16 lg:py-20 relative overflow-hidden space-section-bg">
       {/* Enhanced Background Elements */}
       <BackgroundElements variant="projects" density="light" />
       
@@ -190,25 +190,25 @@ export default function Projects() {
         </div>
       </div>
       
-      <div className="container relative z-10">
+      <div className="container relative z-10 px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4" style={{color: 'var(--projects-heading)'}}>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4" style={{color: 'var(--projects-heading)'}}>
             A Showcase of My
             <span className="block" style={{color: 'var(--projects-subheading)'}}>Best Work</span>
           </h2>
-          <p className="text-lg max-w-3xl mx-auto" style={{color: 'var(--projects-text)'}}>
+          <p className="text-base sm:text-lg max-w-3xl mx-auto px-4" style={{color: 'var(--projects-text)'}}>
             Explore my collection of projects that reflect my skills, ideas, and creativity.
           </p>
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           {(showAllProjects ? projects : projects.slice(0, initialProjectsCount)).map((project, index) => (
             <motion.div
               key={project.id}
@@ -219,7 +219,7 @@ export default function Projects() {
               className="group cursor-pointer"
               onClick={() => setSelectedProject(project)}
             >
-              <div className="p-6 rounded-2xl transition-all duration-300 h-full" style={{backgroundColor: 'var(--projects-card-bg)', border: '1px solid var(--projects-card-border)'}}
+              <div className="p-4 sm:p-6 rounded-2xl transition-all duration-300 h-full" style={{backgroundColor: 'var(--projects-card-bg)', border: '1px solid var(--projects-card-border)'}}
                    onMouseEnter={(e) => {
                      e.currentTarget.style.backgroundColor = 'var(--projects-card-hover-bg)'
                      e.currentTarget.style.borderColor = 'var(--projects-card-hover-border)'
@@ -233,7 +233,7 @@ export default function Projects() {
                      e.currentTarget.style.boxShadow = 'none'
                    }}>
                 {/* Project Image/Preview */}
-                <div className="relative mb-6 rounded-xl overflow-hidden h-48" 
+                <div className="relative mb-4 sm:mb-6 rounded-xl overflow-hidden h-40 sm:h-48" 
                      style={{backgroundColor: 'var(--projects-card-bg)', border: '1px solid var(--projects-card-border)'}}>
                   <img 
                     src={project.image} 

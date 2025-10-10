@@ -46,7 +46,7 @@ export default function Experience() {
   }, [])
 
   return (
-    <section id="experience" className="py-20 relative overflow-hidden space-section-bg">
+    <section id="experience" className="py-12 sm:py-16 lg:py-20 relative overflow-hidden space-section-bg">
       {/* Enhanced Background Elements */}
       <BackgroundElements variant="experience" density="medium" />
       
@@ -80,9 +80,9 @@ export default function Experience() {
       
       {/* Career/Professional Icons */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-20 text-lg" style={{color: 'var(--experience-icons)'}}>🏢</div>
-        <div className="absolute bottom-32 left-32 text-xl" style={{color: 'var(--experience-icons)'}}>📈</div>
-        <div className="absolute bottom-20 right-20 text-lg" style={{color: 'var(--experience-icons)'}}>🎯</div>
+        <div className="absolute top-20 left-20 text-base sm:text-lg hidden sm:block" style={{color: 'var(--experience-icons)'}}>🏢</div>
+        <div className="absolute bottom-32 left-32 text-lg sm:text-xl hidden sm:block" style={{color: 'var(--experience-icons)'}}>📈</div>
+        <div className="absolute bottom-20 right-20 text-base sm:text-lg hidden sm:block" style={{color: 'var(--experience-icons)'}}>🎯</div>
       </div>
       
       {/* Enhanced Timeline Lines */}
@@ -96,16 +96,16 @@ export default function Experience() {
         <div className="absolute left-1/2 bottom-32 w-16 h-0.5" style={{backgroundColor: 'var(--experience-timeline-bg)', transform: 'translateX(-50%)'}}></div>
       </div>
       
-      <div className="container relative z-10">
+      <div className="container relative z-10 px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-black mb-4" style={{color: 'var(--experience-heading)'}}>Experience</h2>
-          <p className="text-lg max-w-2xl mx-auto" style={{color: 'var(--experience-text)'}}>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4" style={{color: 'var(--experience-heading)'}}>Experience</h2>
+          <p className="text-base sm:text-lg max-w-2xl mx-auto px-4" style={{color: 'var(--experience-text)'}}>
             My professional journey in software development and web technologies.
           </p>
         </motion.div>
@@ -127,12 +127,12 @@ export default function Experience() {
                  }}>
               <div className="flex items-center justify-center mb-6">
                 <div className="p-4 rounded-full" style={{backgroundColor: 'var(--experience-type-bg)'}}>
-                  <FaCode style={{color: 'var(--experience-icons)'}} className="text-3xl" />
+                  <FaCode style={{color: 'var(--experience-icons)'}} className="text-2xl sm:text-3xl" />
                 </div>
               </div>
               
-              <p className="text-lg leading-relaxed" style={{color: 'var(--experience-text)'}}>
-                <span className="font-bold text-xl" style={{color: 'var(--experience-heading)'}}>Currently seeking opportunities</span> 
+              <p className="text-base sm:text-lg leading-relaxed" style={{color: 'var(--experience-text)'}}>
+                <span className="font-bold text-lg sm:text-xl" style={{color: 'var(--experience-heading)'}}>Currently seeking opportunities</span> 
                 <span className="block mt-3">
                   to apply my expertise as a Software Developer, contribute effectively to projects, 
                   and enhance my full-stack development skills.

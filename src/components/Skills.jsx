@@ -49,26 +49,26 @@ function SkillItem({ skill, delay }) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay }}
       viewport={{ once: true }}
-      className="p-6 rounded-xl"
+      className="p-4 sm:p-6 rounded-xl"
       style={{
         backgroundColor: 'var(--skills-item-bg)',
         border: '1px solid var(--skills-item-border)'
       }}
     >
-      <div className="flex flex-col items-center text-center space-y-4">
+      <div className="flex flex-col items-center text-center space-y-3 sm:space-y-4">
         {/* Icon container */}
         <div 
-          className="p-4 rounded-lg"
+          className="p-3 sm:p-4 rounded-lg"
           style={{
             backgroundColor: 'var(--skills-icon-bg)',
             border: '1px solid var(--skills-icon-border)'
           }}
         >
-          <skill.icon className="text-2xl" style={{color: 'var(--skills-icon-color)'}} />
+          <skill.icon className="text-xl sm:text-2xl" style={{color: 'var(--skills-icon-color)'}} />
         </div>
         
         {/* Skill name */}
-        <h3 className="font-medium text-lg" style={{color: 'var(--skills-name-color)'}}>
+        <h3 className="font-medium text-base sm:text-lg" style={{color: 'var(--skills-name-color)'}}>
           {skill.name}
         </h3>
       </div>
@@ -123,7 +123,7 @@ export default function Skills() {
   }, [])
 
   return (
-    <section id="skills" className="py-20 relative overflow-hidden space-section-bg">
+    <section id="skills" className="py-12 sm:py-16 lg:py-20 relative overflow-hidden space-section-bg">
       {/* Enhanced Background Elements */}
       <BackgroundElements variant="skills" density="medium" />
       
@@ -150,25 +150,25 @@ export default function Skills() {
       </div>
       
       {/* Minimal Tech Symbols */}
-      <div className="absolute inset-0 opacity-8">
-        <div className="absolute top-20 left-20 text-2xl" style={{color: 'var(--skills-symbols)'}}>⚛</div>
-        <div className="absolute bottom-20 right-20 text-2xl" style={{color: 'var(--skills-symbols)'}}>🔧</div>
-        <div className="absolute top-1/2 right-1/4 text-2xl" style={{color: 'var(--skills-symbols)'}}>🖥</div>
-        <div className="absolute bottom-1/3 left-1/4 text-2xl" style={{color: 'var(--skills-symbols)'}}>⚡</div>
+      <div className="absolute inset-0 opacity-8 hidden sm:block">
+        <div className="absolute top-20 left-20 text-xl sm:text-2xl" style={{color: 'var(--skills-symbols)'}}>⚛</div>
+        <div className="absolute bottom-20 right-20 text-xl sm:text-2xl" style={{color: 'var(--skills-symbols)'}}>🔧</div>
+        <div className="absolute top-1/2 right-1/4 text-xl sm:text-2xl" style={{color: 'var(--skills-symbols)'}}>🖥</div>
+        <div className="absolute bottom-1/3 left-1/4 text-xl sm:text-2xl" style={{color: 'var(--skills-symbols)'}}>⚡</div>
       </div>
       
-      <div className="container relative z-10">
+      <div className="container relative z-10 px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl lg:text-6xl font-bold mb-4" style={{color: 'var(--skills-heading)'}}>
+          <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4" style={{color: 'var(--skills-heading)'}}>
             My Skills
           </h2>
-          <p className="text-lg max-w-3xl mx-auto" style={{color: 'var(--skills-text)'}}>
+          <p className="text-base sm:text-lg max-w-3xl mx-auto px-4" style={{color: 'var(--skills-text)'}}>
             Technologies and tools I work with to bring ideas to life
           </p>
         </motion.div>
@@ -179,13 +179,13 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-4 mb-12"
+          className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12 px-4"
         >
           {skillCategories.map((category) => (
             <button
               key={category.name}
               onClick={() => setActiveCategory(category.name)}
-              className={`px-6 py-3 rounded-lg font-semibold`}
+              className={`px-3 sm:px-6 py-2 sm:py-3 rounded-lg text-xs sm:text-sm font-semibold`}
               style={{
                 backgroundColor: activeCategory === category.name ? 'var(--skills-category-active-bg)' : 'var(--skills-category-bg)',
                 color: activeCategory === category.name ? 'var(--skills-category-active-text)' : 'var(--skills-category-text)',
@@ -210,7 +210,7 @@ export default function Skills() {
               transition={{ duration: 0.3 }}
               className={`${activeCategory === category.name ? 'block' : 'hidden'}`}
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 {category.skills.map((skill, index) => (
                   <SkillItem 
                     key={`${category.name}-${skill.name}`} 
@@ -229,18 +229,18 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="mt-16"
+          className="mt-12 sm:mt-16"
         >
-          <h3 className="text-2xl font-bold mb-8 text-center" style={{color: 'var(--skills-familiar-heading)'}}>
+          <h3 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-center" style={{color: 'var(--skills-familiar-heading)'}}>
             Also Familiar With
           </h3>
           
           {/* Front-End / UI Tools */}
-          <div className="mb-8">
-            <h4 className="text-lg font-semibold mb-4 text-center" style={{color: 'var(--skills-familiar-heading)'}}>
+          <div className="mb-6 sm:mb-8">
+            <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-center" style={{color: 'var(--skills-familiar-heading)'}}>
               Front-End / UI Tools
             </h4>
-            <div className="flex flex-wrap justify-center gap-3">
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-3 px-4">
               {[
                 'Bootstrap', 'Tailwind CSS'
               ].map((tech, index) => (
@@ -250,7 +250,7 @@ export default function Skills() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
                   viewport={{ once: true }}
-                  className="px-4 py-2 rounded-lg cursor-default"
+                  className="px-3 sm:px-4 py-1 sm:py-2 rounded-lg cursor-default text-sm"
                   style={{
                     backgroundColor: 'var(--skills-item-bg)',
                     color: 'var(--skills-item-text)',
@@ -264,11 +264,11 @@ export default function Skills() {
           </div>
 
           {/* APIs / Data Handling */}
-          <div className="mb-8">
-            <h4 className="text-lg font-semibold mb-4 text-center" style={{color: 'var(--skills-familiar-heading)'}}>
+          <div className="mb-6 sm:mb-8">
+            <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-center" style={{color: 'var(--skills-familiar-heading)'}}>
               APIs / Data Handling
             </h4>
-            <div className="flex flex-wrap justify-center gap-3">
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-3 px-4">
               {[
                 'REST APIs', 'Postman'
               ].map((tech, index) => (
@@ -278,7 +278,7 @@ export default function Skills() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
                   viewport={{ once: true }}
-                  className="px-4 py-2 rounded-lg cursor-default"
+                  className="px-3 sm:px-4 py-1 sm:py-2 rounded-lg cursor-default text-sm"
                   style={{
                     backgroundColor: 'var(--skills-item-bg)',
                     color: 'var(--skills-item-text)',
@@ -292,11 +292,11 @@ export default function Skills() {
           </div>
 
           {/* DevOps / Deployment / Tools */}
-          <div className="mb-8">
-            <h4 className="text-lg font-semibold mb-4 text-center" style={{color: 'var(--skills-familiar-heading)'}}>
+          <div className="mb-6 sm:mb-8">
+            <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-center" style={{color: 'var(--skills-familiar-heading)'}}>
               DevOps / Deployment / Tools
             </h4>
-            <div className="flex flex-wrap justify-center gap-3">
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-3 px-4">
               {[
                 'Docker', 'AWS', 'Vercel', 'Netlify'
               ].map((tech, index) => (
@@ -306,7 +306,7 @@ export default function Skills() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
                   viewport={{ once: true }}
-                  className="px-4 py-2 rounded-lg cursor-default"
+                  className="px-3 sm:px-4 py-1 sm:py-2 rounded-lg cursor-default text-sm"
                   style={{
                     backgroundColor: 'var(--skills-item-bg)',
                     color: 'var(--skills-item-text)',

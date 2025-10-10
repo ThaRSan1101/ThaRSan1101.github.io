@@ -54,10 +54,8 @@ export default function About() {
     <section id="about" className="py-20 relative overflow-hidden space-section-bg">
       {/* Enhanced Background Elements */}
       <BackgroundElements variant="about" density="medium" />
-      
       {/* Space dust particles */}
       <div className="space-dust"></div>
-      
       {/* Minimal Tech Grid Pattern */}
       <div className="absolute inset-0 opacity-6">
         <div className="absolute inset-0" style={{
@@ -68,7 +66,6 @@ export default function About() {
           backgroundSize: '100px 100px'
         }}></div>
       </div>
-      
       {/* Subtle Tech Dots */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -76,7 +73,6 @@ export default function About() {
           backgroundSize: '60px 60px'
         }}></div>
       </div>
-      
       {/* Minimal Tech Symbols */}
       <div className="absolute inset-0 opacity-8">
         <div className="absolute top-20 left-20 text-2xl" style={{color: 'var(--about-code-text)'}}>👨‍💻</div>
@@ -84,21 +80,18 @@ export default function About() {
         <div className="absolute top-1/2 right-1/4 text-xl" style={{color: 'var(--about-code-text)'}}>�</div>
         <div className="absolute bottom-1/3 left-1/4 text-2xl" style={{color: 'var(--about-code-text)'}}>�</div>
       </div>
-      
-       <div className="container relative z-10">
-         <div className="text-center mb-16">
-           <h2 className="text-4xl lg:text-5xl font-black mb-4" style={{color: 'var(--about-heading)'}}>About Me</h2>
-           <p className="text-lg max-w-2xl mx-auto" style={{color: 'var(--about-text)'}}>
-             Get to know me better and my journey in software development
-           </p>
-         </div>
-
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Profile Image/Avatar */}
-          <div className="relative">
-            <div className="p-8 rounded-3xl" style={{backgroundColor: 'var(--about-card-bg)', border: '1px solid var(--about-card-border)'}}>
-              <div className="h-56 rounded-2xl flex items-center justify-center relative overflow-hidden" style={{backgroundColor: 'var(--about-video-bg)'}}>
-                {/* Video Player */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-12 lg:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4" style={{color: 'var(--about-heading)'}}>About Me</h2>
+          <p className="text-base sm:text-lg max-w-2xl mx-auto" style={{color: 'var(--about-text)'}}>
+            Get to know me better and my journey in software development
+          </p>
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-8">
+          {/* Video Section - left on laptop, top on mobile/tablet */}
+          <div className="order-1 lg:order-1 flex justify-center">
+            <div className="p-6 sm:p-8 rounded-3xl w-full max-w-xl" style={{backgroundColor: 'var(--about-card-bg)', border: '1px solid var(--about-card-border)'}}>
+              <div className="h-48 sm:h-56 lg:h-64 rounded-2xl flex items-center justify-center relative overflow-hidden" style={{backgroundColor: 'var(--about-video-bg)'}}>
                 <video 
                   className="w-full h-full object-cover rounded-2xl"
                   autoPlay
@@ -112,15 +105,9 @@ export default function About() {
                 </video>
               </div>
             </div>
-            
-            {/* Static floating element */}
-            <div className="absolute -top-4 -right-4 p-4 rounded-xl" style={{backgroundColor: 'var(--about-card-bg)', border: '1px solid var(--about-card-border)'}}>
-              <FaCode style={{color: 'var(--about-accent)'}} className="text-2xl" />
-            </div>
           </div>
-
-          {/* Content */}
-          <div className="space-y-6">
+          {/* Content Section - right on laptop, bottom on mobile/tablet */}
+          <div className="order-2 lg:order-2 space-y-6">
             <div className="space-y-6">
               <div>
                 <h3 className="text-2xl font-bold mb-4" style={{color: 'var(--about-heading)'}}>Who I Am</h3>
@@ -130,7 +117,6 @@ export default function About() {
                   I specialize in full-stack development and enjoy creating user-friendly applications using modern web technologies.
                 </p>
               </div>
-              
               <div>
                 <h3 className="text-2xl font-bold mb-4" style={{color: 'var(--about-heading)'}}>What I Do</h3>
                 <p className="text-lg leading-relaxed" style={{color: 'var(--about-text)'}}>
@@ -139,7 +125,6 @@ export default function About() {
                   I enjoy exploring new technologies and building solutions that make an impact.
                 </p>
               </div>
-              
               <div>
                 <h3 className="text-2xl font-bold mb-4" style={{color: 'var(--about-heading)'}}>My Experience</h3>
                 <p className="text-lg leading-relaxed" style={{color: 'var(--about-text)'}}>
@@ -147,28 +132,26 @@ export default function About() {
                 </p>
               </div>
             </div>
-
-             {/* Highlights */}
-             <div className="grid gap-4 mt-8">
-               {highlights.map((item, index) => (
-                 <div
-                   key={item.title}
-                   className="flex items-center gap-4 p-4 rounded-xl transition-colors duration-200 group"
-                   style={{backgroundColor: 'var(--about-card-bg)', border: '1px solid var(--about-card-border)'}}
-                   onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--about-card-hover-bg)'}
-                   onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--about-card-bg)'}
-                 >
-                   <div className="p-3 rounded-lg" style={{backgroundColor: 'var(--about-icon-bg)'}}>
-                     <item.icon style={{color: 'var(--about-accent)'}} className="text-xl" />
-                   </div>
-                   <div>
-                     <h4 className="font-semibold" style={{color: 'var(--about-heading)'}}>{item.title}</h4>
-                     <p className="text-sm" style={{color: 'var(--about-text)'}}>{item.desc}</p>
-                   </div>
-                 </div>
-               ))}
-             </div>
-
+            {/* Highlights */}
+            <div className="grid gap-4 mt-8">
+              {highlights.map((item, index) => (
+                <div
+                  key={item.title}
+                  className="flex items-center gap-4 p-4 rounded-xl transition-colors duration-200 group"
+                  style={{backgroundColor: 'var(--about-card-bg)', border: '1px solid var(--about-card-border)'}}
+                  onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--about-card-hover-bg)'}
+                  onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--about-card-bg)'}
+                >
+                  <div className="p-3 rounded-lg" style={{backgroundColor: 'var(--about-icon-bg)'}}>
+                    <item.icon style={{color: 'var(--about-accent)'}} className="text-xl" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold" style={{color: 'var(--about-heading)'}}>{item.title}</h4>
+                    <p className="text-sm" style={{color: 'var(--about-text)'}}>{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
             {/* Action Buttons */}
             <div className="flex flex-wrap gap-4 pt-6">
               <a
@@ -187,7 +170,6 @@ export default function About() {
                 <FaDownload />
                 Download CV
               </a>
-              
               <ScrollLink
                 to="projects"
                 smooth
@@ -206,6 +188,12 @@ export default function About() {
                 View Projects
               </ScrollLink>
             </div>
+          </div>
+        </div>
+        {/* Profile Image/Avatar Floating Icon - moved outside main video */}
+        <div className="hidden lg:block relative">
+          <div className="absolute -top-4 -right-4 p-4 rounded-xl" style={{backgroundColor: 'var(--about-card-bg)', border: '1px solid var(--about-card-border)'}}>
+            <FaCode style={{color: 'var(--about-accent)'}} className="text-2xl" />
           </div>
         </div>
       </div>

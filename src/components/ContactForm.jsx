@@ -185,23 +185,23 @@ export default function Contact(){
         <div className="absolute bottom-1/3 left-1/4 text-2xl" style={{color: 'var(--contact-icons)'}}>🌐</div>
       </div>
       
-      <div className="container relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 lg:mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-black mb-4" style={{ color: 'var(--contact-heading)' }}>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4" style={{ color: 'var(--contact-heading)' }}>
             Get In Touch
           </h2>
-          <p className="text-lg max-w-2xl mx-auto" style={{ color: 'var(--contact-text)' }}>
+          <p className="text-base sm:text-lg max-w-2xl mx-auto" style={{ color: 'var(--contact-text)' }}>
             Let's work together and bring your ideas to life
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
           
           {/* Contact Information */}
           <motion.div
@@ -209,20 +209,20 @@ export default function Contact(){
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            className="space-y-6 lg:space-y-8 order-2 lg:order-1"
           >
             {/* Header Section */}
             <div className="text-center lg:text-left">
-              <h3 className="text-3xl font-bold mb-4" style={{ color: 'var(--contact-heading)' }}>
+              <h3 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4" style={{ color: 'var(--contact-heading)' }}>
                 Let's Connect
               </h3>
-              <p className="text-lg leading-relaxed" style={{ color: 'var(--contact-text)' }}>
+              <p className="text-base sm:text-lg leading-relaxed" style={{ color: 'var(--contact-text)' }}>
                 Ready to start your next project? I'm here to help bring your ideas to life.
               </p>
             </div>
 
             {/* Contact Cards Grid */}
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {contactInfo.map((info, index) => (
                 <motion.div
                   key={info.label}
@@ -235,7 +235,7 @@ export default function Contact(){
                     href={info.href}
                     target={info.label === 'Location' ? '_blank' : undefined}
                     rel={info.label === 'Location' ? 'noopener noreferrer' : undefined}
-                    className="block p-6 rounded-2xl transition-all duration-300"
+                    className="block p-4 sm:p-6 rounded-2xl transition-all duration-300"
                     style={{ 
                       backgroundColor: 'var(--contact-card-bg)',
                       border: '2px solid var(--contact-card-border)',
@@ -250,17 +250,17 @@ export default function Contact(){
                       e.currentTarget.style.borderColor = 'var(--contact-card-border)'
                     }}
                   >
-                    <div className="flex items-center space-x-5">
+                    <div className="flex items-center space-x-4 sm:space-x-5">
                       {/* Icon Container */}
                       <div 
-                        className="flex-shrink-0 w-16 h-16 rounded-xl flex items-center justify-center"
+                        className="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 rounded-xl flex items-center justify-center"
                         style={{ 
                           backgroundColor: 'var(--contact-icon-bg)',
                           boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
                         }}
                       >
                         <info.icon 
-                          className="text-2xl" 
+                          className="text-lg sm:text-2xl" 
                           style={{ color: 'var(--contact-icon-color)' }} 
                         />
                       </div>
@@ -268,13 +268,13 @@ export default function Contact(){
                       {/* Content */}
                       <div className="flex-1">
                         <p 
-                          className="text-sm font-semibold uppercase tracking-wider mb-1" 
+                          className="text-xs sm:text-sm font-semibold uppercase tracking-wider mb-1" 
                           style={{ color: 'var(--contact-label-color)' }}
                         >
                           {info.label}
                         </p>
                         <p 
-                          className="text-lg font-bold" 
+                          className="text-base sm:text-lg font-bold" 
                           style={{ color: 'var(--contact-heading)' }}
                         >
                           {info.value}

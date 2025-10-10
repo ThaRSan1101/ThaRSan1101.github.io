@@ -188,21 +188,21 @@ export default function Hero() {
         <div className="absolute top-1/2 right-1/3 w-1 h-1 rounded-full" style={{backgroundColor: 'var(--text-primary, #ffffff)'}}></div>
       </div>
       
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-screen py-16 sm:py-20">
           
            {/* Left Content */}
-           <div className="space-y-8">
+           <div className="space-y-6 sm:space-y-8 text-center lg:text-left order-2 lg:order-1">
              
              {/* Main Greeting */}
-             <div className="space-y-6">
-               <h1 className="text-5xl lg:text-6xl xl:text-7xl font-black" style={{color: 'var(--text-primary, #fafafa)', fontWeight: 'bold'}}>
+             <div className="space-y-4 sm:space-y-6">
+               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight" style={{color: 'var(--text-primary, #fafafa)', fontWeight: 'bold'}}>
                  Hi, I'm Tharsan
                </h1>
                
                {/* Rotating Titles */}
-               <div className="text-2xl lg:text-3xl font-bold flex items-center gap-2">
+               <div className="text-xl sm:text-2xl lg:text-3xl font-bold flex items-center justify-center lg:justify-start gap-2">
                  <span style={{color: 'var(--text-muted, #666666)', fontWeight: 'bold'}}>&lt;</span>
                  <span 
                    className="rotating-title min-w-fit"
@@ -219,14 +219,14 @@ export default function Hero() {
              </div>
              
              {/* Description */}
-             <p className="text-xl leading-relaxed max-w-lg font-bold" style={{color: 'var(--text-secondary, #cccccc)'}}>
+             <p className="text-lg sm:text-xl leading-relaxed max-w-lg mx-auto lg:mx-0 font-bold" style={{color: 'var(--text-secondary, #cccccc)'}}>
                Crafting modern web apps & digital solutions
                <br />
                that turn ideas into reality.
              </p>
              
              {/* CTA Button */}
-             <div>
+             <div className="pt-4">
                <button 
                  onClick={() => {
                    const element = document.getElementById('contact')
@@ -237,16 +237,16 @@ export default function Hero() {
                      })
                    }
                  }}
-                 className="inline-flex items-center gap-3 px-8 py-4 border-2 font-bold rounded-full hero-cta-button"
+                 className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 border-2 font-bold rounded-full hero-cta-button transition-all duration-300 hover:scale-105"
                >
-                 <span>Let's Connect</span>
-                 <FaArrowRight className="text-lg" />
+                 <span className="text-sm sm:text-base">Let's Connect</span>
+                 <FaArrowRight className="text-base sm:text-lg" />
                </button>
              </div>
            </div>
           
           {/* Right Content - Lunar 3D Profile Model */}
-          <div className="relative flex justify-center lg:justify-end">
+          <div className="relative flex justify-center order-1 lg:order-2">
             {/* Lunar Night Scene Container */}
             <div className="relative perspective-1000">
               
@@ -325,7 +325,7 @@ export default function Hero() {
               
               {/* 3D Lunar Profile Container */}
               <div 
-                className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden cursor-pointer lunar-model-container"
+                className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden cursor-pointer lunar-model-container"
                 style={{
                   transformStyle: 'preserve-3d',
                   transition: 'all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1)'
