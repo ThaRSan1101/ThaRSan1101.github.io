@@ -88,21 +88,21 @@ export default function Topbar() {
     applyTheme(isDarkMode)
   }, [])
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
-      <div className="flex items-center">
+    <div className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-3 sm:py-4">
+      <div className="flex items-center justify-between max-w-7xl mx-auto">
         
-        {/* Logo/Name - Moved Right */}
-        <div style={{ marginLeft: '165px' }}>
+        {/* Logo/Name - Left side on mobile, responsive positioning */}
+        <div className="flex-shrink-0">
           <button 
             onClick={() => smoothScrollTo('home')}
-            className="text-3xl lg:text-4xl font-bold flex items-center gap-2 cursor-pointer transition-all duration-300 hover:opacity-80"
+            className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold flex items-center gap-1 sm:gap-2 cursor-pointer transition-all duration-300 hover:opacity-80"
             style={{color: 'var(--text-primary, #fafafa)', background: 'none', border: 'none', padding: '0'}}
           >
             <span style={{color: 'var(--text-primary, #fafafa)'}}>tharsan</span>
             <span style={{color: 'var(--text-muted, #666666)'}}>.</span>
             <span style={{color: 'var(--text-primary, #fafafa)'}}>Portfolio!</span>
             <span 
-              className="text-2xl transition-all duration-500 cursor-pointer hover:animate-bounce emoji-element"
+              className="text-lg sm:text-xl lg:text-2xl transition-all duration-500 cursor-pointer hover:animate-bounce emoji-element"
               style={{
                 filter: 'drop-shadow(0 0 5px rgba(102, 102, 102, 0.3))',
                 transform: 'scale(1)',
@@ -124,8 +124,8 @@ export default function Topbar() {
           </button>
         </div>
 
-        {/* Social Links - Center Right */}
-        <div className="flex gap-2 items-center ml-auto mr-72">
+        {/* Social Links - Responsive layout */}
+        <div className="hidden sm:flex gap-2 items-center">
           <a 
             href="https://www.linkedin.com/in/tharisan0111/" 
             target="_blank" 
@@ -156,7 +156,7 @@ export default function Topbar() {
           </a>
           <a 
             href="mailto:tharsan2001@gmail.com"
-            className="px-3 py-2 backdrop-blur-sm rounded-lg transition-colors duration-200 text-sm font-medium topbar-link"
+            className="hidden md:block px-3 py-2 backdrop-blur-sm rounded-lg transition-colors duration-200 text-sm font-medium topbar-link"
             style={{
               backgroundColor: 'var(--secondary-dark, rgba(26, 26, 26, 0.8))', 
               border: '1px solid var(--secondary-light, #2a2a2a)', 
@@ -174,12 +174,56 @@ export default function Topbar() {
             arultharisan01@gmail.com
           </a>
         </div>
+
+        {/* Mobile Social Links - Icons only for mobile */}
+        <div className="flex sm:hidden gap-1 items-center">
+          <a 
+            href="https://www.linkedin.com/in/tharisan0111/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="p-2 backdrop-blur-sm rounded-lg transition-colors duration-200 topbar-link"
+            style={{
+              backgroundColor: 'var(--secondary-dark, rgba(26, 26, 26, 0.8))', 
+              border: '1px solid var(--secondary-light, #2a2a2a)'
+            }}
+            onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
+            onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
+          >
+            <FaLinkedin style={{color: 'var(--text-primary, #fafafa)'}} className="text-sm" />
+          </a>
+          <a 
+            href="https://github.com/ThaRSan1101" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="p-2 backdrop-blur-sm rounded-lg transition-colors duration-200 topbar-link"
+            style={{
+              backgroundColor: 'var(--secondary-dark, rgba(26, 26, 26, 0.8))', 
+              border: '1px solid var(--secondary-light, #2a2a2a)'
+            }}
+            onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
+            onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
+          >
+            <FaGithub style={{color: 'var(--text-primary, #fafafa)'}} className="text-sm" />
+          </a>
+          <a 
+            href="mailto:tharsan2001@gmail.com"
+            className="p-2 backdrop-blur-sm rounded-lg transition-colors duration-200 topbar-link"
+            style={{
+              backgroundColor: 'var(--secondary-dark, rgba(26, 26, 26, 0.8))', 
+              border: '1px solid var(--secondary-light, #2a2a2a)'
+            }}
+            onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
+            onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
+          >
+            <FaEnvelope style={{color: 'var(--text-primary, #fafafa)'}} className="text-sm" />
+          </a>
+        </div>
         
-        {/* Theme Toggle Button - Top Right Corner */}
-        <div className="absolute top-4 right-10">
+        {/* Theme Toggle Button - Right side, more spacing and smaller button */}
+        <div className="flex-shrink-0 ml-5 mr-3">
           <button
             onClick={toggleTheme}
-            className="p-2 backdrop-blur-sm rounded-lg transition-all duration-300 hover:scale-110 topbar-link"
+            className="p-1.5 sm:p-2 backdrop-blur-sm rounded-lg transition-all duration-300 hover:scale-110 topbar-link"
             style={{
               backgroundColor: 'var(--secondary-dark, rgba(26, 26, 26, 0.8))', 
               border: '1px solid var(--secondary-light, #2a2a2a)'
@@ -188,9 +232,9 @@ export default function Topbar() {
             onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
           >
             {isDarkMode ? (
-              <FaSun style={{color: 'var(--text-primary, #fafafa)'}} className="text-lg" />
+              <FaSun style={{color: 'var(--text-primary, #fafafa)'}} className="text-base sm:text-lg" />
             ) : (
-              <FaMoon style={{color: 'var(--text-primary, #fafafa)'}} className="text-lg" />
+              <FaMoon style={{color: 'var(--text-primary, #fafafa)'}} className="text-base sm:text-lg" />
             )}
           </button>
         </div>
