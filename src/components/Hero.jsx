@@ -190,10 +190,10 @@ export default function Hero() {
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-screen py-16 sm:py-20">
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-screen py-16 sm:py-20 xl:gap-32">
           
            {/* Left Content */}
-           <div className="space-y-6 sm:space-y-8 text-center lg:text-left order-2 lg:order-1">
+           <div className="space-y-6 sm:space-y-8 text-center lg:text-left order-2 lg:order-1 xl:-ml-16">
              
              {/* Main Greeting */}
              <div className="space-y-4 sm:space-y-6">
@@ -246,7 +246,7 @@ export default function Hero() {
            </div>
           
           {/* Right Content - Lunar 3D Profile Model */}
-          <div className="relative flex justify-center order-1 lg:order-2">
+          <div className="relative flex justify-center order-1 lg:order-2 xl:justify-end xl:pr-16">
             {/* Lunar Night Scene Container */}
             <div className="relative perspective-1000">
               
