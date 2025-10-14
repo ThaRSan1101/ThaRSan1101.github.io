@@ -110,3 +110,6 @@ The output will be in the `dist/` folder, ready for deployment.
 
 ## Contact
 For any questions or feedback, reach out via the contact form on the site or email: arultharisan01@gmail.com
+
+## Add CV 
+TharsanCV.pdf in public/assets/pdf/resume
