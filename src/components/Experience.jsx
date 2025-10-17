@@ -72,10 +72,6 @@ export default function Experience() {
         }}></div>
       </div>
       
-      {/* Minimal Tech Symbols */}
-      <div className="absolute inset-0 opacity-4">
-        <div className="absolute bottom-1/3 left-1/4 text-sm" style={{color: 'var(--experience-symbols)'}}>💼</div>
-      </div>
       
       {/* Career/Professional Icons */}
       <div className="absolute inset-0 opacity-5">

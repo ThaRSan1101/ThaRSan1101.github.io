@@ -74,10 +74,6 @@ export default function About() {
         }}></div>
       </div>
       {/* Minimal Tech Symbols */}
-      <div className="absolute inset-0 opacity-8">
-        <div className="absolute top-1/2 right-1/4 text-xl" style={{color: 'var(--about-code-text)'}}>�</div>
-        <div className="absolute bottom-1/3 left-1/4 text-2xl" style={{color: 'var(--about-code-text)'}}>�</div>
-      </div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12 lg:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4" style={{color: 'var(--about-heading)'}}>About Me</h2>
@@ -186,12 +182,6 @@ export default function About() {
                 View Projects
               </ScrollLink>
             </div>
-          </div>
-        </div>
-        {/* Profile Image/Avatar Floating Icon - moved outside main video */}
-        <div className="hidden lg:block relative">
-          <div className="absolute -top-4 -right-4 p-4 rounded-xl" style={{backgroundColor: 'var(--about-card-bg)', border: '1px solid var(--about-card-border)'}}>
-            <FaCode style={{color: 'var(--about-accent)'}} className="text-2xl" />
           </div>
         </div>
       </div>

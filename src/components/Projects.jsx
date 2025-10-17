@@ -152,11 +152,6 @@ export default function Projects() {
         }}></div>
       </div>
       
-      {/* Minimal Tech Symbols */}
-      <div className="absolute inset-0 opacity-4">
-        <div className="absolute top-1/2 right-1/4 text-sm" style={{color: 'var(--projects-symbols)'}}>⚡</div>
-        <div className="absolute bottom-1/3 left-1/4 text-sm" style={{color: 'var(--projects-symbols)'}}>🔧</div>
-      </div>
       
       {/* Subtle Grid Pattern */}
       <div className="absolute inset-0 opacity-5">

@@ -254,11 +254,6 @@ export default function Contact(){
         }}></div>
       </div>
       
-      {/* Minimal Tech Symbols */}
-      <div className="absolute inset-0 opacity-4">
-        <div className="absolute top-1/2 right-1/4 text-2xl" style={{color: 'var(--contact-icons)'}}>📞</div>
-        <div className="absolute bottom-1/3 left-1/4 text-2xl" style={{color: 'var(--contact-icons)'}}>🌐</div>
-      </div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div

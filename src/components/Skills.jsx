@@ -149,13 +149,6 @@ export default function Skills() {
         }}></div>
       </div>
       
-      {/* Minimal Tech Symbols */}
-      <div className="absolute inset-0 opacity-8 hidden sm:block">
-        <div className="absolute top-20 left-20 text-xl sm:text-2xl" style={{color: 'var(--skills-symbols)'}}>⚛</div>
-        <div className="absolute bottom-20 right-20 text-xl sm:text-2xl" style={{color: 'var(--skills-symbols)'}}>🔧</div>
-        <div className="absolute top-1/2 right-1/4 text-xl sm:text-2xl" style={{color: 'var(--skills-symbols)'}}>🖥</div>
-        <div className="absolute bottom-1/3 left-1/4 text-xl sm:text-2xl" style={{color: 'var(--skills-symbols)'}}>⚡</div>
-      </div>
       
       <div className="container relative z-10 px-4 sm:px-6 lg:px-8">
         <motion.div

@@ -97,11 +97,6 @@ export default function Services(){
         }}></div>
       </div>
       
-      {/* Minimal Tech Symbols */}
-      <div className="absolute inset-0 opacity-4 hidden sm:block">
-        <div className="absolute top-1/2 right-1/4 text-sm" style={{color: 'var(--services-symbols)'}}>🌐</div>
-        <div className="absolute bottom-1/3 left-1/4 text-sm" style={{color: 'var(--services-symbols)'}}>📱</div>
-      </div>
       
       <div className="container relative z-10 px-4 sm:px-6 lg:px-8">
         <motion.div
