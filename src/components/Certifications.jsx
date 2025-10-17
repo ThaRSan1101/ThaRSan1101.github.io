@@ -473,13 +473,10 @@ export default function Certifications() {
       
       {/* Minimal Tech Symbols */}
       <div className="absolute inset-0 opacity-3">
-        <div className="absolute top-20 left-20 text-sm" style={{color: 'var(--cert-symbols-color)'}}>🏆</div>
-        <div className="absolute bottom-20 right-20 text-sm" style={{color: 'var(--cert-symbols-color)'}}>📜</div>
       </div>
       
       {/* Achievement Medal Icons */}
       <div className="absolute inset-0 opacity-4">
-        <div className="absolute top-32 right-20 text-sm" style={{color: 'var(--cert-symbols-color)'}}>🎓</div>
       </div>
       
       {/* Achievement Badge Patterns */}

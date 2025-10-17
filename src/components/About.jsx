@@ -75,8 +75,6 @@ export default function About() {
       </div>
       {/* Minimal Tech Symbols */}
       <div className="absolute inset-0 opacity-8">
-        <div className="absolute top-20 left-20 text-2xl" style={{color: 'var(--about-code-text)'}}>👨‍💻</div>
-        <div className="absolute bottom-20 right-20 text-2xl" style={{color: 'var(--about-code-text)'}}>🎓</div>
         <div className="absolute top-1/2 right-1/4 text-xl" style={{color: 'var(--about-code-text)'}}>�</div>
         <div className="absolute bottom-1/3 left-1/4 text-2xl" style={{color: 'var(--about-code-text)'}}>�</div>
       </div>

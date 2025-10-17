@@ -219,8 +219,8 @@ export default function Topbar() {
           </a>
         </div>
         
-        {/* Theme Toggle Button - Right side, more spacing and smaller button */}
-        <div className="flex-shrink-0 ml-5 mr-3">
+        {/* Theme Toggle Button - Right side, adjusted positioning for mobile */}
+        <div className="flex-shrink-0 ml-2 sm:ml-5 mr-1 sm:mr-3">
           <button
             onClick={toggleTheme}
             className="p-1.5 sm:p-2 backdrop-blur-sm rounded-lg transition-all duration-300 hover:scale-110 topbar-link"
@@ -232,9 +232,9 @@ export default function Topbar() {
             onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
           >
             {isDarkMode ? (
-              <FaSun style={{color: 'var(--text-primary, #fafafa)'}} className="text-base sm:text-lg" />
+              <FaSun style={{color: 'var(--text-primary, #fafafa)'}} className="text-sm sm:text-base lg:text-lg" />
             ) : (
-              <FaMoon style={{color: 'var(--text-primary, #fafafa)'}} className="text-base sm:text-lg" />
+              <FaMoon style={{color: 'var(--text-primary, #fafafa)'}} className="text-sm sm:text-base lg:text-lg" />
             )}
           </button>
         </div>

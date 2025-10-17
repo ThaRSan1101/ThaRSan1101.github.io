@@ -74,14 +74,12 @@ export default function Experience() {
       
       {/* Minimal Tech Symbols */}
       <div className="absolute inset-0 opacity-4">
-        <div className="absolute bottom-20 right-20 text-sm" style={{color: 'var(--experience-symbols)'}}>📈</div>
         <div className="absolute bottom-1/3 left-1/4 text-sm" style={{color: 'var(--experience-symbols)'}}>💼</div>
       </div>
       
       {/* Career/Professional Icons */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 left-20 text-base sm:text-lg hidden sm:block" style={{color: 'var(--experience-icons)'}}>🏢</div>
-        <div className="absolute bottom-32 left-32 text-lg sm:text-xl hidden sm:block" style={{color: 'var(--experience-icons)'}}>📈</div>
         <div className="absolute bottom-20 right-20 text-base sm:text-lg hidden sm:block" style={{color: 'var(--experience-icons)'}}>🎯</div>
       </div>
       

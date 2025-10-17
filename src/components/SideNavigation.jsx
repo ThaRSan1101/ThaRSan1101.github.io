@@ -15,8 +15,8 @@ export default function SideNavigation() {
   return (
     <>
       {/* Mobile Emoji Navigation - Bottom */}
-      <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 md:hidden z-50">
-        <div className="flex gap-2 p-3 backdrop-blur-sm rounded-2xl" 
+      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 md:hidden z-50">
+        <div className="flex gap-1 p-2 backdrop-blur-sm rounded-xl" 
           style={{
             backgroundColor: 'var(--primary-dark, rgba(0, 0, 0, 0.6))', 
             border: '1px solid var(--secondary-light, #2a2a2a)'
@@ -24,7 +24,7 @@ export default function SideNavigation() {
         >
           <button 
             onClick={() => smoothScrollTo('home')}
-            className="p-2 rounded-lg transition-all duration-300 sidebar-button"
+            className="p-1.5 rounded-lg transition-all duration-300 sidebar-button"
             style={{
               backgroundColor: 'var(--secondary-dark, rgba(26, 26, 26, 0.8))', 
               border: '1px solid var(--secondary-light, #2a2a2a)'
@@ -33,7 +33,7 @@ export default function SideNavigation() {
             onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
             title="Home"
           >
-            <span className="text-lg emoji-element" style={{fontSize: '16px'}}>🏠</span>
+            <span className="emoji-element" style={{fontSize: '14px'}}>🏠</span>
           </button>
           <button 
             onClick={() => smoothScrollTo('about')}
