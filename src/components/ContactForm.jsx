@@ -3,9 +3,37 @@ import { motion } from 'framer-motion'
 import { FaEnvelope, FaGithub, FaLinkedin, FaDownload, FaMapMarkerAlt, FaPhone, FaWhatsapp, FaPaperPlane } from 'react-icons/fa'
 import BackgroundElements from './BackgroundElements'
 
+// Input validation and sanitization utilities
+const sanitizeInput = (input) => {
+  if (typeof input !== 'string') return ''
+  return input.trim().replace(/[<>"']/g, '')
+}
+
+const validateEmail = (email) => {
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+  return emailRegex.test(email)
+}
+
+const validateName = (name) => {
+  const nameRegex = /^[a-zA-Z\s]{2,50}$/
+  return nameRegex.test(name.trim())
+}
+
+const validateMessage = (message) => {
+  const trimmed = message.trim()
+  return trimmed.length >= 10 && trimmed.length <= 1000
+}
+
 export default function Contact(){
   const [status, setStatus] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [errors, setErrors] = useState({})
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  })
 
   useEffect(() => {
     const applyTheme = () => {
@@ -73,39 +101,88 @@ export default function Contact(){
     }
   }, [])
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target
+    const sanitizedValue = sanitizeInput(value)
+    
+    setFormData(prev => ({
+      ...prev,
+      [name]: sanitizedValue
+    }))
+    
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }))
+    }
+  }
+
+  const validateForm = () => {
+    const newErrors = {}
+    
+    if (!validateName(formData.name)) {
+      newErrors.name = 'Name must be 2-50 characters and contain only letters and spaces'
+    }
+    
+    if (!validateEmail(formData.email)) {
+      newErrors.email = 'Please enter a valid email address'
+    }
+    
+    if (!formData.subject.trim()) {
+      newErrors.subject = 'Subject is required'
+    } else if (formData.subject.length > 100) {
+      newErrors.subject = 'Subject must be less than 100 characters'
+    }
+    
+    if (!validateMessage(formData.message)) {
+      newErrors.message = 'Message must be 10-1000 characters long'
+    }
+    
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
   function handleSubmit(e){
     e.preventDefault()
+    
+    if (!validateForm()) {
+      return
+    }
+    
     setIsLoading(true)
+    setStatus('')
     
-    const form = e.target
-    const formData = new FormData(form)
+    // Sanitize all inputs
+    const sanitizedData = {
+      name: sanitizeInput(formData.name),
+      email: sanitizeInput(formData.email),
+      subject: sanitizeInput(formData.subject),
+      message: sanitizeInput(formData.message)
+    }
     
-    const name = formData.get('name')
-    const email = formData.get('email')
-    const subject = formData.get('subject')
-    const message = formData.get('message')
-    
-    // Create mailto URL with form data
-    const mailtoURL = `mailto:arultharisan01@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+    // Create mailto URL with sanitized form data
+    const mailtoURL = `mailto:arultharisan01@gmail.com?subject=${encodeURIComponent(sanitizedData.subject)}&body=${encodeURIComponent(
+      `Name: ${sanitizedData.name}\nEmail: ${sanitizedData.email}\n\nMessage:\n${sanitizedData.message}`
     )}`
     
     // Open email client using window.open (safer method)
     try {
       window.open(mailtoURL, '_self')
+      
+      // Show success message and reset form
+      setTimeout(() => {
+        setStatus('SUCCESS')
+        setFormData({ name: '', email: '', subject: '', message: '' })
+        setIsLoading(false)
+      }, 500)
+      
     } catch (error) {
-      console.error('Could not open email client:', error)
+      // Handle error without exposing details to console
       setStatus('ERROR')
       setIsLoading(false)
-      return
     }
-    
-    // Show success message and reset form
-    setTimeout(() => {
-      setStatus('SUCCESS')
-      form.reset()
-      setIsLoading(false)
-    }, 500)
   }
 
   const contactInfo = [
@@ -177,13 +254,6 @@ export default function Contact(){
         }}></div>
       </div>
       
-      {/* Minimal Tech Symbols */}
-      <div className="absolute inset-0 opacity-4">
-        <div className="absolute top-20 left-20 text-2xl" style={{color: 'var(--contact-icons)'}}>💬</div>
-        <div className="absolute bottom-20 right-20 text-2xl" style={{color: 'var(--contact-icons)'}}>📧</div>
-        <div className="absolute top-1/2 right-1/4 text-2xl" style={{color: 'var(--contact-icons)'}}>📞</div>
-        <div className="absolute bottom-1/3 left-1/4 text-2xl" style={{color: 'var(--contact-icons)'}}>🌐</div>
-      </div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -310,14 +380,23 @@ export default function Contact(){
                       name="name" 
                       type="text"
                       required 
+                      value={formData.name}
+                      onChange={handleInputChange}
                       className="w-full px-4 py-4 rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                       style={{ 
                         backgroundColor: 'var(--contact-input-bg)',
-                        border: '1px solid var(--contact-input-border)',
+                        border: errors.name ? '1px solid #ef4444' : '1px solid var(--contact-input-border)',
                         color: 'var(--contact-input-text)'
                       }}
                       placeholder="Your full name"
+                      maxLength={50}
+                      aria-describedby={errors.name ? "name-error" : undefined}
                     />
+                    {errors.name && (
+                      <p id="name-error" className="text-sm text-red-500 mt-1" role="alert">
+                        {errors.name}
+                      </p>
+                    )}
                   </div>
                   <div>
                     <label className="block text-sm font-semibold mb-3" style={{ color: 'var(--contact-label-color)' }}>Email</label>
@@ -325,14 +404,23 @@ export default function Contact(){
                       name="email" 
                       type="email" 
                       required 
+                      value={formData.email}
+                      onChange={handleInputChange}
                       className="w-full px-4 py-4 rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                       style={{ 
                         backgroundColor: 'var(--contact-input-bg)',
-                        border: '1px solid var(--contact-input-border)',
+                        border: errors.email ? '1px solid #ef4444' : '1px solid var(--contact-input-border)',
                         color: 'var(--contact-input-text)'
                       }}
                       placeholder="your.email@example.com"
+                      maxLength={100}
+                      aria-describedby={errors.email ? "email-error" : undefined}
                     />
+                    {errors.email && (
+                      <p id="email-error" className="text-sm text-red-500 mt-1" role="alert">
+                        {errors.email}
+                      </p>
+                    )}
                   </div>
                 </div>
                 
@@ -342,14 +430,23 @@ export default function Contact(){
                     name="subject" 
                     type="text"
                     required 
+                    value={formData.subject}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-4 rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                     style={{ 
                       backgroundColor: 'var(--contact-input-bg)',
-                      border: '1px solid var(--contact-input-border)',
+                      border: errors.subject ? '1px solid #ef4444' : '1px solid var(--contact-input-border)',
                       color: 'var(--contact-input-text)'
                     }}
                     placeholder="What's this about?"
+                    maxLength={100}
+                    aria-describedby={errors.subject ? "subject-error" : undefined}
                   />
+                  {errors.subject && (
+                    <p id="subject-error" className="text-sm text-red-500 mt-1" role="alert">
+                      {errors.subject}
+                    </p>
+                  )}
                 </div>
                 
                 <div>
@@ -358,14 +455,26 @@ export default function Contact(){
                     name="message" 
                     required 
                     rows={6}
+                    value={formData.message}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-4 rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/50 resize-none"
                     style={{ 
                       backgroundColor: 'var(--contact-input-bg)',
-                      border: '1px solid var(--contact-input-border)',
+                      border: errors.message ? '1px solid #ef4444' : '1px solid var(--contact-input-border)',
                       color: 'var(--contact-input-text)'
                     }}
                     placeholder="Tell me about your project or just say hello!"
+                    maxLength={1000}
+                    aria-describedby={errors.message ? "message-error" : undefined}
                   />
+                  {errors.message && (
+                    <p id="message-error" className="text-sm text-red-500 mt-1" role="alert">
+                      {errors.message}
+                    </p>
+                  )}
+                  <p className="text-xs text-gray-500 mt-1">
+                    {formData.message.length}/1000 characters
+                  </p>
                 </div>
                 
                 <button 
