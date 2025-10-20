@@ -291,7 +291,7 @@ export default function Skills() {
             </h4>
             <div className="flex flex-wrap justify-center gap-2 sm:gap-3 px-4">
               {[
-                'Docker', 'AWS', 'Vercel', 'Netlify'
+                'Docker', 'AWS', 'Vercel'
               ].map((tech, index) => (
                 <motion.span
                   key={tech}
