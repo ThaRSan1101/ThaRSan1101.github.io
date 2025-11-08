@@ -36,34 +36,39 @@ Portfolio/
 │       └── video/
 │           └── my-video.mp4
 ├── src/
-│   ├── App.jsx
+│   ├── App.tsx
 │   ├── index.css
-│   ├── main.jsx
+│   ├── main.tsx
+│   ├── config/
+│   │   └── emailjs.ts
 │   └── components/
-│       ├── About.jsx
-│       ├── BackgroundElements.jsx
+│       ├── About.tsx
+│       ├── BackgroundElements.tsx
 │       ├── BackgroundElements.css
-│       ├── Certifications.jsx
-│       ├── ContactForm.jsx
-│       ├── Experience.jsx
-│       ├── Footer.jsx
-│       ├── Hero.jsx
-│       ├── Projects.jsx
-│       ├── Services.jsx
-│       ├── SideNavigation.jsx
-│       ├── Skills.jsx
-│       └── Topbar.jsx
+│       ├── Certifications.tsx
+│       ├── ContactForm.tsx
+│       ├── Experience.tsx
+│       ├── Footer.tsx
+│       ├── Hero.tsx
+│       ├── Projects.tsx
+│       ├── Services.tsx
+│       ├── SideNavigation.tsx
+│       ├── Skills.tsx
+│       └── Topbar.tsx
 ```
 
 ## Technologies Used
-- **Languages:** JavaScript (ES6+), JSX, CSS
-- **Framework:** React (functional components, hooks)
+- **Languages:** TypeScript, JavaScript (ES6+), TSX/JSX, CSS
+- **Framework:** React 18 (functional components, hooks)
 - **Styling:** Tailwind CSS (utility-first, responsive)
 - **Animation:** Framer Motion (for smooth transitions)
 - **Build Tool:** Vite (fast development/build)
+- **Email Service:** EmailJS (contact form integration)
 - **Deployment:** Vercel (production hosting)
 
 ## Configuration Files
+- `tsconfig.json`: TypeScript compiler configuration
+- `tsconfig.node.json`: TypeScript config for Vite/Node
 - `tailwind.config.js`: Tailwind CSS custom configuration
 - `postcss.config.cjs`: PostCSS setup for Tailwind
 - `vite.config.mjs`: Vite build configuration
@@ -116,8 +121,8 @@ The contact form uses EmailJS for direct email sending. To set it up:
 2. **Connect Gmail Service:** Add Gmail service and note your Service ID
 3. **Create Email Template:** Use variables: `{{from_name}}`, `{{from_email}}`, `{{subject}}`, `{{message}}`
 4. **Get Public Key:** From Account settings
-5. **Update Configuration:** Edit `src/config/emailjs.js`:
-   ```javascript
+5. **Update Configuration:** Edit `src/config/emailjs.ts`:
+   ```typescript
    export const EMAIL_CONFIG = {
      SERVICE_ID: 'your_service_id',
      TEMPLATE_ID: 'your_template_id', 

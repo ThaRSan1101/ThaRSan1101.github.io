@@ -499,7 +499,7 @@ export default function Certifications() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          {...({ className: "text-center mb-16" } as any)}
         >
           <h2 className="text-4xl lg:text-5xl font-black mb-4" style={{ color: 'var(--cert-title-color)' }}>Certifications</h2>
           <p className="text-lg max-w-2xl mx-auto" style={{ color: 'var(--cert-description-color)' }}>
@@ -558,3 +558,4 @@ export default function Certifications() {
     </section>
   )
 }
+

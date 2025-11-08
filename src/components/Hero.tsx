@@ -197,7 +197,7 @@ export default function Hero() {
              
              {/* Main Greeting */}
              <div className="space-y-4 sm:space-y-6">
-               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight metallic-name">
+               <h1 className="text-4xl sm:text-5xl lg:text-5xl xl:text-7xl font-black leading-tight metallic-name whitespace-nowrap">
                  Hi, I'm Tharsan
                </h1>
                
@@ -374,8 +374,9 @@ export default function Hero() {
                     transition: 'filter 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
                   }}
                   onError={(e) => {
-                    e.target.style.display = 'none';
-                    e.target.nextElementSibling.style.display = 'flex';
+                    (e.currentTarget as HTMLImageElement).style.display = 'none';
+                    const nextElement = (e.currentTarget as HTMLImageElement).nextElementSibling as HTMLElement;
+                    if (nextElement) nextElement.style.display = 'flex';
                   }}
                 />
                 

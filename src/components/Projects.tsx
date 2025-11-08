@@ -22,7 +22,7 @@ const projects = [
     ],
     repo: 'https://github.com/ThaRSan1101/home-management-system-Backend',
     frontendRepo: 'https://github.com/ThaRSan1101/home-management-system-Frontend',
-    demo: '#',
+    demo: 'https://www.linkedin.com/posts/tharisan0111_fullstackdevelopment-reactjs-php-ugcPost-7385535315865886720-Fa6Y?utm_source=social_share_send&utm_medium=member_desktop_web',
     image: '/assets/images/projects/home-management-system.png',
     status: 'Completed',
     category: 'Full Stack Web App'
@@ -189,7 +189,7 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-12 sm:mb-16"
+          {...({ className: "text-center mb-12 sm:mb-16" } as any)}
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4" style={{color: 'var(--projects-heading)'}}>
             A Showcase of My
@@ -209,7 +209,7 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="group cursor-pointer"
+              {...({ className: "group cursor-pointer" } as any)}
               onClick={() => setSelectedProject(project)}
             >
               <div className="p-4 sm:p-6 rounded-2xl transition-all duration-300 h-full" style={{backgroundColor: 'var(--projects-card-bg)', border: '1px solid var(--projects-card-border)'}}
@@ -233,8 +233,9 @@ export default function Projects() {
                     alt={project.title}
                     className="w-full h-full object-cover"
                     onError={(e) => {
-                      e.target.style.display = 'none';
-                      e.target.nextSibling.style.display = 'flex';
+                      e.currentTarget.style.display = 'none';
+                      const nextElement = e.currentTarget.nextSibling as HTMLElement;
+                      if (nextElement) nextElement.style.display = 'flex';
                     }}
                   />
                   {/* Fallback icon (hidden by default) */}
@@ -317,8 +318,8 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 transition-colors"
                       style={{color: 'var(--projects-text)'}}
-                      onMouseEnter={(e) => e.target.style.color = 'var(--projects-heading)'}
-                      onMouseLeave={(e) => e.target.style.color = 'var(--projects-text)'}
+                      onMouseEnter={(e) => e.currentTarget.style.color = 'var(--projects-heading)'}
+                      onMouseLeave={(e) => e.currentTarget.style.color = 'var(--projects-text)'}
                       onClick={(e) => e.stopPropagation()}
                     >
                       <FaGithub className="text-sm" />
@@ -333,8 +334,8 @@ export default function Projects() {
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 transition-colors"
                         style={{color: 'var(--projects-text)'}}
-                        onMouseEnter={(e) => e.target.style.color = 'var(--projects-heading)'}
-                        onMouseLeave={(e) => e.target.style.color = 'var(--projects-text)'}
+                        onMouseEnter={(e) => e.currentTarget.style.color = 'var(--projects-heading)'}
+                        onMouseLeave={(e) => e.currentTarget.style.color = 'var(--projects-text)'}
                         onClick={(e) => e.stopPropagation()}
                       >
                         <FaGithub className="text-sm" />
@@ -347,8 +348,8 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 transition-colors"
                       style={{color: 'var(--projects-text)'}}
-                      onMouseEnter={(e) => e.target.style.color = 'var(--projects-heading)'}
-                      onMouseLeave={(e) => e.target.style.color = 'var(--projects-text)'}
+                      onMouseEnter={(e) => e.currentTarget.style.color = 'var(--projects-heading)'}
+                      onMouseLeave={(e) => e.currentTarget.style.color = 'var(--projects-text)'}
                       onClick={(e) => e.stopPropagation()}
                     >
                       <FaExternalLinkAlt className="text-sm" />
@@ -359,8 +360,8 @@ export default function Projects() {
                   {/* Details Button */}
                   <div className="pt-2">
                     <button className="transition-colors text-sm font-medium" style={{color: 'var(--projects-subheading)'}}
-                            onMouseEnter={(e) => e.target.style.color = 'var(--projects-heading)'}
-                            onMouseLeave={(e) => e.target.style.color = 'var(--projects-subheading)'}>
+                            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--projects-heading)'}
+                            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--projects-subheading)'}>
                       View Details →
                     </button>
                   </div>
@@ -376,7 +377,7 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="text-center mt-12"
+          {...({ className: "text-center mt-12" } as any)}
         >
           {projects.length > initialProjectsCount ? (
             !showAllProjects ? (
@@ -384,12 +385,12 @@ export default function Projects() {
                 className="px-8 py-3 border-2 rounded-lg transition-all duration-300"
                 style={{borderColor: 'var(--projects-btn-border)', color: 'var(--projects-btn-text)', backgroundColor: 'var(--projects-btn-bg)'}}
                 onMouseEnter={(e) => {
-                  e.target.style.backgroundColor = 'var(--projects-btn-hover-bg)'
-                  e.target.style.color = 'var(--projects-btn-hover-text)'
+                  e.currentTarget.style.backgroundColor = 'var(--projects-btn-hover-bg)'
+                  e.currentTarget.style.color = 'var(--projects-btn-hover-text)'
                 }}
                 onMouseLeave={(e) => {
-                  e.target.style.backgroundColor = 'var(--projects-btn-bg)'
-                  e.target.style.color = 'var(--projects-btn-text)'
+                  e.currentTarget.style.backgroundColor = 'var(--projects-btn-bg)'
+                  e.currentTarget.style.color = 'var(--projects-btn-text)'
                 }}
                 onClick={() => setShowAllProjects(true)}
               >
@@ -404,12 +405,12 @@ export default function Projects() {
                   className="px-8 py-3 border-2 rounded-lg transition-all duration-300"
                   style={{borderColor: 'var(--projects-btn-border)', color: 'var(--projects-btn-text)', backgroundColor: 'var(--projects-btn-bg)'}}
                   onMouseEnter={(e) => {
-                    e.target.style.backgroundColor = 'var(--projects-btn-hover-bg)'
-                    e.target.style.color = 'var(--projects-btn-hover-text)'
+                    e.currentTarget.style.backgroundColor = 'var(--projects-btn-hover-bg)'
+                    e.currentTarget.style.color = 'var(--projects-btn-hover-text)'
                   }}
                   onMouseLeave={(e) => {
-                    e.target.style.backgroundColor = 'var(--projects-btn-bg)'
-                    e.target.style.color = 'var(--projects-btn-text)'
+                    e.currentTarget.style.backgroundColor = 'var(--projects-btn-bg)'
+                    e.currentTarget.style.color = 'var(--projects-btn-text)'
                   }}
                   onClick={() => {
                     setShowAllProjects(false)
@@ -443,7 +444,7 @@ export default function Projects() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            {...({ className: "fixed inset-0 backdrop-blur-sm z-50 flex items-center justify-center p-4" } as any)}
             style={{backgroundColor: 'rgba(0, 0, 0, 0.8)'}}
             onClick={() => setSelectedProject(null)}
           >
@@ -451,7 +452,7 @@ export default function Projects() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="max-w-2xl w-full max-h-[80vh] overflow-y-auto rounded-2xl p-8 glass"
+              {...({ className: "max-w-2xl w-full max-h-[80vh] overflow-y-auto rounded-2xl p-8 glass" } as any)}
               style={{
                 backgroundColor: 'var(--primary-dark)',
                 border: '1px solid var(--border-dark)',
@@ -466,8 +467,8 @@ export default function Projects() {
                     onClick={() => setSelectedProject(null)}
                     className="text-2xl font-bold leading-none transition-colors"
                     style={{color: 'var(--text-muted)'}}
-                    onMouseEnter={(e) => e.target.style.color = 'var(--text-primary)'}
-                    onMouseLeave={(e) => e.target.style.color = 'var(--text-muted)'}
+                    onMouseEnter={(e) => e.currentTarget.style.color = 'var(--text-primary)'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
                   >
                     ×
                   </button>
@@ -516,10 +517,10 @@ export default function Projects() {
                       color: 'var(--primary-dark)'
                     }}
                     onMouseEnter={(e) => {
-                      e.target.style.backgroundColor = 'var(--text-secondary)'
+                      e.currentTarget.style.backgroundColor = 'var(--text-secondary)'
                     }}
                     onMouseLeave={(e) => {
-                      e.target.style.backgroundColor = 'var(--text-primary)'
+                      e.currentTarget.style.backgroundColor = 'var(--text-primary)'
                     }}
                   >
                     <FaGithub />
@@ -536,10 +537,10 @@ export default function Projects() {
                         color: 'var(--primary-dark)'
                       }}
                       onMouseEnter={(e) => {
-                        e.target.style.backgroundColor = 'var(--text-secondary)'
+                        e.currentTarget.style.backgroundColor = 'var(--text-secondary)'
                       }}
                       onMouseLeave={(e) => {
-                        e.target.style.backgroundColor = 'var(--text-primary)'
+                        e.currentTarget.style.backgroundColor = 'var(--text-primary)'
                       }}
                     >
                       <FaGithub />
@@ -557,12 +558,12 @@ export default function Projects() {
                       backgroundColor: 'transparent'
                     }}
                     onMouseEnter={(e) => {
-                      e.target.style.backgroundColor = 'var(--text-primary)'
-                      e.target.style.color = 'var(--primary-dark)'
+                      e.currentTarget.style.backgroundColor = 'var(--text-primary)'
+                      e.currentTarget.style.color = 'var(--primary-dark)'
                     }}
                     onMouseLeave={(e) => {
-                      e.target.style.backgroundColor = 'transparent'
-                      e.target.style.color = 'var(--text-primary)'
+                      e.currentTarget.style.backgroundColor = 'transparent'
+                      e.currentTarget.style.color = 'var(--text-primary)'
                     }}
                   >
                     <FaExternalLinkAlt />
@@ -577,3 +578,4 @@ export default function Projects() {
     </section>
   )
 }
+

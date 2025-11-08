@@ -133,8 +133,8 @@ export default function About() {
                   key={item.title}
                   className="flex items-center gap-4 p-4 rounded-xl transition-colors duration-200 group"
                   style={{backgroundColor: 'var(--about-card-bg)', border: '1px solid var(--about-card-border)'}}
-                  onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--about-card-hover-bg)'}
-                  onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--about-card-bg)'}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--about-card-hover-bg)'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--about-card-bg)'}
                 >
                   <div className="p-3 rounded-lg" style={{backgroundColor: 'var(--about-icon-bg)'}}>
                     <item.icon style={{color: 'var(--about-accent)'}} className="text-xl" />
@@ -153,12 +153,12 @@ export default function About() {
                 className="inline-flex items-center gap-3 px-6 py-3 font-semibold rounded-lg transition-colors duration-200"
                 style={{backgroundColor: 'var(--about-btn-bg)', color: 'var(--about-btn-text)', border: '1px solid var(--about-btn-border)'}}
                 onMouseEnter={(e) => {
-                  e.target.style.backgroundColor = 'var(--about-btn-hover-bg)'
-                  e.target.style.color = 'var(--about-btn-hover-text)'
+                  e.currentTarget.style.backgroundColor = 'var(--about-btn-hover-bg)'
+                  e.currentTarget.style.color = 'var(--about-btn-hover-text)'
                 }}
                 onMouseLeave={(e) => {
-                  e.target.style.backgroundColor = 'var(--about-btn-bg)'
-                  e.target.style.color = 'var(--about-btn-text)'
+                  e.currentTarget.style.backgroundColor = 'var(--about-btn-bg)'
+                  e.currentTarget.style.color = 'var(--about-btn-text)'
                 }}
               >
                 <FaDownload />
@@ -171,12 +171,12 @@ export default function About() {
                 className="inline-flex items-center gap-3 px-6 py-3 font-semibold rounded-lg transition-colors duration-200 cursor-pointer"
                 style={{backgroundColor: 'transparent', color: 'var(--about-accent)', border: '2px solid var(--about-btn-secondary-border)'}}
                 onMouseEnter={(e) => {
-                  e.target.style.borderColor = 'var(--about-btn-secondary-hover-border)'
-                  e.target.style.backgroundColor = 'var(--about-btn-secondary-hover-bg)'
+                  e.currentTarget.style.borderColor = 'var(--about-btn-secondary-hover-border)'
+                  e.currentTarget.style.backgroundColor = 'var(--about-btn-secondary-hover-bg)'
                 }}
                 onMouseLeave={(e) => {
-                  e.target.style.borderColor = 'var(--about-btn-secondary-border)'
-                  e.target.style.backgroundColor = 'transparent'
+                  e.currentTarget.style.borderColor = 'var(--about-btn-secondary-border)'
+                  e.currentTarget.style.backgroundColor = 'transparent'
                 }}
               >
                 View Projects

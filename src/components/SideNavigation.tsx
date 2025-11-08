@@ -29,8 +29,8 @@ export default function SideNavigation() {
               backgroundColor: 'var(--secondary-dark, rgba(26, 26, 26, 0.8))', 
               border: '1px solid var(--secondary-light, #2a2a2a)'
             }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
             title="Home"
           >
             <span className="emoji-element" style={{fontSize: '14px'}}>🏠</span>
@@ -42,8 +42,8 @@ export default function SideNavigation() {
               backgroundColor: 'var(--secondary-dark, rgba(26, 26, 26, 0.8))', 
               border: '1px solid var(--secondary-light, #2a2a2a)'
             }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
             title="About"
           >
             <span className="text-lg emoji-element" style={{fontSize: '16px'}}>👨‍💻</span>
@@ -55,8 +55,8 @@ export default function SideNavigation() {
               backgroundColor: 'var(--secondary-dark, rgba(26, 26, 26, 0.8))', 
               border: '1px solid var(--secondary-light, #2a2a2a)'
             }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
             title="Skills"
           >
             <span className="text-lg emoji-element" style={{fontSize: '16px'}}>⚡</span>
@@ -68,8 +68,8 @@ export default function SideNavigation() {
               backgroundColor: 'var(--secondary-dark, rgba(26, 26, 26, 0.8))', 
               border: '1px solid var(--secondary-light, #2a2a2a)'
             }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
             title="Projects"
           >
             <span className="text-lg emoji-element" style={{fontSize: '16px'}}>🚀</span>
@@ -81,8 +81,8 @@ export default function SideNavigation() {
               backgroundColor: 'var(--secondary-dark, rgba(26, 26, 26, 0.8))', 
               border: '1px solid var(--secondary-light, #2a2a2a)'
             }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
             title="Services"
           >
             <span className="text-lg emoji-element" style={{fontSize: '16px'}}>🛠️</span>
@@ -94,8 +94,8 @@ export default function SideNavigation() {
               backgroundColor: 'var(--secondary-dark, rgba(26, 26, 26, 0.8))', 
               border: '1px solid var(--secondary-light, #2a2a2a)'
             }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
             title="Experience"
           >
             <span className="text-lg emoji-element" style={{fontSize: '16px'}}>💼</span>
@@ -107,8 +107,8 @@ export default function SideNavigation() {
               backgroundColor: 'var(--secondary-dark, rgba(26, 26, 26, 0.8))', 
               border: '1px solid var(--secondary-light, #2a2a2a)'
             }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
             title="Certifications"
           >
             <span className="text-lg emoji-element" style={{fontSize: '16px'}}>🏆</span>
@@ -120,8 +120,8 @@ export default function SideNavigation() {
               backgroundColor: 'var(--secondary-dark, rgba(26, 26, 26, 0.8))', 
               border: '1px solid var(--secondary-light, #2a2a2a)'
             }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
             title="Contact"
           >
             <span className="text-lg emoji-element" style={{fontSize: '16px'}}>📧</span>
@@ -138,8 +138,8 @@ export default function SideNavigation() {
             backgroundColor: 'var(--secondary-dark, rgba(26, 26, 26, 0.8))', 
             border: '1px solid var(--secondary-light, #2a2a2a)'
           }}
-          onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
-          onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
+          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
+          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
           title="Home"
         >
           <span className="text-lg emoji-element" style={{fontSize: '16px'}}>🏠</span>
@@ -159,8 +159,8 @@ export default function SideNavigation() {
             backgroundColor: 'var(--secondary-dark, rgba(26, 26, 26, 0.8))', 
             border: '1px solid var(--secondary-light, #2a2a2a)'
           }}
-          onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
-          onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
+          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
+          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
           title="About"
         >
           <span className="text-lg emoji-element" style={{fontSize: '16px'}}>👨‍💻</span>
@@ -180,8 +180,8 @@ export default function SideNavigation() {
             backgroundColor: 'var(--secondary-dark, rgba(26, 26, 26, 0.8))', 
             border: '1px solid var(--secondary-light, #2a2a2a)'
           }}
-          onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
-          onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
+          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
+          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
           title="Skills"
         >
           <span className="text-lg emoji-element" style={{fontSize: '16px'}}>⚡</span>
@@ -201,8 +201,8 @@ export default function SideNavigation() {
             backgroundColor: 'var(--secondary-dark, rgba(26, 26, 26, 0.8))', 
             border: '1px solid var(--secondary-light, #2a2a2a)'
           }}
-          onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
-          onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
+          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
+          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
           title="Projects"
         >
           <span className="text-lg emoji-element" style={{fontSize: '16px'}}>🚀</span>
@@ -222,8 +222,8 @@ export default function SideNavigation() {
             backgroundColor: 'var(--secondary-dark, rgba(26, 26, 26, 0.8))', 
             border: '1px solid var(--secondary-light, #2a2a2a)'
           }}
-          onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
-          onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
+          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
+          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
           title="Services"
         >
           <span className="text-lg emoji-element" style={{fontSize: '16px'}}>🛠️</span>
@@ -243,8 +243,8 @@ export default function SideNavigation() {
             backgroundColor: 'var(--secondary-dark, rgba(26, 26, 26, 0.8))', 
             border: '1px solid var(--secondary-light, #2a2a2a)'
           }}
-          onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
-          onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
+          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
+          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
           title="Experience"
         >
           <span className="text-lg emoji-element" style={{fontSize: '16px'}}>💼</span>
@@ -264,8 +264,8 @@ export default function SideNavigation() {
             backgroundColor: 'var(--secondary-dark, rgba(26, 26, 26, 0.8))', 
             border: '1px solid var(--secondary-light, #2a2a2a)'
           }}
-          onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
-          onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
+          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
+          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
           title="Certifications"
         >
           <span className="text-lg emoji-element" style={{fontSize: '16px'}}>🏆</span>
@@ -285,8 +285,8 @@ export default function SideNavigation() {
             backgroundColor: 'var(--secondary-dark, rgba(26, 26, 26, 0.8))', 
             border: '1px solid var(--secondary-light, #2a2a2a)'
           }}
-          onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
-          onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
+          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
+          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
           title="Contact"
         >
           <span className="text-lg emoji-element" style={{fontSize: '16px'}}>📧</span>

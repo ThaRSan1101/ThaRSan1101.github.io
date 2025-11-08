@@ -96,7 +96,7 @@ export default function Experience() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-12 sm:mb-16"
+          {...({ className: "text-center mb-12 sm:mb-16" } as any)}
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4" style={{color: 'var(--experience-heading)'}}>Experience</h2>
           <p className="text-base sm:text-lg max-w-2xl mx-auto px-4" style={{color: 'var(--experience-text)'}}>
@@ -111,7 +111,7 @@ export default function Experience() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center"
+            {...({ className: "text-center" } as any)}
           >
             <div className="p-8 rounded-2xl max-w-3xl mx-auto" 
                  style={{
@@ -142,3 +142,4 @@ export default function Experience() {
     </section>
   )
 }
+
