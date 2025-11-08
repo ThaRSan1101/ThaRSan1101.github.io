@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { FaEnvelope, FaGithub, FaLinkedin, FaDownload, FaMapMarkerAlt, FaPhone, FaWhatsapp, FaPaperPlane } from 'react-icons/fa'
 import BackgroundElements from './BackgroundElements'
+import emailjs from '@emailjs/browser'
+import { EMAIL_CONFIG } from '../config/emailjs'
+
+// Initialize EmailJS with public key
+emailjs.init(EMAIL_CONFIG.PUBLIC_KEY)
 
 // Input validation and sanitization utilities
 const sanitizeInput = (input) => {
@@ -162,27 +167,38 @@ export default function Contact(){
       message: sanitizeInput(formData.message)
     }
     
-    // Create mailto URL with sanitized form data
-    const mailtoURL = `mailto:arultharisan01@gmail.com?subject=${encodeURIComponent(sanitizedData.subject)}&body=${encodeURIComponent(
-      `Name: ${sanitizedData.name}\nEmail: ${sanitizedData.email}\n\nMessage:\n${sanitizedData.message}`
-    )}`
+    // Template parameters for EmailJS
+    const templateParams = {
+      from_name: sanitizedData.name,
+      from_email: sanitizedData.email,
+      subject: sanitizedData.subject,
+      message: sanitizedData.message,
+      to_email: EMAIL_CONFIG.TO_EMAIL
+    }
     
-    // Open email client using window.open (safer method)
-    try {
-      window.open(mailtoURL, '_self')
-      
-      // Show success message and reset form
-      setTimeout(() => {
+    // Send email using EmailJS
+    emailjs.send(EMAIL_CONFIG.SERVICE_ID, EMAIL_CONFIG.TEMPLATE_ID, templateParams)
+      .then((response) => {
         setStatus('SUCCESS')
         setFormData({ name: '', email: '', subject: '', message: '' })
         setIsLoading(false)
-      }, 500)
-      
-    } catch (error) {
-      // Handle error without exposing details to console
-      setStatus('ERROR')
-      setIsLoading(false)
-    }
+      })
+      .catch((error) => {
+        // If EmailJS fails, use mailto fallback
+        const mailtoURL = `mailto:arultharisan01@gmail.com?subject=${encodeURIComponent(sanitizedData.subject)}&body=${encodeURIComponent(
+          `Name: ${sanitizedData.name}\nEmail: ${sanitizedData.email}\n\nMessage:\n${sanitizedData.message}`
+        )}`
+        
+        try {
+          window.open(mailtoURL, '_self')
+          setStatus('MAILTO_SUCCESS')
+          setFormData({ name: '', email: '', subject: '', message: '' })
+          setIsLoading(false)
+        } catch (mailtoError) {
+          setStatus('ERROR')
+          setIsLoading(false)
+        }
+      })
   }
 
   const contactInfo = [
@@ -526,7 +542,22 @@ export default function Contact(){
                     color: '#22c55e'
                   }}
                 >
-                  ✅ Email client opened! Please send your message from there.
+                  ✅ Message sent successfully! I'll get back to you soon.
+                </motion.div>
+              )}
+              
+              {status === 'MAILTO_SUCCESS' && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-4 p-4 rounded-lg text-center"
+                  style={{
+                    backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                    border: '1px solid rgba(59, 130, 246, 0.3)',
+                    color: '#3b82f6'
+                  }}
+                >
+                  📧 Email client opened! Please send your message from there.
                 </motion.div>
               )}
               
@@ -541,7 +572,7 @@ export default function Contact(){
                     color: '#ef4444'
                   }}
                 >
-                  ⚠️ Could not open email client. Please try again or contact directly at arultharisan01@gmail.com
+                  ⚠️ Failed to send message. Please try again or contact me directly at arultharisan01@gmail.com
                 </motion.div>
               )}
             </div>

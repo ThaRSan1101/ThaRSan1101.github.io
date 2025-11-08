@@ -1061,6 +1061,27 @@ body:not(.light)::after {
   to { transform: translateX(-400px) translateY(-250px); }
 }
 
+/* Metallic Name Styling */
+.metallic-name {
+  background: linear-gradient(135deg, #C0C0C0 0%, #E8E8E8 25%, #FFFFFF 50%, #E8E8E8 75%, #C0C0C0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+  font-weight: black;
+  letter-spacing: 0.02em;
+}
+
+.light .metallic-name {
+  background: linear-gradient(135deg, #2a2a2a 0%, #404040 25%, #1a1a1a 50%, #404040 75%, #2a2a2a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 4px 8px rgba(255,255,255,0.3);
+  filter: drop-shadow(0 2px 4px rgba(255,255,255,0.2));
+}
+
 /* Particle System for Background Elements */
 .cosmic-particle-system {
   position: absolute;
