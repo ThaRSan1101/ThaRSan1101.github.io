@@ -197,7 +197,7 @@ export default function Hero() {
              
              {/* Main Greeting */}
              <div className="space-y-4 sm:space-y-6">
-               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight" style={{color: 'var(--text-primary, #fafafa)', fontWeight: 'bold'}}>
+               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight metallic-name">
                  Hi, I'm Tharsan
                </h1>
                

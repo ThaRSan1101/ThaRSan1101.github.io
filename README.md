@@ -108,6 +108,26 @@ The output will be in the `dist/` folder, ready for deployment.
 * Replace or add certificates in `public/assets/images/certificates/`.
 * Update your CV in `public/assets/pdf/resume/TharsanCV.pdf`.
 
+## Contact Form Setup (EmailJS)
+
+The contact form uses EmailJS for direct email sending. To set it up:
+
+1. **Create EmailJS Account:** Go to [emailjs.com](https://www.emailjs.com/) and sign up
+2. **Connect Gmail Service:** Add Gmail service and note your Service ID
+3. **Create Email Template:** Use variables: `{{from_name}}`, `{{from_email}}`, `{{subject}}`, `{{message}}`
+4. **Get Public Key:** From Account settings
+5. **Update Configuration:** Edit `src/config/emailjs.js`:
+   ```javascript
+   export const EMAIL_CONFIG = {
+     SERVICE_ID: 'your_service_id',
+     TEMPLATE_ID: 'your_template_id', 
+     PUBLIC_KEY: 'your_public_key',
+     TO_EMAIL: 'arultharisan01@gmail.com'
+   }
+   ```
+
+**Note:** Without EmailJS setup, the form uses mailto fallback (opens email client).
+
 ## Contact
 For any questions or feedback, reach out via the contact form on the site or email: arultharisan01@gmail.com
 
