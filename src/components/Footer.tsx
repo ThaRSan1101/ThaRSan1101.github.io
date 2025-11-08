@@ -55,7 +55,7 @@ export default function Footer(){
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center space-y-8"
+          {...({ className: "text-center space-y-8" } as any)}
         >
           {/* Logo */}
           <div className="text-2xl font-bold" style={{ color: 'var(--footer-logo-color)' }}>
@@ -65,87 +65,93 @@ export default function Footer(){
           {/* Social Links */}
           <div className="flex items-center justify-center gap-6">
             <motion.a 
-              href="https://www.linkedin.com/in/tharisan0111/"
-              target="_blank"
-              rel="noopener noreferrer"
+              {...({ 
+                href: "https://www.linkedin.com/in/tharisan0111/",
+                target: "_blank",
+                rel: "noopener noreferrer"
+              } as any)}
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="p-3 rounded-lg transition-all duration-300"
+              {...({ className: "p-3 rounded-lg transition-all duration-300" } as any)}
               style={{ 
                 backgroundColor: 'var(--footer-icon-bg)',
                 boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
               }}
               onMouseEnter={(e) => {
-                e.target.style.backgroundColor = 'var(--footer-icon-hover-bg)'
+                e.currentTarget.style.backgroundColor = 'var(--footer-icon-hover-bg)'
               }}
               onMouseLeave={(e) => {
-                e.target.style.backgroundColor = 'var(--footer-icon-bg)'
+                e.currentTarget.style.backgroundColor = 'var(--footer-icon-bg)'
               }}
-              aria-label="LinkedIn"
+              {...({ "aria-label": "LinkedIn" } as any)}
             >
               <FaLinkedin className="text-xl" style={{ color: 'var(--footer-icon-color)' }} />
             </motion.a>
             
             <motion.a 
-              href="https://github.com/ThaRSan1101"
-              target="_blank"
-              rel="noopener noreferrer"
+              {...({ 
+                href: "https://github.com/ThaRSan1101",
+                target: "_blank",
+                rel: "noopener noreferrer"
+              } as any)}
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="p-3 rounded-lg transition-all duration-300"
+              {...({ className: "p-3 rounded-lg transition-all duration-300" } as any)}
               style={{ 
                 backgroundColor: 'var(--footer-icon-bg)',
                 boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
               }}
               onMouseEnter={(e) => {
-                e.target.style.backgroundColor = 'var(--footer-icon-hover-bg)'
+                e.currentTarget.style.backgroundColor = 'var(--footer-icon-hover-bg)'
               }}
               onMouseLeave={(e) => {
-                e.target.style.backgroundColor = 'var(--footer-icon-bg)'
+                e.currentTarget.style.backgroundColor = 'var(--footer-icon-bg)'
               }}
-              aria-label="GitHub"
+              {...({ "aria-label": "GitHub" } as any)}
             >
               <FaGithub className="text-xl" style={{ color: 'var(--footer-icon-color)' }} />
             </motion.a>
             
             <motion.a 
-              href="https://wa.me/94715112782"
-              target="_blank"
-              rel="noopener noreferrer"
+              {...({ 
+                href: "https://wa.me/94715112782",
+                target: "_blank",
+                rel: "noopener noreferrer"
+              } as any)}
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="p-3 rounded-lg transition-all duration-300"
+              {...({ className: "p-3 rounded-lg transition-all duration-300" } as any)}
               style={{ 
                 backgroundColor: 'var(--footer-icon-bg)',
                 boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
               }}
               onMouseEnter={(e) => {
-                e.target.style.backgroundColor = 'var(--footer-icon-hover-bg)'
+                e.currentTarget.style.backgroundColor = 'var(--footer-icon-hover-bg)'
               }}
               onMouseLeave={(e) => {
-                e.target.style.backgroundColor = 'var(--footer-icon-bg)'
+                e.currentTarget.style.backgroundColor = 'var(--footer-icon-bg)'
               }}
-              aria-label="WhatsApp"
+              {...({ "aria-label": "WhatsApp" } as any)}
             >
               <FaWhatsapp className="text-xl" style={{ color: 'var(--footer-icon-color)' }} />
             </motion.a>
             
             <motion.a 
-              href="mailto:arultharisan01@gmail.com"
+              {...({ href: "mailto:arultharisan01@gmail.com" } as any)}
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="p-3 rounded-lg transition-all duration-300"
+              {...({ className: "p-3 rounded-lg transition-all duration-300" } as any)}
               style={{ 
                 backgroundColor: 'var(--footer-icon-bg)',
                 boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
               }}
               onMouseEnter={(e) => {
-                e.target.style.backgroundColor = 'var(--footer-icon-hover-bg)'
+                e.currentTarget.style.backgroundColor = 'var(--footer-icon-hover-bg)'
               }}
               onMouseLeave={(e) => {
-                e.target.style.backgroundColor = 'var(--footer-icon-bg)'
+                e.currentTarget.style.backgroundColor = 'var(--footer-icon-bg)'
               }}
-              aria-label="Email"
+              {...({ "aria-label": "Email" } as any)}
             >
               <FaEnvelope className="text-xl" style={{ color: 'var(--footer-icon-color)' }} />
             </motion.a>

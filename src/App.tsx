@@ -11,7 +11,7 @@ import Certifications from './components/Certifications'
 import ContactForm from './components/ContactForm'
 import Footer from './components/Footer'
 
-export default function App() {
+const App: React.FC = () => {
   return (
     <div style={{backgroundColor: '#0a0a0a', color: '#fafafa'}}>
       <Topbar />
@@ -30,3 +30,5 @@ export default function App() {
     </div>
   )
 }
+
+export default App

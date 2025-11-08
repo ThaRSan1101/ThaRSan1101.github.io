@@ -49,7 +49,7 @@ function SkillItem({ skill, delay }) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay }}
       viewport={{ once: true }}
-      className="p-4 sm:p-6 rounded-xl"
+      {...({ className: "p-4 sm:p-6 rounded-xl" } as any)}
       style={{
         backgroundColor: 'var(--skills-item-bg)',
         border: '1px solid var(--skills-item-border)'
@@ -156,7 +156,7 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-12 sm:mb-16"
+          {...({ className: "text-center mb-12 sm:mb-16" } as any)}
         >
           <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4" style={{color: 'var(--skills-heading)'}}>
             My Skills
@@ -172,7 +172,7 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12 px-4"
+          {...({ className: "flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12 px-4" } as any)}
         >
           {skillCategories.map((category) => (
             <button
@@ -201,7 +201,7 @@ export default function Skills() {
                 height: activeCategory === category.name ? 'auto' : 0
               }}
               transition={{ duration: 0.3 }}
-              className={`${activeCategory === category.name ? 'block' : 'hidden'}`}
+              {...({ className: `${activeCategory === category.name ? 'block' : 'hidden'}` } as any)}
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 {category.skills.map((skill, index) => (
@@ -222,7 +222,7 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="mt-12 sm:mt-16"
+          {...({ className: "mt-12 sm:mt-16" } as any)}
         >
           <h3 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-center" style={{color: 'var(--skills-familiar-heading)'}}>
             Also Familiar With
@@ -243,7 +243,7 @@ export default function Skills() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
                   viewport={{ once: true }}
-                  className="px-3 sm:px-4 py-1 sm:py-2 rounded-lg cursor-default text-sm"
+                  {...({ className: "px-3 sm:px-4 py-1 sm:py-2 rounded-lg cursor-default text-sm" } as any)}
                   style={{
                     backgroundColor: 'var(--skills-item-bg)',
                     color: 'var(--skills-item-text)',
@@ -271,7 +271,7 @@ export default function Skills() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
                   viewport={{ once: true }}
-                  className="px-3 sm:px-4 py-1 sm:py-2 rounded-lg cursor-default text-sm"
+                  {...({ className: "px-3 sm:px-4 py-1 sm:py-2 rounded-lg cursor-default text-sm" } as any)}
                   style={{
                     backgroundColor: 'var(--skills-item-bg)',
                     color: 'var(--skills-item-text)',
@@ -299,7 +299,7 @@ export default function Skills() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
                   viewport={{ once: true }}
-                  className="px-3 sm:px-4 py-1 sm:py-2 rounded-lg cursor-default text-sm"
+                  {...({ className: "px-3 sm:px-4 py-1 sm:py-2 rounded-lg cursor-default text-sm" } as any)}
                   style={{
                     backgroundColor: 'var(--skills-item-bg)',
                     color: 'var(--skills-item-text)',

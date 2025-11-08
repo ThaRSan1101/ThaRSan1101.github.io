@@ -109,14 +109,14 @@ export default function Topbar() {
                 animation: 'none'
               }}
               onMouseEnter={(e) => {
-                e.target.style.transform = 'scale(1.3) translateY(-5px)'
-                e.target.style.filter = 'drop-shadow(0 0 20px rgba(255, 255, 255, 0.8)) brightness(2) contrast(2)'
-                e.target.style.animation = 'pulse 0.6s ease-in-out infinite alternate'
+                e.currentTarget.style.transform = 'scale(1.3) translateY(-5px)'
+                e.currentTarget.style.filter = 'drop-shadow(0 0 20px rgba(255, 255, 255, 0.8)) brightness(2) contrast(2)'
+                e.currentTarget.style.animation = 'pulse 0.6s ease-in-out infinite alternate'
               }}
               onMouseLeave={(e) => {
-                e.target.style.transform = 'scale(1) translateY(0px)'
-                e.target.style.filter = 'drop-shadow(0 0 5px rgba(102, 102, 102, 0.3))'
-                e.target.style.animation = 'none'
+                e.currentTarget.style.transform = 'scale(1) translateY(0px)'
+                e.currentTarget.style.filter = 'drop-shadow(0 0 5px rgba(102, 102, 102, 0.3))'
+                e.currentTarget.style.animation = 'none'
               }}
             >
               👨‍💻 
@@ -135,8 +135,8 @@ export default function Topbar() {
               backgroundColor: 'var(--secondary-dark, rgba(26, 26, 26, 0.8))', 
               border: '1px solid var(--secondary-light, #2a2a2a)'
             }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
           >
             <FaLinkedin style={{color: 'var(--text-primary, #fafafa)'}} className="text-lg" />
           </a>
@@ -149,8 +149,8 @@ export default function Topbar() {
               backgroundColor: 'var(--secondary-dark, rgba(26, 26, 26, 0.8))', 
               border: '1px solid var(--secondary-light, #2a2a2a)'
             }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
           >
             <FaGithub style={{color: 'var(--text-primary, #fafafa)'}} className="text-lg" />
           </a>
@@ -163,12 +163,12 @@ export default function Topbar() {
               color: 'var(--text-primary, #fafafa)'
             }}
             onMouseEnter={(e) => {
-              e.target.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'
-              e.target.style.color = 'var(--text-secondary, #cccccc)'
+              e.currentTarget.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'
+              e.currentTarget.style.color = 'var(--text-secondary, #cccccc)'
             }}
             onMouseLeave={(e) => {
-              e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'
-              e.target.style.color = 'var(--text-primary, #fafafa)'
+              e.currentTarget.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'
+              e.currentTarget.style.color = 'var(--text-primary, #fafafa)'
             }}
           >
             arultharisan01@gmail.com
@@ -186,8 +186,8 @@ export default function Topbar() {
               backgroundColor: 'var(--secondary-dark, rgba(26, 26, 26, 0.8))', 
               border: '1px solid var(--secondary-light, #2a2a2a)'
             }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
           >
             <FaLinkedin style={{color: 'var(--text-primary, #fafafa)'}} className="text-sm" />
           </a>
@@ -200,8 +200,8 @@ export default function Topbar() {
               backgroundColor: 'var(--secondary-dark, rgba(26, 26, 26, 0.8))', 
               border: '1px solid var(--secondary-light, #2a2a2a)'
             }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
           >
             <FaGithub style={{color: 'var(--text-primary, #fafafa)'}} className="text-sm" />
           </a>
@@ -212,8 +212,8 @@ export default function Topbar() {
               backgroundColor: 'var(--secondary-dark, rgba(26, 26, 26, 0.8))', 
               border: '1px solid var(--secondary-light, #2a2a2a)'
             }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
           >
             <FaEnvelope style={{color: 'var(--text-primary, #fafafa)'}} className="text-sm" />
           </a>
@@ -228,8 +228,8 @@ export default function Topbar() {
               backgroundColor: 'var(--secondary-dark, rgba(26, 26, 26, 0.8))', 
               border: '1px solid var(--secondary-light, #2a2a2a)'
             }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-light, rgba(42, 42, 42, 0.8))'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--secondary-dark, rgba(26, 26, 26, 0.8))'}
           >
             {isDarkMode ? (
               <FaSun style={{color: 'var(--text-primary, #fafafa)'}} className="text-sm sm:text-base lg:text-lg" />

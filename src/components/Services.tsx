@@ -104,7 +104,7 @@ export default function Services(){
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-12 sm:mb-16"
+          {...({ className: "text-center mb-12 sm:mb-16" } as any)}
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4" style={{color: 'var(--services-heading)'}}>Services / What I Offer</h2>
           <p className="text-base sm:text-lg max-w-2xl mx-auto px-4" style={{color: 'var(--services-text)'}}>
@@ -120,7 +120,7 @@ export default function Services(){
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="p-6 sm:p-8 rounded-xl transition-all duration-300 group"
+              {...({ className: "p-6 sm:p-8 rounded-xl transition-all duration-300 group" } as any)}
               style={{backgroundColor: 'var(--services-card-bg)', border: '1px solid #666666'}}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = 'var(--services-card-hover-bg)'
@@ -172,7 +172,7 @@ export default function Services(){
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="text-center mt-8 sm:mt-12"
+          {...({ className: "text-center mt-8 sm:mt-12" } as any)}
         >
           <div className="p-6 sm:p-8 rounded-2xl max-w-2xl mx-auto" style={{backgroundColor: 'var(--services-card-bg)', border: '1px solid #666666'}}>
             <FaLightbulb style={{color: 'var(--services-icon-color)'}} className="text-3xl sm:text-4xl mx-auto mb-4" />
@@ -190,14 +190,14 @@ export default function Services(){
                 border: '2px solid var(--text-primary)'
               }}
               onMouseEnter={(e) => {
-                e.target.style.backgroundColor = 'transparent'
-                e.target.style.color = 'var(--text-primary)'
-                e.target.style.borderColor = 'var(--text-primary)'
+                e.currentTarget.style.backgroundColor = 'transparent'
+                e.currentTarget.style.color = 'var(--text-primary)'
+                e.currentTarget.style.borderColor = 'var(--text-primary)'
               }}
               onMouseLeave={(e) => {
-                e.target.style.backgroundColor = 'var(--text-primary)'
-                e.target.style.color = 'var(--primary-dark)'
-                e.target.style.borderColor = 'var(--text-primary)'
+                e.currentTarget.style.backgroundColor = 'var(--text-primary)'
+                e.currentTarget.style.color = 'var(--primary-dark)'
+                e.currentTarget.style.borderColor = 'var(--text-primary)'
               }}
             >
               Get In Touch
@@ -208,3 +208,4 @@ export default function Services(){
     </section>
   )
 }
+

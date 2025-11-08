@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion, HTMLMotionProps } from 'framer-motion'
 import { FaEnvelope, FaGithub, FaLinkedin, FaDownload, FaMapMarkerAlt, FaPhone, FaWhatsapp, FaPaperPlane } from 'react-icons/fa'
 import BackgroundElements from './BackgroundElements'
 import emailjs from '@emailjs/browser'
@@ -8,39 +8,56 @@ import { EMAIL_CONFIG } from '../config/emailjs'
 // Initialize EmailJS with public key
 emailjs.init(EMAIL_CONFIG.PUBLIC_KEY)
 
+// Types
+interface FormData {
+  name: string
+  email: string
+  subject: string
+  message: string
+}
+
+interface FormErrors {
+  name?: string
+  email?: string
+  subject?: string
+  message?: string
+}
+
+type StatusType = '' | 'SUCCESS' | 'MAILTO_SUCCESS' | 'ERROR'
+
 // Input validation and sanitization utilities
-const sanitizeInput = (input) => {
+const sanitizeInput = (input: string): string => {
   if (typeof input !== 'string') return ''
   // Only remove dangerous characters, keep spaces
   return input.replace(/[<>"']/g, '')
 }
 
-const sanitizeForSubmit = (input) => {
+const sanitizeForSubmit = (input: string): string => {
   if (typeof input !== 'string') return ''
   // Trim spaces only when submitting
   return input.trim().replace(/[<>"']/g, '')
 }
 
-const validateEmail = (email) => {
+const validateEmail = (email: string): boolean => {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
   return emailRegex.test(email)
 }
 
-const validateName = (name) => {
+const validateName = (name: string): boolean => {
   const nameRegex = /^[a-zA-Z\s]{2,50}$/
   return nameRegex.test(name.trim())
 }
 
-const validateMessage = (message) => {
+const validateMessage = (message: string): boolean => {
   const trimmed = message.trim()
   return trimmed.length >= 10 && trimmed.length <= 1000
 }
 
-export default function Contact(){
-  const [status, setStatus] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
-  const [errors, setErrors] = useState({})
-  const [formData, setFormData] = useState({
+const Contact: React.FC = () => {
+  const [status, setStatus] = useState<StatusType>('')
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [errors, setErrors] = useState<FormErrors>({})
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     subject: '',
@@ -113,7 +130,7 @@ export default function Contact(){
     }
   }, [])
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     const sanitizedValue = sanitizeInput(value)
     
@@ -123,7 +140,7 @@ export default function Contact(){
     }))
     
     // Clear error when user starts typing
-    if (errors[name]) {
+    if (errors[name as keyof FormErrors]) {
       setErrors(prev => ({
         ...prev,
         [name]: ''
@@ -131,8 +148,8 @@ export default function Contact(){
     }
   }
 
-  const validateForm = () => {
-    const newErrors = {}
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {}
     
     if (!validateName(formData.name)) {
       newErrors.name = 'Name must be 2-50 characters and contain only letters and spaces'
@@ -156,7 +173,7 @@ export default function Contact(){
     return Object.keys(newErrors).length === 0
   }
 
-  function handleSubmit(e){
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>){
     e.preventDefault()
     
     if (!validateForm()) {
@@ -185,12 +202,12 @@ export default function Contact(){
     
     // Send email using EmailJS
     emailjs.send(EMAIL_CONFIG.SERVICE_ID, EMAIL_CONFIG.TEMPLATE_ID, templateParams)
-      .then((response) => {
+      .then(() => {
         setStatus('SUCCESS')
         setFormData({ name: '', email: '', subject: '', message: '' })
         setIsLoading(false)
       })
-      .catch((error) => {
+      .catch(() => {
         // If EmailJS fails, use mailto fallback
         const mailtoURL = `mailto:arultharisan01@gmail.com?subject=${encodeURIComponent(sanitizedData.subject)}&body=${encodeURIComponent(
           `Name: ${sanitizedData.name}\nEmail: ${sanitizedData.email}\n\nMessage:\n${sanitizedData.message}`
@@ -284,7 +301,7 @@ export default function Contact(){
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-12 lg:mb-16"
+          {...({ className: "text-center mb-12 lg:mb-16" } as any)}
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4" style={{ color: 'var(--contact-heading)' }}>
             Get In Touch
@@ -302,7 +319,7 @@ export default function Contact(){
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="space-y-6 lg:space-y-8 order-2 lg:order-1"
+            {...({ className: "space-y-6 lg:space-y-8 order-2 lg:order-1" } as any)}
           >
             {/* Header Section */}
             <div className="text-center lg:text-left">
@@ -511,16 +528,18 @@ export default function Contact(){
                   }}
                   onMouseEnter={(e) => {
                     if (!isLoading) {
-                      e.target.style.backgroundColor = 'var(--contact-btn-hover-bg)'
-                      e.target.style.transform = 'translateY(-2px)'
-                      e.target.style.boxShadow = '0 8px 20px rgba(0, 123, 255, 0.3)'
+                      const target = e.currentTarget
+                      target.style.backgroundColor = 'var(--contact-btn-hover-bg)'
+                      target.style.transform = 'translateY(-2px)'
+                      target.style.boxShadow = '0 8px 20px rgba(0, 123, 255, 0.3)'
                     }
                   }}
                   onMouseLeave={(e) => {
                     if (!isLoading) {
-                      e.target.style.backgroundColor = 'var(--contact-btn-bg)'
-                      e.target.style.transform = 'translateY(0)'
-                      e.target.style.boxShadow = 'none'
+                      const target = e.currentTarget
+                      target.style.backgroundColor = 'var(--contact-btn-bg)'
+                      target.style.transform = 'translateY(0)'
+                      target.style.boxShadow = 'none'
                     }
                   }}>
                   {isLoading ? (
@@ -542,7 +561,7 @@ export default function Contact(){
                 <motion.div 
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mt-4 p-4 rounded-lg text-center"
+                  {...({ className: "mt-4 p-4 rounded-lg text-center" } as any)}
                   style={{
                     backgroundColor: 'rgba(34, 197, 94, 0.2)',
                     border: '1px solid rgba(34, 197, 94, 0.3)',
@@ -557,7 +576,7 @@ export default function Contact(){
                 <motion.div 
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mt-4 p-4 rounded-lg text-center"
+                  {...({ className: "mt-4 p-4 rounded-lg text-center" } as any)}
                   style={{
                     backgroundColor: 'rgba(59, 130, 246, 0.2)',
                     border: '1px solid rgba(59, 130, 246, 0.3)',
@@ -572,7 +591,7 @@ export default function Contact(){
                 <motion.div 
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mt-4 p-4 rounded-lg text-center"
+                  {...({ className: "mt-4 p-4 rounded-lg text-center" } as any)}
                   style={{
                     backgroundColor: 'rgba(239, 68, 68, 0.2)',
                     border: '1px solid rgba(239, 68, 68, 0.3)',
@@ -589,3 +608,5 @@ export default function Contact(){
     </section>
   )
 }
+
+export default Contact
