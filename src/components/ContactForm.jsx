@@ -11,6 +11,13 @@ emailjs.init(EMAIL_CONFIG.PUBLIC_KEY)
 // Input validation and sanitization utilities
 const sanitizeInput = (input) => {
   if (typeof input !== 'string') return ''
+  // Only remove dangerous characters, keep spaces
+  return input.replace(/[<>"']/g, '')
+}
+
+const sanitizeForSubmit = (input) => {
+  if (typeof input !== 'string') return ''
+  // Trim spaces only when submitting
   return input.trim().replace(/[<>"']/g, '')
 }
 
@@ -159,12 +166,12 @@ export default function Contact(){
     setIsLoading(true)
     setStatus('')
     
-    // Sanitize all inputs
+    // Sanitize all inputs (trim spaces only on submit)
     const sanitizedData = {
-      name: sanitizeInput(formData.name),
-      email: sanitizeInput(formData.email),
-      subject: sanitizeInput(formData.subject),
-      message: sanitizeInput(formData.message)
+      name: sanitizeForSubmit(formData.name),
+      email: sanitizeForSubmit(formData.email),
+      subject: sanitizeForSubmit(formData.subject),
+      message: sanitizeForSubmit(formData.message)
     }
     
     // Template parameters for EmailJS
