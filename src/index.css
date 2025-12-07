@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -56,25 +56,17 @@
 
 /* Hero CTA Button Styling */
 .hero-cta-button {
-  border-color: var(--text-primary) !important;
-  color: var(--text-primary) !important;
+  border-color: #fafafa !important;
+  color: #fafafa !important;
   background-color: transparent !important;
   transition: all 0.3s ease !important;
 }
 
 .hero-cta-button:hover {
-  background-color: var(--text-primary) !important;
-  color: var(--primary-dark) !important;
+  background-color: #fafafa !important;
+  color: #0a0a0a !important;
   transform: translateY(-2px) !important;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
-}
-
-.light .hero-cta-button {
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1) !important;
-}
-
-.light .hero-cta-button:hover {
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
 }
 
 * {
@@ -83,6 +75,7 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 90%; /* Reduced base font size */
 }
 
 html, body, #root {
@@ -90,7 +83,7 @@ html, body, #root {
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   line-height: 1.6;
   background: var(--primary-dark);
   color: var(--text-primary);
@@ -116,14 +109,23 @@ body:not(.light)::before {
   background: var(--primary-light);
 }
 
-/* Remove animated stars for clean design */
-body:not(.light)::after {
-  display: none;
+/* Disable all animations globally */
+*, *::before, *::after {
+  animation: none !important;
+  transition: none !important;
 }
 
-/* Light theme - clean */
-.light body::after {
-  display: none;
+/* Remove specific animation classes */
+.animate-pulse,
+.animate-spin,
+.animate-bounce,
+.animate-float,
+.animate-sparkle,
+.animate-cosmic-glow,
+.animate-pulse-glow,
+.animate-float-particles,
+.animate-nebula-drift {
+  animation: none !important;
 }
 
 @keyframes sparkle {

@@ -7,6 +7,9 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      screens: {
+        'laptop1440': '1440px',
+      },
       colors: {
         'space-black': 'var(--space-black)',
         'deep-space': 'var(--deep-space)',
@@ -49,10 +52,10 @@ module.exports = {
           '100%': { filter: 'brightness(1.2)' }
         },
         'pulse-glow': {
-          '0%': { 
+          '0%': {
             boxShadow: '0 0 20px rgba(6, 182, 212, 0.4), 0 0 40px rgba(6, 182, 212, 0.2), 0 0 60px rgba(6, 182, 212, 0.1)'
           },
-          '100%': { 
+          '100%': {
             boxShadow: '0 0 30px rgba(6, 182, 212, 0.6), 0 0 60px rgba(6, 182, 212, 0.3), 0 0 90px rgba(6, 182, 212, 0.2)'
           }
         },

@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import React, { useState } from 'react'
 import { FaGithub, FaExternalLinkAlt, FaCode, FaDatabase, FaReact, FaNodeJs } from 'react-icons/fa'
 import { SiMysql, SiJavascript, SiHtml5, SiCss3, SiTailwindcss, SiPhp, SiBootstrap } from 'react-icons/si'
-import BackgroundElements from './BackgroundElements'
+
 
 const projects = [
   {
@@ -66,7 +65,7 @@ const projects = [
       'SEO-friendly structure with semantic HTML and meta tags'
     ],
     repo: 'https://github.com/ThaRSan1101/ThaRSan1101.github.io',
-    demo: 'https://tharsan1101.github.io',
+    demo: '#',
     image: '/assets/images/projects/portfolio-website.png',
     status: 'Completed',
     category: 'Portfolio Website'
@@ -74,508 +73,159 @@ const projects = [
 ]
 
 export default function Projects() {
-  const [selectedProject, setSelectedProject] = useState(null)
-  const [showAllProjects, setShowAllProjects] = useState(false)
-  const [initialProjectsCount] = useState(2) // Number of projects to show initially
-
-  useEffect(() => {
-    const applyTheme = () => {
-      const isDark = localStorage.getItem('theme') === 'dark' || 
-                     (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)
-      
-      document.documentElement.style.setProperty('--projects-bg', isDark ? '#0f0f0f' : '#f8f9fa')
-      document.documentElement.style.setProperty('--projects-pattern', isDark ? 'rgba(42, 42, 42, 0.4)' : 'rgba(108, 117, 125, 0.4)')
-      document.documentElement.style.setProperty('--projects-dots', isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)')
-      document.documentElement.style.setProperty('--projects-icons', isDark ? '#333333' : '#6c757d')
-      document.documentElement.style.setProperty('--projects-lines', isDark ? '#444444' : '#6c757d')
-      document.documentElement.style.setProperty('--projects-heading', isDark ? '#e0e0e0' : '#212529')
-      document.documentElement.style.setProperty('--projects-subheading', isDark ? '#999999' : '#6c757d')
-      document.documentElement.style.setProperty('--projects-text', isDark ? '#b0b0b0' : '#495057')
-      document.documentElement.style.setProperty('--projects-card-bg', isDark ? 'rgba(42, 42, 42, 0.6)' : 'rgba(255, 255, 255, 0.8)')
-      document.documentElement.style.setProperty('--projects-card-border', isDark ? '#555555' : '#dee2e6')
-      document.documentElement.style.setProperty('--projects-card-hover-bg', isDark ? 'rgba(60, 60, 60, 0.6)' : 'rgba(233, 236, 239, 0.8)')
-      document.documentElement.style.setProperty('--projects-card-hover-border', isDark ? '#777777' : '#6c757d')
-      document.documentElement.style.setProperty('--projects-status-completed-bg', isDark ? 'rgba(34, 197, 94, 0.2)' : 'rgba(34, 197, 94, 0.1)')
-      document.documentElement.style.setProperty('--projects-status-completed-color', isDark ? '#22c55e' : '#198754')
-      document.documentElement.style.setProperty('--projects-status-completed-border', isDark ? 'rgba(34, 197, 94, 0.3)' : 'rgba(34, 197, 94, 0.2)')
-      document.documentElement.style.setProperty('--projects-status-progress-bg', isDark ? 'rgba(251, 191, 36, 0.2)' : 'rgba(251, 191, 36, 0.1)')
-      document.documentElement.style.setProperty('--projects-status-progress-color', isDark ? '#fbbf24' : '#f59e0b')
-      document.documentElement.style.setProperty('--projects-status-progress-border', isDark ? 'rgba(251, 191, 36, 0.3)' : 'rgba(251, 191, 36, 0.2)')
-      document.documentElement.style.setProperty('--projects-btn-bg', isDark ? 'transparent' : '#ffffff')
-      document.documentElement.style.setProperty('--projects-btn-text', isDark ? '#999999' : '#495057')
-      document.documentElement.style.setProperty('--projects-btn-border', isDark ? '#999999' : '#6c757d')
-      document.documentElement.style.setProperty('--projects-btn-hover-bg', isDark ? '#999999' : '#6c757d')
-      document.documentElement.style.setProperty('--projects-btn-hover-text', isDark ? '#0a0a0a' : '#ffffff')
-    }
-    
-    // Apply theme on initial load
-    applyTheme()
-    
-    // Listen for theme changes from the same tab (custom event)
-    const handleThemeChange = () => applyTheme()
-    window.addEventListener('themeChange', handleThemeChange)
-    
-    // Listen for theme changes from other tabs (storage event)
-    const handleStorageChange = () => applyTheme()
-    window.addEventListener('storage', handleStorageChange)
-    
-    return () => {
-      window.removeEventListener('themeChange', handleThemeChange)
-      window.removeEventListener('storage', handleStorageChange)
-    }
-  }, [])
+  const [showAll, setShowAll] = useState(false)
+  const visibleProjects = showAll ? projects : projects.slice(0, 3)
 
   return (
-    <section id="projects" className="py-12 sm:py-16 lg:py-20 relative overflow-hidden space-section-bg">
-      {/* Enhanced Background Elements */}
-      <BackgroundElements variant="projects" density="light" />
-      
-      {/* Space dust particles */}
-      <div className="space-dust"></div>
-      
-      {/* Minimal Tech Grid Pattern */}
-      <div className="absolute inset-0 opacity-6">
+    <section id="projects" className="py-12 sm:py-16 lg:py-24 relative overflow-hidden" style={{ backgroundColor: '#0f0f0f' }}>
+      {/* Background pattern */}
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
         <div className="absolute inset-0" style={{
-          backgroundImage: `
-            linear-gradient(90deg, transparent 99px, var(--projects-pattern) 100px, var(--projects-pattern) 101px, transparent 102px),
-            linear-gradient(transparent 99px, var(--projects-pattern) 100px, var(--projects-pattern) 101px, transparent 102px)
-          `,
-          backgroundSize: '100px 100px'
+          backgroundImage: 'radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 1px, transparent 1px)',
+          backgroundSize: '40px 40px'
         }}></div>
       </div>
-      
-      {/* Subtle Tech Dots */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle at center, var(--projects-dots) 1px, transparent 1px)',
-          backgroundSize: '60px 60px'
-        }}></div>
-      </div>
-      
-      
-      {/* Subtle Grid Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `
-            linear-gradient(90deg, transparent 49px, var(--projects-pattern) 50px, transparent 51px),
-            linear-gradient(transparent 49px, var(--projects-pattern) 50px, transparent 51px)
-          `,
-          backgroundSize: '50px 50px'
-        }}></div>
-      </div>
-      
-      {/* Floating Code Elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 opacity-5 animate-pulse" style={{color: 'var(--projects-icons)'}}>
-          <span className="text-sm">{'<>'}</span>
-        </div>
-        <div className="absolute top-40 right-20 opacity-5 animate-pulse delay-1000" style={{color: 'var(--projects-icons)'}}>
-          <span className="text-xs">{'{ }'}</span>
-        </div>
-        <div className="absolute bottom-40 left-1/4 opacity-5 animate-pulse delay-2000" style={{color: 'var(--projects-icons)'}}>
-          <span className="text-sm">•</span>
-        </div>
-        <div className="absolute top-60 right-1/3 opacity-5 animate-pulse delay-500" style={{color: 'var(--projects-icons)'}}>
-          <span className="text-xs">*</span>
-        </div>
-        <div className="absolute bottom-60 right-10 opacity-5 animate-pulse delay-1500" style={{color: 'var(--projects-icons)'}}>
-          <span className="text-sm">▢</span>
-        </div>
-      </div>
-      
-      <div className="container relative z-10 px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          {...({ className: "text-center mb-12 sm:mb-16" } as any)}
-        >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4" style={{color: 'var(--projects-heading)'}}>
-            A Showcase of My
-            <span className="block" style={{color: 'var(--projects-subheading)'}}>Best Work</span>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-12 sm:mb-16 lg:mb-24">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-3 sm:mb-4 px-4" style={{ color: '#f5f5f5' }}>
+            A Showcase of My Best Work
           </h2>
-          <p className="text-base sm:text-lg max-w-3xl mx-auto px-4" style={{color: 'var(--projects-text)'}}>
-            Explore my collection of projects that reflect my skills, ideas, and creativity.
+          <p className="text-sm sm:text-base md:text-lg max-w-3xl mx-auto px-4" style={{ color: '#c0c0c0' }}>
+            A selection of my recent work and technical experiments
           </p>
-        </motion.div>
+        </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-          {(showAllProjects ? projects : projects.slice(0, initialProjectsCount)).map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              {...({ className: "group cursor-pointer" } as any)}
-              onClick={() => setSelectedProject(project)}
-            >
-              <div className="p-4 sm:p-6 rounded-2xl transition-all duration-300 h-full" style={{backgroundColor: 'var(--projects-card-bg)', border: '1px solid var(--projects-card-border)'}}
-                   onMouseEnter={(e) => {
-                     e.currentTarget.style.backgroundColor = 'var(--projects-card-hover-bg)'
-                     e.currentTarget.style.borderColor = 'var(--projects-card-hover-border)'
-                     e.currentTarget.style.transform = 'translateY(-4px)'
-                     e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.15)'
-                   }}
-                   onMouseLeave={(e) => {
-                     e.currentTarget.style.backgroundColor = 'var(--projects-card-bg)'
-                     e.currentTarget.style.borderColor = 'var(--projects-card-border)'
-                     e.currentTarget.style.transform = 'translateY(0)'
-                     e.currentTarget.style.boxShadow = 'none'
-                   }}>
-                {/* Project Image/Preview */}
-                <div className="relative mb-4 sm:mb-6 rounded-xl overflow-hidden h-40 sm:h-48" 
-                     style={{backgroundColor: 'var(--projects-card-bg)', border: '1px solid var(--projects-card-border)'}}>
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                      const nextElement = e.currentTarget.nextSibling as HTMLElement;
-                      if (nextElement) nextElement.style.display = 'flex';
-                    }}
-                  />
-                  {/* Fallback icon (hidden by default) */}
-                  <div className="absolute inset-0 flex items-center justify-center text-6xl" 
-                       style={{color: 'var(--projects-subheading)', display: 'none'}}>
-                    <FaCode />
-                  </div>
-                  {/* Category Badge */}
-                  <div className="absolute top-3 left-3">
-                    <span className="px-3 py-1 rounded-full text-xs font-medium border backdrop-blur-sm"
-                    style={{
-                      backgroundColor: 'rgba(100, 200, 255, 0.15)',
-                      color: '#64c8ff',
-                      borderColor: 'rgba(100, 200, 255, 0.3)'
-                    }}>
-                      {project.category}
-                    </span>
-                  </div>
-                  {/* Status Badge */}
-                  <div className="absolute top-3 right-3">
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium border backdrop-blur-sm ${
-                      project.status === 'Completed' 
-                        ? 'border'
-                        : 'border'
-                    }`}
-                    style={{
-                      backgroundColor: project.status === 'Completed' ? 'rgba(34, 197, 94, 0.2)' : 'rgba(251, 191, 36, 0.2)',
-                      color: project.status === 'Completed' ? '#22c55e' : '#fbbf24',
-                      borderColor: project.status === 'Completed' ? 'rgba(34, 197, 94, 0.3)' : 'rgba(251, 191, 36, 0.3)'
-                    }}>
-                      {project.status}
-                    </span>
-                  </div>
-                </div>
+        <div className="relative">
+          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2"
+            style={{
+              background: 'linear-gradient(to bottom, transparent, #333333, transparent)'
+            }}>
+          </div>
 
-                {/* Project Info */}
-                <div className="space-y-4">
-                  <div className="flex items-start justify-between">
-                    <h3 className="text-xl font-bold transition-colors" style={{color: 'var(--projects-heading)'}}>
-                      {project.title}
-                    </h3>
-                    <div className="flex gap-2">
-                      {project.techIcons.slice(0, 2).map((Icon, i) => (
-                        <Icon key={i} style={{color: 'var(--projects-subheading)'}} className="text-lg" />
-                      ))}
+          <div className="space-y-24 lg:space-y-32">
+            {visibleProjects.map((project, index) => (
+              <div key={project.id} className="relative">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+                  {/* Project Details */}
+                  <div
+                    className={`order-2 ${index % 2 === 0 ? 'lg:order-1 lg:pr-12' : 'lg:order-2 lg:pl-12'}`}
+                  >
+                    <div
+                      className="p-10 sm:p-12 rounded-[2.5rem] shadow-lg relative z-10"
+                      style={{
+                        backgroundColor: 'rgba(26, 26, 26, 0.8)',
+                        border: '1px solid #333333'
+                      }}
+                    >
+                      <h3 className="text-2xl sm:text-3xl font-bold mb-4" style={{ color: '#f5f5f5' }}>
+                        {project.title}
+                      </h3>
+                      <p className="text-base sm:text-lg mb-6 leading-relaxed" style={{ color: '#c0c0c0' }}>
+                        {project.shortDesc}
+                      </p>
+
+                      <div className="flex flex-wrap gap-2 mb-8">
+                        {project.tags.map(tag => (
+                          <span
+                            key={tag}
+                            className="px-3 py-1 rounded-full text-sm font-medium"
+                            style={{
+                              backgroundColor: 'rgba(42, 42, 42, 0.8)',
+                              color: '#ffffff'
+                            }}
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="flex flex-wrap gap-4">
+                        {project.demo && project.demo !== '#' && (
+                          <a
+                            href={project.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all hover:opacity-90"
+                            style={{
+                              backgroundColor: '#333333',
+                              color: '#ffffff'
+                            }}
+                          >
+                            <FaExternalLinkAlt /> Demo
+                          </a>
+                        )}
+
+                        <a
+                          href={project.repo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all border"
+                          style={{
+                            borderColor: '#333333',
+                            color: '#f5f5f5'
+                          }}
+                        >
+                          <FaGithub /> {project.frontendRepo ? 'Backend' : 'Code'}
+                        </a>
+
+                        {project.frontendRepo && (
+                          <a
+                            href={project.frontendRepo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all border"
+                            style={{
+                              borderColor: '#333333',
+                              color: '#f5f5f5'
+                            }}
+                          >
+                            <FaGithub /> Frontend
+                          </a>
+                        )}
+                      </div>
                     </div>
                   </div>
 
-                  <p className="leading-relaxed" style={{color: 'var(--projects-text)'}}>
-                    {project.shortDesc}
-                  </p>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.slice(0, 3).map((tag) => (
-                      <span 
-                        key={tag}
-                        className="px-3 py-1 text-xs rounded-full border"
-                        style={{
-                          backgroundColor: 'rgba(153, 153, 153, 0.1)',
-                          color: 'var(--projects-subheading)',
-                          borderColor: 'rgba(153, 153, 153, 0.3)'
+                  {/* Project Image */}
+                  <div
+                    className={`order-1 ${index % 2 === 0 ? 'lg:order-2 lg:pl-8' : 'lg:order-1 lg:pr-8'} group`}
+                  >
+                    <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]"
+                      style={{ border: '1px solid #333333' }}>
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full aspect-video object-cover"
+                        onError={(e) => {
+                          e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDQwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0yMDAgNzBWMTMwTTIzMCAxMDBIMTcwIiBzdHJva2U9IiM5Q0E0QUYiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjx0ZXh0IHg9IjIwMCIgeT0iMTYwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM2QjczODAiPlByb2plY3QgSW1hZ2U8L3RleHQ+Cjwvc3ZnPgo='
                         }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                    {project.tags.length > 3 && (
-                      <span className="px-3 py-1 text-xs rounded-full" style={{backgroundColor: 'rgba(102, 102, 102, 0.2)', color: '#666666'}}>
-                        +{project.tags.length - 3} more
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Action Links */}
-                  <div className="flex gap-3 pt-2">
-                    <a
-                      href={project.repo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 transition-colors"
-                      style={{color: 'var(--projects-text)'}}
-                      onMouseEnter={(e) => e.currentTarget.style.color = 'var(--projects-heading)'}
-                      onMouseLeave={(e) => e.currentTarget.style.color = 'var(--projects-text)'}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <FaGithub className="text-sm" />
-                      <span className="text-sm">
-                        {project.frontendRepo ? 'Backend' : 'GitHub'}
-                      </span>
-                    </a>
-                    {project.frontendRepo && (
-                      <a
-                        href={project.frontendRepo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 transition-colors"
-                        style={{color: 'var(--projects-text)'}}
-                        onMouseEnter={(e) => e.currentTarget.style.color = 'var(--projects-heading)'}
-                        onMouseLeave={(e) => e.currentTarget.style.color = 'var(--projects-text)'}
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <FaGithub className="text-sm" />
-                        <span className="text-sm">Frontend</span>
-                      </a>
-                    )}
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 transition-colors"
-                      style={{color: 'var(--projects-text)'}}
-                      onMouseEnter={(e) => e.currentTarget.style.color = 'var(--projects-heading)'}
-                      onMouseLeave={(e) => e.currentTarget.style.color = 'var(--projects-text)'}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <FaExternalLinkAlt className="text-sm" />
-                      <span className="text-sm">Preview</span>
-                    </a>
-                  </div>
-
-                  {/* Details Button */}
-                  <div className="pt-2">
-                    <button className="transition-colors text-sm font-medium" style={{color: 'var(--projects-subheading)'}}
-                            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--projects-heading)'}
-                            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--projects-subheading)'}>
-                      View Details →
-                    </button>
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                    </div>
                   </div>
                 </div>
               </div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
 
-        {/* Show More Button / Message */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-          {...({ className: "text-center mt-12" } as any)}
-        >
-          {projects.length > initialProjectsCount ? (
-            !showAllProjects ? (
-              <button 
-                className="px-8 py-3 border-2 rounded-lg transition-all duration-300"
-                style={{borderColor: 'var(--projects-btn-border)', color: 'var(--projects-btn-text)', backgroundColor: 'var(--projects-btn-bg)'}}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = 'var(--projects-btn-hover-bg)'
-                  e.currentTarget.style.color = 'var(--projects-btn-hover-text)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'var(--projects-btn-bg)'
-                  e.currentTarget.style.color = 'var(--projects-btn-text)'
-                }}
-                onClick={() => setShowAllProjects(true)}
-              >
-                Explore More Projects ({projects.length - initialProjectsCount} more)
-              </button>
-            ) : (
-              <div className="space-y-4">
-                <p className="text-lg" style={{color: 'var(--projects-text)'}}>
-                  You've seen all my projects! More coming soon...
-                </p>
-                <button 
-                  className="px-8 py-3 border-2 rounded-lg transition-all duration-300"
-                  style={{borderColor: 'var(--projects-btn-border)', color: 'var(--projects-btn-text)', backgroundColor: 'var(--projects-btn-bg)'}}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = 'var(--projects-btn-hover-bg)'
-                    e.currentTarget.style.color = 'var(--projects-btn-hover-text)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = 'var(--projects-btn-bg)'
-                    e.currentTarget.style.color = 'var(--projects-btn-text)'
-                  }}
-                  onClick={() => {
-                    setShowAllProjects(false)
-                    document.getElementById('projects').scrollIntoView({ 
-                      behavior: 'smooth',
-                      block: 'start'
-                    })
-                  }}
-                >
-                  Show Less Projects
-                </button>
-              </div>
-            )
-          ) : (
-            <div className="space-y-2">
-              <p className="text-lg" style={{color: 'var(--projects-text)'}}>
-                 These are all my current projects!
-              </p>
-              <p className="text-sm" style={{color: 'var(--projects-subheading)'}}>
-                New projects are in development. Stay tuned for updates!
-              </p>
-            </div>
-          )}
-        </motion.div>
-      </div>
-
-      {/* Project Details Modal */}
-      <AnimatePresence>
-        {selectedProject && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            {...({ className: "fixed inset-0 backdrop-blur-sm z-50 flex items-center justify-center p-4" } as any)}
-            style={{backgroundColor: 'rgba(0, 0, 0, 0.8)'}}
-            onClick={() => setSelectedProject(null)}
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              {...({ className: "max-w-2xl w-full max-h-[80vh] overflow-y-auto rounded-2xl p-8 glass" } as any)}
+        {projects.length > 3 && (
+          <div className="mt-16 text-center">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="px-8 py-3 rounded-xl font-medium transition-all hover:opacity-90 hover:scale-105"
               style={{
-                backgroundColor: 'var(--primary-dark)',
-                border: '1px solid var(--border-dark)',
-                backdropFilter: 'blur(10px)'
+                backgroundColor: '#333333',
+                color: '#ffffff',
+                boxShadow: '0 4px 14px 0 rgba(0,0,0,0.1)'
               }}
-              onClick={(e) => e.stopPropagation()}
             >
-              <div className="space-y-6">
-                <div className="flex justify-between items-start">
-                  <h3 className="text-2xl font-bold" style={{color: 'var(--text-primary)'}}>{selectedProject.title}</h3>
-                  <button 
-                    onClick={() => setSelectedProject(null)}
-                    className="text-2xl font-bold leading-none transition-colors"
-                    style={{color: 'var(--text-muted)'}}
-                    onMouseEnter={(e) => e.currentTarget.style.color = 'var(--text-primary)'}
-                    onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
-                  >
-                    ×
-                  </button>
-                </div>
-
-                <p className="leading-relaxed text-base" style={{color: 'var(--text-secondary)'}}>
-                  {selectedProject.fullDesc}
-                </p>
-
-                <div>
-                  <h4 className="text-lg font-semibold mb-3" style={{color: 'var(--text-primary)'}}>Key Features:</h4>
-                  <ul className="space-y-2">
-                    {selectedProject.features.map((feature, index) => (
-                      <li key={index} className="flex items-start gap-2" style={{color: 'var(--text-secondary)'}}>
-                        <span className="mt-1 font-bold" style={{color: 'var(--text-primary)'}}>•</span>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="flex flex-wrap gap-2">
-                  {selectedProject.tags.map((tag) => (
-                    <span 
-                      key={tag}
-                      className="px-3 py-1 text-sm rounded-full border"
-                      style={{
-                        backgroundColor: 'var(--secondary-dark)',
-                        color: 'var(--text-secondary)',
-                        borderColor: 'var(--border-dark)'
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex flex-wrap gap-3">
-                  <a
-                    href={selectedProject.repo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-6 py-3 rounded-lg transition-colors font-medium"
-                    style={{
-                      backgroundColor: 'var(--text-primary)',
-                      color: 'var(--primary-dark)'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = 'var(--text-secondary)'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = 'var(--text-primary)'
-                    }}
-                  >
-                    <FaGithub />
-                    {selectedProject.frontendRepo ? 'Backend Code' : 'View Code'}
-                  </a>
-                  {selectedProject.frontendRepo && (
-                    <a
-                      href={selectedProject.frontendRepo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-6 py-3 rounded-lg transition-colors font-medium"
-                      style={{
-                        backgroundColor: 'var(--text-primary)',
-                        color: 'var(--primary-dark)'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = 'var(--text-secondary)'
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = 'var(--text-primary)'
-                      }}
-                    >
-                      <FaGithub />
-                      Frontend Code
-                    </a>
-                  )}
-                  <a
-                    href={selectedProject.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-6 py-3 border-2 rounded-lg transition-all duration-300"
-                    style={{
-                      borderColor: 'var(--text-primary)',
-                      color: 'var(--text-primary)',
-                      backgroundColor: 'transparent'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = 'var(--text-primary)'
-                      e.currentTarget.style.color = 'var(--primary-dark)'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = 'transparent'
-                      e.currentTarget.style.color = 'var(--text-primary)'
-                    }}
-                  >
-                    <FaExternalLinkAlt />
-                    Live Demo
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
+              {showAll ? 'Show Less' : 'Show All Projects'}
+            </button>
+          </div>
         )}
-      </AnimatePresence>
+      </div>
     </section>
   )
 }
-
