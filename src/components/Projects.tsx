@@ -74,6 +74,8 @@ const projects = [
 
 export default function Projects() {
   const [showAll, setShowAll] = useState(false)
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+
   const visibleProjects = showAll ? projects : projects.slice(0, 3)
 
   return (
@@ -191,8 +193,10 @@ export default function Projects() {
                   <div
                     className={`order-1 ${index % 2 === 0 ? 'lg:order-2 lg:pl-8' : 'lg:order-1 lg:pr-8'} group`}
                   >
-                    <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]"
-                      style={{ border: '1px solid #333333' }}>
+                    <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-[1.02] cursor-pointer"
+                      style={{ border: '1px solid #333333' }}
+                      onClick={() => setSelectedImage(project.image)}
+                    >
                       <img
                         src={project.image}
                         alt={project.title}
@@ -201,7 +205,9 @@ export default function Projects() {
                           e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDQwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0yMDAgNzBWMTMwTTIzMCAxMDBIMTcwIiBzdHJva2U9IiM5Q0E0QUYiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjx0ZXh0IHg9IjIwMCIgeT0iMTYwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM2QjczODAiPlByb2plY3QgSW1hZ2U8L3RleHQ+Cjwvc3ZnPgo='
                         }}
                       />
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <span className="bg-black/50 text-white px-4 py-2 rounded-full backdrop-blur-sm text-sm font-medium">Click to view</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -226,6 +232,29 @@ export default function Projects() {
           </div>
         )}
       </div>
+
+      {/* Full Screen Image Modal */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm transition-opacity"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div className="relative max-w-7xl w-full max-h-[90vh] flex items-center justify-center">
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors"
+            >
+              <span className="text-4xl">&times;</span>
+            </button>
+            <img
+              src={selectedImage}
+              alt="Project Full View"
+              className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        </div>
+      )}
     </section>
   )
 }
