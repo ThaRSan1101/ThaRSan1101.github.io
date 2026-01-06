@@ -30,17 +30,17 @@ const Contact: React.FC = () => {
   ]
 
   return (
-    <section id="contact" className="py-20" style={{ backgroundColor: '#0a0a0a' }}>
+    <section id="contact" className="py-20 bg-[#0a0a0a]">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 text-center">
           {/* About Section */}
           <div>
-            <h1 className="text-4xl font-bold mb-8" style={{ color: '#ffffff' }}>About</h1>
+            <h1 className="text-4xl font-bold mb-8 text-white">About</h1>
 
-            <h2 className="text-2xl font-semibold mb-2 text-left" style={{ color: '#ffffff' }}>Arultharisan</h2>
-            <p className="mb-6 text-left" style={{ color: '#cccccc' }}>Computer Science Undergraduate - Department of Computer Science & Informatics, Uva Wellassa University</p>
+            <h2 className="text-2xl font-semibold mb-2 text-left text-white">Arultharisan</h2>
+            <p className="mb-6 text-left text-[#cccccc]">Computer Science Undergraduate - Department of Computer Science & Informatics, Uva Wellassa University</p>
 
-            <div className="space-y-4 leading-relaxed text-left" style={{ color: '#cccccc' }}>
+            <div className="space-y-4 leading-relaxed text-left text-[#cccccc]">
               <p className="text-left">
                 Passionate about full-stack development with expertise in modern web technologies.
                 I specialize in creating user-friendly applications and enjoy exploring new technologies
@@ -61,7 +61,7 @@ const Contact: React.FC = () => {
 
           {/* Contact Section */}
           <div>
-            <h1 className="text-4xl font-bold mb-12" style={{ color: '#ffffff' }}>Contact</h1>
+            <h1 className="text-4xl font-bold mb-12 text-white">Contact</h1>
 
             <div className="flex flex-col gap-6">
               {socialLinks.map((link, index) => (
@@ -70,12 +70,7 @@ const Contact: React.FC = () => {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-8 py-4 border-2 rounded-lg transition-all duration-300 text-center font-medium shadow-lg hover:scale-105"
-                  style={{
-                    backgroundColor: '#1a1a1a',
-                    borderColor: '#2a2a2a',
-                    color: '#ffffff'
-                  }}
+                  className="px-8 py-4 border-2 rounded-lg transition-all duration-300 text-center font-medium shadow-lg hover:scale-105 bg-[#1a1a1a] border-[#2a2a2a] text-white"
                 >
                   {link.label}
                 </a>

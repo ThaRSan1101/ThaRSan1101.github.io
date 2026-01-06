@@ -9,7 +9,7 @@ import Footer from './components/Footer'
 
 const App: React.FC = () => {
   return (
-    <div style={{backgroundColor: '#0a0a0a', color: '#fafafa'}}>
+    <div className="bg-[#0a0a0a] text-[#fafafa]">
       <Topbar />
       <SideNavigation />
       <main>
