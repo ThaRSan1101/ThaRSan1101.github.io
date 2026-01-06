@@ -13,42 +13,25 @@ export default function Topbar() {
               href="https://www.linkedin.com/in/tharisan0111/"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 backdrop-blur-sm rounded-lg transition-colors duration-200 topbar-link"
-              style={{
-                backgroundColor: 'rgba(26, 26, 26, 0.8)',
-                border: '1px solid #2a2a2a'
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(42, 42, 42, 0.8)'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(26, 26, 26, 0.8)'}
+              aria-label="LinkedIn Profile"
+              className="p-2 backdrop-blur-sm rounded-lg transition-colors duration-200 topbar-link bg-[#1a1a1a]/80 border border-[#2a2a2a] hover:bg-[#2a2a2a]/80"
             >
-              <FaLinkedin className="text-lg" style={{ color: '#fafafa' }} />
+              <FaLinkedin className="text-lg text-[#fafafa]" />
             </a>
 
             <a
               href="https://github.com/ThaRSan1101"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 backdrop-blur-sm rounded-lg transition-colors duration-200 topbar-link"
-              style={{
-                backgroundColor: 'rgba(26, 26, 26, 0.8)',
-                border: '1px solid #2a2a2a'
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(42, 42, 42, 0.8)'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(26, 26, 26, 0.8)'}
+              aria-label="GitHub Profile"
+              className="p-2 backdrop-blur-sm rounded-lg transition-colors duration-200 topbar-link bg-[#1a1a1a]/80 border border-[#2a2a2a] hover:bg-[#2a2a2a]/80"
             >
-              <FaGithub className="text-lg" style={{ color: '#fafafa' }} />
+              <FaGithub className="text-lg text-[#fafafa]" />
             </a>
 
             <a
               href="mailto:arultharisan01@gmail.com"
-              className="hidden md:block px-3 py-2 backdrop-blur-sm rounded-lg text-sm font-medium topbar-link"
-              style={{
-                backgroundColor: 'rgba(26, 26, 26, 0.8)',
-                border: '1px solid #2a2a2a',
-                color: '#fafafa'
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(42, 42, 42, 0.8)'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(26, 26, 26, 0.8)'}
+              className="hidden md:block px-3 py-2 backdrop-blur-sm rounded-lg text-sm font-medium topbar-link bg-[#1a1a1a]/80 border border-[#2a2a2a] text-[#fafafa] hover:bg-[#2a2a2a]/80"
             >
               arultharisan01@gmail.com
             </a>
@@ -62,41 +45,26 @@ export default function Topbar() {
             href="https://www.linkedin.com/in/tharisan0111/"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 backdrop-blur-sm rounded-lg transition-colors duration-200 topbar-link"
-            style={{
-              backgroundColor: 'rgba(26, 26, 26, 0.8)',
-              border: '1px solid #2a2a2a'
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(42, 42, 42, 0.8)'}
-            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(26, 26, 26, 0.8)'}
+            aria-label="LinkedIn Profile"
+            className="p-2 backdrop-blur-sm rounded-lg transition-colors duration-200 topbar-link bg-[#1a1a1a]/80 border border-[#2a2a2a] hover:bg-[#2a2a2a]/80"
           >
-            <FaLinkedin style={{ color: '#fafafa' }} className="text-sm" />
+            <FaLinkedin className="text-sm text-[#fafafa]" />
           </a>
           <a
             href="https://github.com/ThaRSan1101"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 backdrop-blur-sm rounded-lg transition-colors duration-200 topbar-link"
-            style={{
-              backgroundColor: 'rgba(26, 26, 26, 0.8)',
-              border: '1px solid #2a2a2a'
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(42, 42, 42, 0.8)'}
-            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(26, 26, 26, 0.8)'}
+            aria-label="GitHub Profile"
+            className="p-2 backdrop-blur-sm rounded-lg transition-colors duration-200 topbar-link bg-[#1a1a1a]/80 border border-[#2a2a2a] hover:bg-[#2a2a2a]/80"
           >
-            <FaGithub style={{ color: '#fafafa' }} className="text-sm" />
+            <FaGithub className="text-sm text-[#fafafa]" />
           </a>
           <a
             href="mailto:tharsan2001@gmail.com"
-            className="p-2 backdrop-blur-sm rounded-lg transition-colors duration-200 topbar-link"
-            style={{
-              backgroundColor: 'rgba(26, 26, 26, 0.8)',
-              border: '1px solid #2a2a2a'
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(42, 42, 42, 0.8)'}
-            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(26, 26, 26, 0.8)'}
+            aria-label="Email Me"
+            className="p-2 backdrop-blur-sm rounded-lg transition-colors duration-200 topbar-link bg-[#1a1a1a]/80 border border-[#2a2a2a] hover:bg-[#2a2a2a]/80"
           >
-            <FaEnvelope style={{ color: '#fafafa' }} className="text-sm" />
+            <FaEnvelope className="text-sm text-[#fafafa]" />
           </a>
         </div>
 
@@ -104,20 +72,13 @@ export default function Topbar() {
         <div className="absolute right-0 sm:relative flex items-center gap-2 ml-2 sm:ml-5 mr-0 sm:mr-3 xl:mr-32 laptop1440:fixed laptop1440:top-5 laptop1440:right-10 laptop1440:mr-0">
 
           {/* Green dot indicator */}
-          <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#00ff88' }}></div>
+          <div className="w-2 h-2 rounded-full bg-[#00ff88]"></div>
 
           <a
             href="/assets/pdf/resume/TharsanCV.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 backdrop-blur-sm rounded-lg text-sm font-medium topbar-link"
-            style={{
-              backgroundColor: 'rgba(26, 26, 26, 0.8)',
-              border: '1px solid #2a2a2a',
-              color: '#fafafa'
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(42, 42, 42, 0.8)'}
-            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(26, 26, 26, 0.8)'}
+            className="px-4 py-2 backdrop-blur-sm rounded-lg text-sm font-medium topbar-link bg-[#1a1a1a]/80 border border-[#2a2a2a] text-[#fafafa] hover:bg-[#2a2a2a]/80"
           >
             CV
           </a>

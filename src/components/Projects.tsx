@@ -79,30 +79,24 @@ export default function Projects() {
   const visibleProjects = showAll ? projects : projects.slice(0, 3)
 
   return (
-    <section id="projects" className="py-12 sm:py-16 lg:py-24 relative overflow-hidden" style={{ backgroundColor: '#0f0f0f' }}>
+    <section id="projects" className="py-12 sm:py-16 lg:py-24 relative overflow-hidden bg-[#0f0f0f]">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 1px, transparent 1px)',
-          backgroundSize: '40px 40px'
-        }}></div>
+        <div className="absolute inset-0 projects-bg-pattern"></div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12 sm:mb-16 lg:mb-24">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-3 sm:mb-4 px-4" style={{ color: '#f5f5f5' }}>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-3 sm:mb-4 px-4 text-[#f5f5f5]">
             A Showcase of My Best Work
           </h2>
-          <p className="text-sm sm:text-base md:text-lg max-w-3xl mx-auto px-4" style={{ color: '#c0c0c0' }}>
+          <p className="text-sm sm:text-base md:text-lg max-w-3xl mx-auto px-4 text-[#c0c0c0]">
             A selection of my recent work and technical experiments
           </p>
         </div>
 
         <div className="relative">
-          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2"
-            style={{
-              background: 'linear-gradient(to bottom, transparent, #333333, transparent)'
-            }}>
+          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-[#333333] to-transparent">
           </div>
 
           <div className="space-y-24 lg:space-y-32">
@@ -114,16 +108,12 @@ export default function Projects() {
                     className={`order-2 ${index % 2 === 0 ? 'lg:order-1 lg:pr-12' : 'lg:order-2 lg:pl-12'}`}
                   >
                     <div
-                      className="p-10 sm:p-12 rounded-[2.5rem] shadow-lg relative z-10"
-                      style={{
-                        backgroundColor: 'rgba(26, 26, 26, 0.8)',
-                        border: '1px solid #333333'
-                      }}
+                      className="p-10 sm:p-12 rounded-[2.5rem] shadow-lg relative z-10 bg-[#1a1a1a]/80 border border-[#333333]"
                     >
-                      <h3 className="text-2xl sm:text-3xl font-bold mb-4" style={{ color: '#f5f5f5' }}>
+                      <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-[#f5f5f5]">
                         {project.title}
                       </h3>
-                      <p className="text-base sm:text-lg mb-6 leading-relaxed" style={{ color: '#c0c0c0' }}>
+                      <p className="text-base sm:text-lg mb-6 leading-relaxed text-[#c0c0c0]">
                         {project.shortDesc}
                       </p>
 
@@ -131,11 +121,7 @@ export default function Projects() {
                         {project.tags.map(tag => (
                           <span
                             key={tag}
-                            className="px-3 py-1 rounded-full text-sm font-medium"
-                            style={{
-                              backgroundColor: 'rgba(42, 42, 42, 0.8)',
-                              color: '#ffffff'
-                            }}
+                            className="px-3 py-1 rounded-full text-sm font-medium bg-[#2a2a2a]/80 text-white"
                           >
                             {tag}
                           </span>
@@ -148,11 +134,7 @@ export default function Projects() {
                             href={project.demo}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all hover:opacity-90"
-                            style={{
-                              backgroundColor: '#333333',
-                              color: '#ffffff'
-                            }}
+                            className="flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all hover:opacity-90 bg-[#333333] text-white"
                           >
                             <FaExternalLinkAlt /> Demo
                           </a>
@@ -162,11 +144,7 @@ export default function Projects() {
                           href={project.repo}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all border"
-                          style={{
-                            borderColor: '#333333',
-                            color: '#f5f5f5'
-                          }}
+                          className="flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all border border-[#333333] text-[#f5f5f5]"
                         >
                           <FaGithub /> {project.frontendRepo ? 'Backend' : 'Code'}
                         </a>
@@ -176,11 +154,7 @@ export default function Projects() {
                             href={project.frontendRepo}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all border"
-                            style={{
-                              borderColor: '#333333',
-                              color: '#f5f5f5'
-                            }}
+                            className="flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all border border-[#333333] text-[#f5f5f5]"
                           >
                             <FaGithub /> Frontend
                           </a>
@@ -193,8 +167,7 @@ export default function Projects() {
                   <div
                     className={`order-1 ${index % 2 === 0 ? 'lg:order-2 lg:pl-8' : 'lg:order-1 lg:pr-8'} group`}
                   >
-                    <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-[1.02] cursor-pointer"
-                      style={{ border: '1px solid #333333' }}
+                    <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-[1.02] cursor-pointer border border-[#333333]"
                       onClick={() => setSelectedImage(project.image)}
                     >
                       <img
@@ -220,12 +193,7 @@ export default function Projects() {
           <div className="mt-16 text-center">
             <button
               onClick={() => setShowAll(!showAll)}
-              className="px-8 py-3 rounded-xl font-medium transition-all hover:opacity-90 hover:scale-105"
-              style={{
-                backgroundColor: '#333333',
-                color: '#ffffff',
-                boxShadow: '0 4px 14px 0 rgba(0,0,0,0.1)'
-              }}
+              className="px-8 py-3 rounded-xl font-medium transition-all hover:opacity-90 hover:scale-105 bg-[#333333] text-white shadow-[0_4px_14px_0_rgba(0,0,0,0.1)]"
             >
               {showAll ? 'Show Less' : 'Show All Projects'}
             </button>

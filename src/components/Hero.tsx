@@ -3,47 +3,18 @@ import { FaArrowRight } from 'react-icons/fa'
 
 export default function Hero() {
   return (
-    <section id="home" className="min-h-screen flex items-center relative overflow-hidden"
-      style={{ backgroundColor: '#0a0a0a' }}>
+    <section id="home" className="min-h-screen flex items-center relative overflow-hidden bg-[#0a0a0a]">
 
       {/* Night Sky Background with Stars */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Starfield Layer 1 - Small stars */}
-        <div className="absolute inset-0" style={{
-          opacity: 0.4,
-          backgroundImage: `
-            radial-gradient(1px 1px at 20% 30%, white, transparent),
-            radial-gradient(1px 1px at 60% 70%, white, transparent),
-            radial-gradient(1px 1px at 50% 50%, white, transparent),
-            radial-gradient(1px 1px at 80% 10%, white, transparent),
-            radial-gradient(1px 1px at 90% 60%, white, transparent),
-            radial-gradient(1px 1px at 33% 80%, white, transparent),
-            radial-gradient(1px 1px at 15% 60%, white, transparent)
-          `,
-          backgroundSize: '200px 200px',
-          backgroundRepeat: 'repeat'
-        }}></div>
+        <div className="absolute inset-0 hero-starfield-1"></div>
 
         {/* Starfield Layer 2 - Medium stars */}
-        <div className="absolute inset-0" style={{
-          opacity: 0.3,
-          backgroundImage: `
-            radial-gradient(2px 2px at 40% 20%, rgba(255, 255, 255, 0.8), transparent),
-            radial-gradient(1.5px 1.5px at 70% 80%, rgba(255, 255, 255, 0.6), transparent),
-            radial-gradient(1.5px 1.5px at 25% 50%, rgba(255, 255, 255, 0.7), transparent),
-            radial-gradient(2px 2px at 85% 40%, rgba(255, 255, 255, 0.8), transparent)
-          `,
-          backgroundSize: '300px 300px',
-          backgroundRepeat: 'repeat'
-        }}></div>
+        <div className="absolute inset-0 hero-starfield-2"></div>
 
         {/* Subtle nebula glow */}
-        <div className="absolute inset-0 opacity-10" style={{
-          background: `
-            radial-gradient(ellipse at 20% 30%, rgba(100, 100, 255, 0.3) 0%, transparent 50%),
-            radial-gradient(ellipse at 80% 70%, rgba(150, 100, 255, 0.2) 0%, transparent 50%)
-          `
-        }}></div>
+        <div className="absolute inset-0 hero-nebula"></div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -55,20 +26,17 @@ export default function Hero() {
 
             {/* Main Heading */}
             <div className="space-y-3 sm:space-y-4">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
-                style={{ color: '#ffffff' }}>
-                Hi, I'm <span style={{ color: '#00ff88' }}>Tharsan</span>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
+                Hi, I'm <span className="text-[#00ff88]">Tharsan</span>
               </h1>
 
-              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium"
-                style={{ color: '#cccccc' }}>
-                &lt;Software Developer/&gt;
+              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-[#cccccc]">
+                &lt; Software Developer /&gt;
               </h2>
             </div>
 
             {/* Description */}
-            <p className="text-sm sm:text-base md:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed px-2 sm:px-0"
-              style={{ color: '#999999' }}>
+            <p className="text-sm sm:text-base md:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed px-2 sm:px-0 text-[#999999]">
               Building modern web applications and digital solutions that bring ideas to life
             </p>
 
@@ -97,34 +65,23 @@ export default function Hero() {
             <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
               {/* Profile Image */}
               <div
-                className="w-full h-full rounded-full overflow-hidden"
-                style={{
-                  border: '4px solid rgba(255, 255, 255, 0.1)',
-                  boxShadow: '0 10px 40px rgba(0, 0, 0, 0.3)'
-                }}
+                className="w-full h-full rounded-full overflow-hidden border-[4px] border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.3)]"
               >
                 <img
                   src="/assets/images/profile/profile.jpg"
                   alt="Tharsan - Software Developer"
-                  className="w-full h-full object-cover"
-                  style={{
-                    filter: 'contrast(1.05) brightness(0.98)'
-                  }}
+                  className="w-full h-full object-cover brightness-[0.98] contrast-[1.05]"
                   onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).style.display = 'none';
-                    const nextElement = (e.currentTarget as HTMLImageElement).nextElementSibling as HTMLElement;
+                    const img = e.currentTarget;
+                    img.style.display = 'none';
+                    const nextElement = img.nextElementSibling as HTMLElement;
                     if (nextElement) nextElement.style.display = 'flex';
                   }}
                 />
 
                 {/* Fallback Avatar */}
                 <div
-                  className="w-full h-full flex items-center justify-center text-6xl font-bold"
-                  style={{
-                    background: 'linear-gradient(135deg, #2a2a2a, #1a1a1a)',
-                    color: '#fafafa',
-                    display: 'none'
-                  }}
+                  className="w-full h-full flex items-center justify-center text-6xl font-bold bg-[#1a1a1a] text-[#fafafa] hidden"
                 >
                   T
                 </div>
