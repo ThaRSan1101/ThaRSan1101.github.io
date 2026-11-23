@@ -5,11 +5,10 @@ import Hero from './components/Hero'
 import Skills from './components/Skills'
 import Projects from './components/Projects'
 import ContactForm from './components/ContactForm'
-import Footer from './components/Footer'
 
 const App: React.FC = () => {
   return (
-    <div className="bg-[#0a0a0a] text-[#fafafa]">
+    <div className="min-h-screen bg-[#f8f9fa] text-[#0a0a0a]">
       <Topbar />
       <SideNavigation />
       <main>
@@ -18,7 +17,6 @@ const App: React.FC = () => {
         <Projects />
         <ContactForm />
       </main>
-      <Footer />
     </div>
   )
 }
