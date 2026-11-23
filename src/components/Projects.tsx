@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { FaGithub, FaExternalLinkAlt, FaCode, FaDatabase, FaReact, FaNodeJs } from 'react-icons/fa'
-import { SiMysql, SiJavascript, SiHtml5, SiCss3, SiTailwindcss, SiPhp, SiBootstrap } from 'react-icons/si'
-
+import { FaGithub, FaExternalLinkAlt, FaCode, FaDatabase, FaReact, FaCheck } from 'react-icons/fa'
+import { SiMysql, SiJavascript, SiPhp, SiBootstrap } from 'react-icons/si'
 
 const projects = [
   {
     id: 1,
+    number: '01',
     title: 'Home Management System',
     shortDesc: 'Full-stack web application for booking and managing home services with secure payment integration and real-time notifications.',
     fullDesc: 'A comprehensive web-based platform that streamlines home service management by connecting customers with verified service providers. The system features three distinct user roles (Customer, Provider, Admin) with dedicated dashboards, real-time booking management, secure JWT authentication, payment processing, rating/review system, and comprehensive admin oversight. Built with modern web technologies and follows waterfall methodology with extensive testing validation.',
@@ -28,6 +28,7 @@ const projects = [
   },
   {
     id: 2,
+    number: '02',
     title: 'Campus Connect - SEU Issue Tracker',
     shortDesc: 'Full-stack issue reporting and event management system for university campus',
     fullDesc: 'Campus Connect is a comprehensive web application developed for university campus management. It enables students to report campus issues with photo uploads and location details, while providing administrators with tools to manage reports, events, and users. The system features role-based access control, real-time status tracking, and an intuitive dashboard for both students and administrators.',
@@ -49,20 +50,19 @@ const projects = [
   },
   {
     id: 3,
+    number: '03',
     title: 'Personal Portfolio Website',
-    shortDesc: 'Modern, responsive portfolio website built with React, featuring dark/light themes, smooth animations, and interactive components.',
+    shortDesc: 'Modern, responsive portfolio website built with React, featuring dynamic themes, smooth animations, and interactive components.',
     fullDesc: 'A comprehensive personal portfolio website showcasing my skills, projects, and experience as a software developer. Built with modern web technologies including React, Framer Motion for animations, and Tailwind CSS for styling. Features include dynamic theme switching, smooth scrolling navigation, animated sections, contact forms, and responsive design that works seamlessly across all devices.',
-    tags: ['React', 'JavaScript', 'Tailwind CSS', 'Framer Motion', 'Vite', 'Responsive Design'],
-    techIcons: [FaReact, SiJavascript, SiTailwindcss],
+    tags: ['React', 'JavaScript', 'Tailwind CSS', 'Vite', 'Responsive Design'],
+    techIcons: [FaReact, SiJavascript],
     features: [
-      'Dynamic dark/light theme switching with smooth transitions',
-      'Smooth scroll navigation with animated section reveals using Framer Motion',
+      'Dynamic theme styling with high-contrast editorial aesthetics',
+      'Smooth scroll navigation with section reveals and responsive layout',
       'Responsive design optimized for mobile, tablet, and desktop devices',
       'Interactive project showcase with detailed modal popups',
-      'Contact form with email integration and form validation',
-      'Animated background elements and interactive UI components',
-      'Optimized performance with Vite build tool and lazy loading',
-      'SEO-friendly structure with semantic HTML and meta tags'
+      'Direct social & contact channels with validated interaction links',
+      'Optimized performance with modern Vite build tool and modular components'
     ],
     repo: 'https://github.com/ThaRSan1101/ThaRSan1101.github.io',
     demo: '#',
@@ -73,151 +73,197 @@ const projects = [
 ]
 
 export default function Projects() {
-  const [showAll, setShowAll] = useState(false)
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
 
-  const visibleProjects = showAll ? projects : projects.slice(0, 3)
-
   return (
-    <section id="projects" className="py-12 sm:py-16 lg:py-24 relative overflow-hidden bg-[#0f0f0f]">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none">
-        <div className="absolute inset-0 projects-bg-pattern"></div>
-      </div>
+    <section id="projects" className="py-20 lg:py-28 relative overflow-hidden bg-[#f8f9fa] border-t border-[#e4e4e7]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-12 sm:mb-16 lg:mb-24">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-3 sm:mb-4 px-4 text-[#f5f5f5]">
-            A Showcase of My Best Work
-          </h2>
-          <p className="text-sm sm:text-base md:text-lg max-w-3xl mx-auto px-4 text-[#c0c0c0]">
-            A selection of my recent work and technical experiments
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div className="space-y-3">
+            <div className="flex items-center gap-3">
+              <span className="font-mono text-xs font-bold tracking-[0.2em] text-[#52525b] uppercase">
+                SHOWCASE // WORKS
+              </span>
+              <span className="h-px w-10 bg-[#d4d4d8]"></span>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <span className="bg-[#fbb03b] text-[#0a0a0a] text-xs font-black uppercase tracking-wider px-3 py-1 rounded-sm shadow-sm">
+                SELECTED CASE STUDIES
+              </span>
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0a0a0a] uppercase">
+              FEATURED <span className="text-[#1d4ed8]">PROJECTS.</span>
+            </h2>
+          </div>
+
+          <p className="text-sm sm:text-base text-[#52525b] max-w-md font-medium leading-relaxed">
+            A selection of my recent full-stack applications, academic systems, and technical experiments.
           </p>
         </div>
 
-        <div className="relative">
-          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-[#333333] to-transparent">
-          </div>
+        {/* Projects List */}
+        <div className="space-y-16 lg:space-y-24">
+          {projects.map((project, index) => (
+            <article
+              key={project.id}
+              className="bg-white rounded-2xl md:rounded-3xl border border-[#e4e4e7] overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
 
-          <div className="space-y-24 lg:space-y-32">
-            {visibleProjects.map((project, index) => (
-              <div key={project.id} className="relative">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-                  {/* Project Details */}
-                  <div
-                    className={`order-2 ${index % 2 === 0 ? 'lg:order-1 lg:pr-12' : 'lg:order-2 lg:pl-12'}`}
-                  >
-                    <div
-                      className="p-10 sm:p-12 rounded-[2.5rem] shadow-lg relative z-10 bg-[#1a1a1a]/80 border border-[#333333]"
-                    >
-                      <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-[#f5f5f5]">
+                {/* Left/Details Column */}
+                <div className={`p-6 sm:p-10 lg:p-12 lg:col-span-7 flex flex-col justify-between ${
+                  index % 2 === 1 ? 'lg:order-2' : 'lg:order-1'
+                }`}>
+                  <div className="space-y-6">
+
+                    {/* Metadata Header */}
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <span className="font-mono text-2xl sm:text-3xl font-black text-[#1d4ed8]">
+                          {project.number}
+                        </span>
+                        <span className="h-4 w-px bg-[#d4d4d8]"></span>
+                        <span className="bg-[#fef3c7] text-[#92400e] text-[11px] font-black uppercase tracking-wider px-2.5 py-1 rounded">
+                          {project.category}
+                        </span>
+                      </div>
+
+                      <span className="text-xs font-mono font-bold text-[#52525b]">
+                        STATUS: {project.status.toUpperCase()}
+                      </span>
+                    </div>
+
+                    {/* Title & Short Description */}
+                    <div className="space-y-3">
+                      <h3 className="text-2xl sm:text-3xl font-black text-[#0a0a0a] tracking-tight">
                         {project.title}
                       </h3>
-                      <p className="text-base sm:text-lg mb-6 leading-relaxed text-[#c0c0c0]">
+                      <p className="text-sm sm:text-base text-[#52525b] leading-relaxed font-medium">
                         {project.shortDesc}
                       </p>
-
-                      <div className="flex flex-wrap gap-2 mb-8">
-                        {project.tags.map(tag => (
-                          <span
-                            key={tag}
-                            className="px-3 py-1 rounded-full text-sm font-medium bg-[#2a2a2a]/80 text-white"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-
-                      <div className="flex flex-wrap gap-4">
-                        {project.demo && project.demo !== '#' && (
-                          <a
-                            href={project.demo}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all hover:opacity-90 bg-[#333333] text-white"
-                          >
-                            <FaExternalLinkAlt /> Demo
-                          </a>
-                        )}
-
-                        <a
-                          href={project.repo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all border border-[#333333] text-[#f5f5f5]"
-                        >
-                          <FaGithub /> {project.frontendRepo ? 'Backend' : 'Code'}
-                        </a>
-
-                        {project.frontendRepo && (
-                          <a
-                            href={project.frontendRepo}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all border border-[#333333] text-[#f5f5f5]"
-                          >
-                            <FaGithub /> Frontend
-                          </a>
-                        )}
-                      </div>
                     </div>
+
+                    {/* Features Highlights */}
+                    <div className="space-y-2 pt-2 border-t border-[#f4f4f5]">
+                      <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#71717a]">
+                        Key Highlights:
+                      </h4>
+                      <ul className="grid grid-cols-1 gap-1.5 text-xs sm:text-sm text-[#52525b]">
+                        {project.features.slice(0, 3).map((feat, fIdx) => (
+                          <li key={fIdx} className="flex items-start gap-2">
+                            <FaCheck className="text-[#1d4ed8] text-xs mt-1 flex-shrink-0" />
+                            <span>{feat}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 pt-2">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-[#f4f4f5] text-[#18181b] border border-[#e4e4e7]"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
                   </div>
 
-                  {/* Project Image */}
-                  <div
-                    className={`order-1 ${index % 2 === 0 ? 'lg:order-2 lg:pl-8' : 'lg:order-1 lg:pr-8'} group`}
-                  >
-                    <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-[1.02] cursor-pointer border border-[#333333]"
-                      onClick={() => setSelectedImage(project.image)}
+                  {/* Action Buttons */}
+                  <div className="pt-8 flex flex-wrap items-center gap-3">
+                    {project.demo && project.demo !== '#' && (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-bold text-xs uppercase tracking-wider bg-[#1d4ed8] text-white hover:bg-[#1e40af] transition-colors shadow-sm"
+                      >
+                        <FaExternalLinkAlt className="text-xs" />
+                        Live Demo
+                      </a>
+                    )}
+
+                    <a
+                      href={project.repo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-bold text-xs uppercase tracking-wider bg-[#0a0a0a] text-white hover:bg-[#27272a] transition-colors shadow-sm"
                     >
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full aspect-video object-cover"
-                        onError={(e) => {
-                          e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDQwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0yMDAgNzBWMTMwTTIzMCAxMDBIMTcwIiBzdHJva2U9IiM5Q0E0QUYiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjx0ZXh0IHg9IjIwMCIgeT0iMTYwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM2QjczODAiPlByb2plY3QgSW1hZ2U8L3RleHQ+Cjwvc3ZnPgo='
-                        }}
-                      />
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                        <span className="bg-black/50 text-white px-4 py-2 rounded-full backdrop-blur-sm text-sm font-medium">Click to view</span>
-                      </div>
+                      <FaGithub className="text-sm" />
+                      {project.frontendRepo ? 'Backend Repository' : 'Source Code'}
+                    </a>
+
+                    {project.frontendRepo && (
+                      <a
+                        href={project.frontendRepo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-bold text-xs uppercase tracking-wider bg-white border border-[#0a0a0a] text-[#0a0a0a] hover:bg-[#f4f4f5] transition-colors shadow-sm"
+                      >
+                        <FaGithub className="text-sm" />
+                        Frontend Repository
+                      </a>
+                    )}
+                  </div>
+
+                </div>
+
+                {/* Right/Image Column */}
+                <div className={`p-6 sm:p-10 lg:p-12 lg:col-span-5 flex items-center justify-center bg-[#f4f4f5] border-t lg:border-t-0 ${
+                  index % 2 === 1 ? 'lg:order-1 lg:border-r border-[#e4e4e7]' : 'lg:order-2 lg:border-l border-[#e4e4e7]'
+                }`}>
+                  <div
+                    onClick={() => setSelectedImage(project.image)}
+                    className="relative w-full aspect-video rounded-xl overflow-hidden border border-[#e4e4e7] shadow-md group cursor-pointer bg-white"
+                  >
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      onError={(e) => {
+                        e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDQwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRjNGNEY2Ii8+Cjx0ZXh0IHg9IjIwMCIgeT0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiM2QjczODAiPlByb2plY3QgUHJldmlldzwvdGV4dD4KPC9zdmc+'
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <span className="bg-white text-[#0a0a0a] text-xs font-black uppercase tracking-wider px-4 py-2 rounded shadow-md">
+                        Click to Expand Preview
+                      </span>
                     </div>
                   </div>
                 </div>
+
               </div>
-            ))}
-          </div>
+            </article>
+          ))}
         </div>
 
-        {projects.length > 3 && (
-          <div className="mt-16 text-center">
-            <button
-              onClick={() => setShowAll(!showAll)}
-              className="px-8 py-3 rounded-xl font-medium transition-all hover:opacity-90 hover:scale-105 bg-[#333333] text-white shadow-[0_4px_14px_0_rgba(0,0,0,0.1)]"
-            >
-              {showAll ? 'Show Less' : 'Show All Projects'}
-            </button>
-          </div>
-        )}
       </div>
 
       {/* Full Screen Image Modal */}
       {selectedImage && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm transition-opacity"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm"
           onClick={() => setSelectedImage(null)}
         >
-          <div className="relative max-w-7xl w-full max-h-[90vh] flex items-center justify-center">
+          <div className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center">
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors"
+              className="self-end mb-2 text-white hover:text-[#fbb03b] text-3xl font-bold transition-colors"
+              aria-label="Close modal"
             >
-              <span className="text-4xl">&times;</span>
+              &times;
             </button>
             <img
               src={selectedImage}
-              alt="Project Full View"
-              className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+              alt="Project Full Preview"
+              className="max-w-full max-h-[80vh] object-contain rounded-xl shadow-2xl border-2 border-white/20"
               onClick={(e) => e.stopPropagation()}
             />
           </div>
